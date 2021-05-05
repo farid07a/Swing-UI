@@ -61,8 +61,6 @@ public class Home extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         Frn_ID48 = new javax.swing.JLabel();
         TxtPrdQty3 = new javax.swing.JTextField();
-        TxtPrdPrix2 = new javax.swing.JTextField();
-        Frn_ID14 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         Frn_ID25 = new javax.swing.JLabel();
         Frn_ID5 = new javax.swing.JLabel();
@@ -84,6 +82,19 @@ public class Home extends javax.swing.JFrame {
         Frn_ID4 = new javax.swing.JLabel();
         txtDatArrivage = new javax.swing.JFormattedTextField();
         TxtPrdQty = new javax.swing.JTextField();
+        TxtPrdPrix3 = new javax.swing.JTextField();
+        Frn_ID15 = new javax.swing.JLabel();
+        Frn_ID9 = new javax.swing.JLabel();
+        Frn_ID16 = new javax.swing.JLabel();
+        TxtPrdPrix4 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtDatArrivage1 = new javax.swing.JFormattedTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -102,6 +113,7 @@ public class Home extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1183, 600));
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(666, 60));
@@ -110,7 +122,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1183, Short.MAX_VALUE)
+            .addGap(0, 1118, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,13 +222,10 @@ public class Home extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
@@ -236,36 +245,63 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.LINE_END);
 
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setPreferredSize(new java.awt.Dimension(1063, 600));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("jTextField1");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 120, 25));
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("رقم الفاتورة:");
+        jLabel2.setText(" رقــم الفاتورة :");
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, 25));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("تاريخ الفاتورة:");
+        jLabel3.setText("تاريخ الفاتورة :");
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 45, 62, 22));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("سعر الفاتورة:");
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 70, 30));
 
+        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 102, 32));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("اسم الشركة:");
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
 
+        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 102, 32));
 
         jLabel8.setText("تفاصيل المنتجات:");
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 24));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("اسم المورد:");
+        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 70, 30));
 
+        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 90, 32));
 
+        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 90, 32));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("اسم الشركة:");
+        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 70, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -290,13 +326,17 @@ public class Home extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        Frn_ID48.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID48.setText("الحد الأدنى للمخزون:");
+        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 451, 940, 190));
 
-        TxtPrdQty3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        Frn_ID48.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID48.setText("الحد الأدنى للمخزون :");
+        jPanel8.add(Frn_ID48, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 122, 30));
+
+        TxtPrdQty3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdQty3.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdQty3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdQty3.setText("00");
+        TxtPrdQty3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdQty3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdQty3FocusGained(evt);
@@ -312,51 +352,29 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdQty3KeyTyped(evt);
             }
         });
-
-        TxtPrdPrix2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        TxtPrdPrix2.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdPrix2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdPrix2.setText("00");
-        TxtPrdPrix2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix2FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix2FocusLost(evt);
-            }
-        });
-        TxtPrdPrix2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdPrix2ActionPerformed(evt);
-            }
-        });
-        TxtPrdPrix2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix2KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix2KeyTyped(evt);
-            }
-        });
-
-        Frn_ID14.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID14.setText("عدد القطـع:");
+        jPanel8.add(TxtPrdQty3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 171, 32));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, 190, 32));
 
         Frn_ID25.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID25.setText("الوحدة   :");
+        Frn_ID25.setText("الوحدة :");
+        jPanel8.add(Frn_ID25, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 59, 30));
 
         Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID5.setText("الكميـــة:");
+        Frn_ID5.setText("الكميـــة :");
+        jPanel8.add(Frn_ID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 59, 30));
 
         Frn_ID7.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID7.setText("سعر الشــراء :");
+        jPanel8.add(Frn_ID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, 30));
 
-        TxtPrdPrix.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdPrix.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdPrix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdPrix.setText("00.00");
+        TxtPrdPrix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdPrix.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdPrixFocusGained(evt);
@@ -378,14 +396,17 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdPrixKeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdPrix, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 380, 240, 32));
 
         Frn_ID28.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID28.setText("سعر البيع :");
+        jPanel8.add(Frn_ID28, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 122, 30));
 
-        TxtPrdPrix1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdPrix1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix1.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdPrix1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdPrix1.setText("00.00");
+        TxtPrdPrix1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdPrix1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdPrix1FocusGained(evt);
@@ -407,11 +428,13 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdPrix1KeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdPrix1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 171, 32));
 
-        TxtPrdQty1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdQty1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdQty1.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdQty1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdQty1.setText("00");
+        TxtPrdQty1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdQty1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdQty1FocusGained(evt);
@@ -427,14 +450,17 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdQty1KeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 171, 32));
 
         Frn_ID47.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID47.setText("رصيد المخزون الافتتاحي:");
+        Frn_ID47.setText("رصيد المخزون الافتتاحي :");
+        jPanel8.add(Frn_ID47, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 120, 30));
 
-        TxtPrdDesg.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdDesg.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdDesg.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdDesg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdDesg.setText("Designation de produit ");
+        TxtPrdDesg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdDesg.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdDesgFocusGained(evt);
@@ -454,16 +480,20 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdDesgKeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdDesg, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 210, 190, 32));
 
         Frn_ID3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID3.setText(" المنتــوج :");
+        Frn_ID3.setText(" المنتـج :");
+        jPanel8.add(Frn_ID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 210, 50, 30));
 
         Frn_ID12.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID12.setText("الباركـود :");
+        jPanel8.add(Frn_ID12, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 170, 50, 30));
 
-        TxtPrdDesg1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdDesg1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdDesg1.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdDesg1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdDesg1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdDesg1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdDesg1FocusGained(evt);
@@ -483,33 +513,46 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdDesg1KeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdDesg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 170, 190, 32));
 
         Frn_ID26.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID26.setText("الكمية المتوفرة:");
+        Frn_ID26.setText("الكمية المتوفرة :");
+        jPanel8.add(Frn_ID26, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 120, 30));
+
+        jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel8.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 171, 32));
 
         ListFournisseur.setEditable(true);
         ListFournisseur.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         ListFournisseur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "اختر المورد..." }));
+        ListFournisseur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ListFournisseur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListFournisseurActionPerformed(evt);
             }
         });
+        jPanel8.add(ListFournisseur, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 171, 32));
 
         ListCategorie.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         ListCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selectionner un categorie ..." }));
+        ListCategorie.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ListCategorie.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 ListCategorieFocusGained(evt);
             }
         });
+        jPanel8.add(ListCategorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 32));
 
         Frn_ID8.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID8.setText(" المورد :");
+        jPanel8.add(Frn_ID8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 50, 30));
 
         Frn_ID4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID4.setText("النـــوع :");
+        jPanel8.add(Frn_ID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 52, 31));
 
+        txtDatArrivage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             txtDatArrivage.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -521,11 +564,13 @@ public class Home extends javax.swing.JFrame {
                 txtDatArrivageFocusLost(evt);
             }
         });
+        jPanel8.add(txtDatArrivage, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 45, 120, 22));
 
-        TxtPrdQty.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        TxtPrdQty.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdQty.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdQty.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdQty.setText("00");
+        TxtPrdQty.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TxtPrdQty.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TxtPrdQtyFocusGained(evt);
@@ -541,205 +586,128 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdQtyKeyTyped(evt);
             }
         });
+        jPanel8.add(TxtPrdQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 250, 190, 32));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                                    .addComponent(jTextField5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 247, Short.MAX_VALUE)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDatArrivage, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel8)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdQty3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(Frn_ID48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(ListFournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdQty1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID47, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdPrix1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(Frn_ID28, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(77, 77, 77)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(ListCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdDesg1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID12, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdDesg, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)
-                                .addComponent(Frn_ID3))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Frn_ID7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtPrdQty, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Frn_ID5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(TxtPrdPrix2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Frn_ID14, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Frn_ID25, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(22, 22, 22))))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDatArrivage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ListFournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Frn_ID8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(Frn_ID26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(TxtPrdQty1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Frn_ID47, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(TxtPrdPrix1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(Frn_ID28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(TxtPrdQty3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Frn_ID48, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ListCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(Frn_ID4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtPrdDesg1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Frn_ID12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtPrdDesg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Frn_ID3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(TxtPrdPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Frn_ID7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(TxtPrdPrix2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(Frn_ID14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtPrdQty, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Frn_ID5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Frn_ID25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        TxtPrdPrix3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TxtPrdPrix3.setForeground(new java.awt.Color(204, 204, 204));
+        TxtPrdPrix3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdPrix3.setText("00");
+        TxtPrdPrix3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TxtPrdPrix3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix3FocusLost(evt);
+            }
+        });
+        TxtPrdPrix3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrdPrix3ActionPerformed(evt);
+            }
+        });
+        TxtPrdPrix3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix3KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix3KeyTyped(evt);
+            }
+        });
+        jPanel8.add(TxtPrdPrix3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 70, 32));
+
+        Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID15.setText("سعر القطعة :");
+        jPanel8.add(Frn_ID15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 330, 65, 30));
+
+        Frn_ID9.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID9.setText("سعر الشــراء :");
+        jPanel8.add(Frn_ID9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 380, -1, 30));
+
+        Frn_ID16.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID16.setText("عدد القطـع :");
+        jPanel8.add(Frn_ID16, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 330, 65, 30));
+
+        TxtPrdPrix4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TxtPrdPrix4.setForeground(new java.awt.Color(204, 204, 204));
+        TxtPrdPrix4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdPrix4.setText("00");
+        TxtPrdPrix4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TxtPrdPrix4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix4FocusLost(evt);
+            }
+        });
+        TxtPrdPrix4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrdPrix4ActionPerformed(evt);
+            }
+        });
+        TxtPrdPrix4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix4KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix4KeyTyped(evt);
+            }
+        });
+        jPanel8.add(TxtPrdPrix4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 90, 32));
+
+        jLabel4.setText("jLabel4");
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 210, 40, 30));
+
+        jLabel5.setText("jLabel4");
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 40, 30));
+
+        jLabel11.setText("jLabel4");
+        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 170, 40, 30));
+
+        jLabel12.setText("jLabel4");
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 250, 40, 30));
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("تاريخ الفاتورة :");
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 62, 25));
+
+        txtDatArrivage1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            txtDatArrivage1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDatArrivage1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDatArrivage1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDatArrivage1FocusLost(evt);
+            }
+        });
+        jPanel8.add(txtDatArrivage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 120, 25));
+
+        jLabel14.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("الفاتورة");
+        //
+        jLabel14.setToolTipText("");
+        jLabel14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel14.setOpaque(true);
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 60, 40));
+
+        jLabel15.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("بيانات");
+        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel15.setOpaque(true);
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 60, 40));
 
         getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
@@ -884,26 +852,6 @@ public class Home extends javax.swing.JFrame {
     private void TxtPrdQty3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdQty3KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrdQty3KeyTyped
-
-    private void TxtPrdPrix2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix2FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix2FocusGained
-
-    private void TxtPrdPrix2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix2FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix2FocusLost
-
-    private void TxtPrdPrix2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix2ActionPerformed
-
-    private void TxtPrdPrix2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix2KeyPressed
-
-    private void TxtPrdPrix2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix2KeyTyped
 
     private void TxtPrdPrixFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrixFocusGained
         // TODO add your handling code here:
@@ -1154,6 +1102,50 @@ public class Home extends javax.swing.JFrame {
             evt.consume();}*/
     }//GEN-LAST:event_TxtPrdQtyKeyTyped
 
+    private void TxtPrdPrix3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix3FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix3FocusGained
+
+    private void TxtPrdPrix3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix3FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix3FocusLost
+
+    private void TxtPrdPrix3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix3ActionPerformed
+
+    private void TxtPrdPrix3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix3KeyPressed
+
+    private void TxtPrdPrix3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix3KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix3KeyTyped
+
+    private void TxtPrdPrix4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix4FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix4FocusGained
+
+    private void TxtPrdPrix4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix4FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix4FocusLost
+
+    private void TxtPrdPrix4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix4ActionPerformed
+
+    private void TxtPrdPrix4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix4KeyPressed
+
+    private void TxtPrdPrix4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix4KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix4KeyTyped
+
+    private void txtDatArrivage1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDatArrivage1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatArrivage1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -1192,7 +1184,8 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Frn_ID12;
-    private javax.swing.JLabel Frn_ID14;
+    private javax.swing.JLabel Frn_ID15;
+    private javax.swing.JLabel Frn_ID16;
     private javax.swing.JLabel Frn_ID25;
     private javax.swing.JLabel Frn_ID26;
     private javax.swing.JLabel Frn_ID28;
@@ -1203,13 +1196,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Frn_ID5;
     private javax.swing.JLabel Frn_ID7;
     private javax.swing.JLabel Frn_ID8;
+    private javax.swing.JLabel Frn_ID9;
     private javax.swing.JComboBox<String> ListCategorie;
     private javax.swing.JComboBox<String> ListFournisseur;
     private javax.swing.JTextField TxtPrdDesg;
     private javax.swing.JTextField TxtPrdDesg1;
     private javax.swing.JTextField TxtPrdPrix;
     private javax.swing.JTextField TxtPrdPrix1;
-    private javax.swing.JTextField TxtPrdPrix2;
+    private javax.swing.JTextField TxtPrdPrix3;
+    private javax.swing.JTextField TxtPrdPrix4;
     private javax.swing.JTextField TxtPrdQty;
     private javax.swing.JTextField TxtPrdQty1;
     private javax.swing.JTextField TxtPrdQty3;
@@ -1220,8 +1215,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1258,5 +1260,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JFormattedTextField txtDatArrivage;
+    private javax.swing.JFormattedTextField txtDatArrivage1;
     // End of variables declaration//GEN-END:variables
 }
