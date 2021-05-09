@@ -32,6 +32,7 @@ public class Home extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -45,56 +46,67 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Frn_ID48 = new javax.swing.JLabel();
-        TxtPrdQty3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        Frn_ID25 = new javax.swing.JLabel();
-        Frn_ID5 = new javax.swing.JLabel();
-        Frn_ID7 = new javax.swing.JLabel();
-        TxtPrdPrix = new javax.swing.JTextField();
-        Frn_ID28 = new javax.swing.JLabel();
-        TxtPrdPrix1 = new javax.swing.JTextField();
-        TxtPrdQty1 = new javax.swing.JTextField();
-        Frn_ID47 = new javax.swing.JLabel();
-        TxtPrdDesg = new javax.swing.JTextField();
-        Frn_ID3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         Frn_ID12 = new javax.swing.JLabel();
         TxtPrdDesg1 = new javax.swing.JTextField();
-        Frn_ID26 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        ListFournisseur = new javax.swing.JComboBox<>();
-        ListCategorie = new javax.swing.JComboBox<>();
-        Frn_ID8 = new javax.swing.JLabel();
         Frn_ID4 = new javax.swing.JLabel();
-        txtDatArrivage = new javax.swing.JFormattedTextField();
+        ListCategorie = new javax.swing.JComboBox<>();
+        Frn_ID3 = new javax.swing.JLabel();
+        TxtPrdDesg = new javax.swing.JTextField();
         TxtPrdQty = new javax.swing.JTextField();
-        TxtPrdPrix3 = new javax.swing.JTextField();
+        Frn_ID5 = new javax.swing.JLabel();
+        Frn_ID25 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         Frn_ID15 = new javax.swing.JLabel();
-        Frn_ID9 = new javax.swing.JLabel();
-        Frn_ID16 = new javax.swing.JLabel();
         TxtPrdPrix4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        TxtPrdPrix = new javax.swing.JTextField();
+        Frn_ID9 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        Nbr_Pcs_label = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        Frn_ID16 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        Frn_ID26 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField9 = new javax.swing.JTextField();
+        Frn_ID27 = new javax.swing.JLabel();
+        Frn_ID10 = new javax.swing.JLabel();
+        TxtPrdPrix5 = new javax.swing.JTextField();
+        jPanel10 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtDatArrivage1 = new javax.swing.JFormattedTextField();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtDatArrivage = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -122,7 +134,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1118, Short.MAX_VALUE)
+            .addGap(0, 1184, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +190,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setPreferredSize(new java.awt.Dimension(120, 378));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
@@ -222,7 +235,7 @@ public class Home extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -247,62 +260,8 @@ public class Home extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setPreferredSize(new java.awt.Dimension(1063, 600));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 120, 25));
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText(" رقــم الفاتورة :");
-        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, 25));
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("تاريخ الفاتورة :");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 45, 62, 22));
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("سعر الفاتورة:");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 70, 30));
-
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 102, 32));
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("اسم الشركة:");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
-
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 102, 32));
-
-        jLabel8.setText("تفاصيل المنتجات:");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 24));
-
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("اسم المورد:");
-        jPanel8.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 70, 30));
-
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 90, 32));
-
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 90, 32));
-
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("اسم الشركة:");
-        jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 70, 30));
-
+        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -326,169 +285,12 @@ public class Home extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel8.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 451, 940, 190));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Frn_ID48.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID48.setText("الحد الأدنى للمخزون :");
-        jPanel8.add(Frn_ID48, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 122, 30));
-
-        TxtPrdQty3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdQty3.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdQty3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdQty3.setText("00");
-        TxtPrdQty3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdQty3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdQty3FocusGained(evt);
-            }
-        });
-        TxtPrdQty3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdQty3ActionPerformed(evt);
-            }
-        });
-        TxtPrdQty3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdQty3KeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdQty3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 171, 32));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, 190, 32));
-
-        Frn_ID25.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID25.setText("الوحدة :");
-        jPanel8.add(Frn_ID25, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 59, 30));
-
-        Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID5.setText("الكميـــة :");
-        jPanel8.add(Frn_ID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 59, 30));
-
-        Frn_ID7.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID7.setText("سعر الشــراء :");
-        jPanel8.add(Frn_ID7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, 30));
-
-        TxtPrdPrix.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdPrix.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdPrix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdPrix.setText("00.00");
-        TxtPrdPrix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdPrix.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdPrixFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdPrixFocusLost(evt);
-            }
-        });
-        TxtPrdPrix.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdPrixActionPerformed(evt);
-            }
-        });
-        TxtPrdPrix.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdPrixKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdPrixKeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdPrix, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 380, 240, 32));
-
-        Frn_ID28.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID28.setText("سعر البيع :");
-        jPanel8.add(Frn_ID28, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 122, 30));
-
-        TxtPrdPrix1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdPrix1.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdPrix1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdPrix1.setText("00.00");
-        TxtPrdPrix1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdPrix1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix1FocusLost(evt);
-            }
-        });
-        TxtPrdPrix1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdPrix1ActionPerformed(evt);
-            }
-        });
-        TxtPrdPrix1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix1KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix1KeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdPrix1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 171, 32));
-
-        TxtPrdQty1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdQty1.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdQty1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdQty1.setText("00");
-        TxtPrdQty1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdQty1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdQty1FocusGained(evt);
-            }
-        });
-        TxtPrdQty1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdQty1ActionPerformed(evt);
-            }
-        });
-        TxtPrdQty1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdQty1KeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdQty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 171, 32));
-
-        Frn_ID47.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID47.setText("رصيد المخزون الافتتاحي :");
-        jPanel8.add(Frn_ID47, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 120, 30));
-
-        TxtPrdDesg.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdDesg.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdDesg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdDesg.setText("Designation de produit ");
-        TxtPrdDesg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdDesg.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdDesgFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdDesgFocusLost(evt);
-            }
-        });
-        TxtPrdDesg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdDesgKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                TxtPrdDesgKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdDesgKeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdDesg, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 210, 190, 32));
-
-        Frn_ID3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID3.setText(" المنتـج :");
-        jPanel8.add(Frn_ID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 210, 50, 30));
-
-        Frn_ID12.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID12.setText("الباركـود :");
-        jPanel8.add(Frn_ID12, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 170, 50, 30));
 
         TxtPrdDesg1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdDesg1.setForeground(new java.awt.Color(204, 204, 204));
@@ -513,26 +315,10 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdDesg1KeyTyped(evt);
             }
         });
-        jPanel8.add(TxtPrdDesg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 170, 190, 32));
 
-        Frn_ID26.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID26.setText("الكمية المتوفرة :");
-        jPanel8.add(Frn_ID26, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 120, 30));
-
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel8.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 171, 32));
-
-        ListFournisseur.setEditable(true);
-        ListFournisseur.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        ListFournisseur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "اختر المورد..." }));
-        ListFournisseur.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ListFournisseur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListFournisseurActionPerformed(evt);
-            }
-        });
-        jPanel8.add(ListFournisseur, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 171, 32));
+        Frn_ID4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID4.setText("النـــوع :");
 
         ListCategorie.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         ListCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selectionner un categorie ..." }));
@@ -542,29 +328,40 @@ public class Home extends javax.swing.JFrame {
                 ListCategorieFocusGained(evt);
             }
         });
-        jPanel8.add(ListCategorie, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 32));
 
-        Frn_ID8.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID8.setText(" المورد :");
-        jPanel8.add(Frn_ID8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 50, 30));
+        Frn_ID3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID3.setText(" المنتـج :");
 
-        Frn_ID4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID4.setText("النـــوع :");
-        jPanel8.add(Frn_ID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 52, 31));
-
-        txtDatArrivage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        try {
-            txtDatArrivage.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDatArrivage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDatArrivage.addFocusListener(new java.awt.event.FocusAdapter() {
+        TxtPrdDesg.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TxtPrdDesg.setForeground(new java.awt.Color(204, 204, 204));
+        TxtPrdDesg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdDesg.setText("Designation de produit ");
+        TxtPrdDesg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TxtPrdDesg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPrdDesgFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDatArrivageFocusLost(evt);
+                TxtPrdDesgFocusLost(evt);
             }
         });
-        jPanel8.add(txtDatArrivage, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 45, 120, 22));
+        TxtPrdDesg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrdDesgActionPerformed(evt);
+            }
+        });
+        TxtPrdDesg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxtPrdDesgKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TxtPrdDesgKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtPrdDesgKeyTyped(evt);
+            }
+        });
 
         TxtPrdQty.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdQty.setForeground(new java.awt.Color(204, 204, 204));
@@ -586,47 +383,25 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdQtyKeyTyped(evt);
             }
         });
-        jPanel8.add(TxtPrdQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 250, 190, 32));
 
-        TxtPrdPrix3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        TxtPrdPrix3.setForeground(new java.awt.Color(204, 204, 204));
-        TxtPrdPrix3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdPrix3.setText("00");
-        TxtPrdPrix3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdPrix3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix3FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix3FocusLost(evt);
-            }
-        });
-        TxtPrdPrix3.addActionListener(new java.awt.event.ActionListener() {
+        Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID5.setText("الكميـــة :");
+
+        Frn_ID25.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID25.setText("الوحدة :");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdPrix3ActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
-        TxtPrdPrix3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix3KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix3KeyTyped(evt);
-            }
-        });
-        jPanel8.add(TxtPrdPrix3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 70, 32));
 
-        Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID15.setText("سعر القطعة :");
-        jPanel8.add(Frn_ID15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 330, 65, 30));
-
-        Frn_ID9.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID9.setText("سعر الشــراء :");
-        jPanel8.add(Frn_ID9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 380, -1, 30));
-
-        Frn_ID16.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID16.setText("عدد القطـع :");
-        jPanel8.add(Frn_ID16, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 330, 65, 30));
+        Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Frn_ID15.setText("00.00");
 
         TxtPrdPrix4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix4.setForeground(new java.awt.Color(204, 204, 204));
@@ -654,38 +429,335 @@ public class Home extends javax.swing.JFrame {
                 TxtPrdPrix4KeyTyped(evt);
             }
         });
-        jPanel8.add(TxtPrdPrix4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 90, 32));
 
-        jLabel4.setText("jLabel4");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 210, 40, 30));
-
-        jLabel5.setText("jLabel4");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 40, 30));
-
-        jLabel11.setText("jLabel4");
-        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 170, 40, 30));
-
-        jLabel12.setText("jLabel4");
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 250, 40, 30));
-
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("تاريخ الفاتورة :");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 62, 25));
-
-        txtDatArrivage1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        try {
-            txtDatArrivage1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDatArrivage1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDatArrivage1.addFocusListener(new java.awt.event.FocusAdapter() {
+        TxtPrdPrix.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TxtPrdPrix.setForeground(new java.awt.Color(204, 204, 204));
+        TxtPrdPrix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdPrix.setText("00.00");
+        TxtPrdPrix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TxtPrdPrix.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPrdPrixFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDatArrivage1FocusLost(evt);
+                TxtPrdPrixFocusLost(evt);
             }
         });
-        jPanel8.add(txtDatArrivage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 120, 25));
+        TxtPrdPrix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrdPrixActionPerformed(evt);
+            }
+        });
+        TxtPrdPrix.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxtPrdPrixKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtPrdPrixKeyTyped(evt);
+            }
+        });
+
+        Frn_ID9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID9.setText("سعر الشــراء :");
+
+        jLabel18.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("الصنف");
+        jLabel18.setToolTipText("");
+        jLabel18.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel18.setOpaque(true);
+
+        jLabel19.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("بيانات");
+        jLabel19.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel19.setOpaque(true);
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+
+        Nbr_Pcs_label.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Nbr_Pcs_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Nbr_Pcs_label.setText("القطع داخل الوحدة :");
+
+        jCheckBox1.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
+        jCheckBox1.setText("شراء بالوحدة");
+        jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        Frn_ID16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID16.setText("السعر الكلي :");
+
+        jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Frn_ID26.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID26.setText("الكمية المتاحة :");
+
+        jComboBox2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
+        jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextField9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Frn_ID27.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID27.setText("الوحدة :");
+
+        Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Frn_ID10.setText("سعر البيع :");
+
+        TxtPrdPrix5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        TxtPrdPrix5.setForeground(new java.awt.Color(204, 204, 204));
+        TxtPrdPrix5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtPrdPrix5.setText("00");
+        TxtPrdPrix5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TxtPrdPrix5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtPrdPrix5FocusLost(evt);
+            }
+        });
+        TxtPrdPrix5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtPrdPrix5ActionPerformed(evt);
+            }
+        });
+        TxtPrdPrix5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix5KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtPrdPrix5KeyTyped(evt);
+            }
+        });
+
+        jPanel10.setLayout(new java.awt.GridBagLayout());
+
+        jLabel5.setText("jLabel5");
+        jPanel10.add(jLabel5, new java.awt.GridBagConstraints());
+
+        jLabel7.setText("jLabel7");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        jPanel10.add(jLabel7, gridBagConstraints);
+
+        jLabel8.setText("jLabel8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        jPanel10.add(jLabel8, gridBagConstraints);
+
+        jLabel11.setText("jLabel11");
+        jPanel10.add(jLabel11, new java.awt.GridBagConstraints());
+
+        jLabel12.setText("الوحدة:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanel10.add(jLabel12, gridBagConstraints);
+
+        jLabel21.setText("jLabel21");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        jPanel10.add(jLabel21, gridBagConstraints);
+
+        jLabel22.setText("jLabel8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        jPanel10.add(jLabel22, gridBagConstraints);
+
+        jLabel23.setText("jLabel21");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        jPanel10.add(jLabel23, gridBagConstraints);
+
+        jLabel24.setText("jLabel8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        jPanel10.add(jLabel24, gridBagConstraints);
+
+        jLabel25.setText("jLabel21");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jPanel10.add(jLabel25, gridBagConstraints);
+
+        jLabel26.setText("jLabel8");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        jPanel10.add(jLabel26, gridBagConstraints);
+
+        jLabel27.setText("jLabel21");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        jPanel10.add(jLabel27, gridBagConstraints);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(Frn_ID4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(ListCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(Frn_ID27)
+                        .addGap(58, 58, 58)
+                        .addComponent(Frn_ID26))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(Frn_ID16, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Frn_ID15, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(114, 114, 114)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(TxtPrdDesg1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(Frn_ID12, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(TxtPrdDesg, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(Frn_ID3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(Frn_ID25, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(TxtPrdQty, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Frn_ID5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(TxtPrdPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Nbr_Pcs_label, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(TxtPrdPrix4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Frn_ID9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(TxtPrdPrix5, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(Frn_ID10, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(Frn_ID4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(ListCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Frn_ID27, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Frn_ID26, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(Frn_ID16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Frn_ID15))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtPrdDesg1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frn_ID12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtPrdDesg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frn_ID3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(Frn_ID25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtPrdQty, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frn_ID5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtPrdPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nbr_Pcs_label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtPrdPrix4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frn_ID9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtPrdPrix5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frn_ID10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jLabel15.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("بيانات");
+        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel15.setOpaque(true);
 
         jLabel14.setBackground(new java.awt.Color(0, 102, 102));
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -697,17 +769,185 @@ public class Home extends javax.swing.JFrame {
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel14.setOpaque(true);
-        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 60, 40));
 
-        jLabel15.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("بيانات");
-        jLabel15.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel15.setOpaque(true);
-        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 60, 40));
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("تاريخ الفاتورة :");
+
+        txtDatArrivage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            txtDatArrivage.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDatArrivage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDatArrivage.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDatArrivageFocusLost(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("تاريخ الفاتورة :");
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText(" رقــم الفاتورة :");
+
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextField7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField7.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText(" رقم المورد :");
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText(" اسم الشركة :");
+
+        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel16.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("بيانات");
+        jLabel16.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel16.setOpaque(true);
+
+        jLabel17.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("المورد");
+        jLabel17.setToolTipText("");
+        jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel17.setOpaque(true);
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel20.setText(" اسم المورد :");
+
+        jTextField8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jTextField8.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField5)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel9)
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtDatArrivage, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(jTextField7)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtDatArrivage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("00:00");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 81, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
 
         getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
@@ -841,18 +1081,6 @@ public class Home extends javax.swing.JFrame {
         jPanel2.setVisible(false);
     }//GEN-LAST:event_jMenu3StateChanged
 
-    private void TxtPrdQty3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdQty3FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty3FocusGained
-
-    private void TxtPrdQty3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdQty3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty3ActionPerformed
-
-    private void TxtPrdQty3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdQty3KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty3KeyTyped
-
     private void TxtPrdPrixFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrixFocusGained
         // TODO add your handling code here:
         /*  if (TxtPrdPrix.getText().equals("Prix du produit")) {
@@ -900,38 +1128,6 @@ public class Home extends javax.swing.JFrame {
 
         }*/
     }//GEN-LAST:event_TxtPrdPrixKeyTyped
-
-    private void TxtPrdPrix1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix1FocusGained
-
-    private void TxtPrdPrix1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix1FocusLost
-
-    private void TxtPrdPrix1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix1ActionPerformed
-
-    private void TxtPrdPrix1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix1KeyPressed
-
-    private void TxtPrdPrix1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix1KeyTyped
-
-    private void TxtPrdQty1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdQty1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty1FocusGained
-
-    private void TxtPrdQty1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdQty1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty1ActionPerformed
-
-    private void TxtPrdQty1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdQty1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdQty1KeyTyped
 
     private void TxtPrdDesgFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdDesgFocusGained
 
@@ -1045,14 +1241,6 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrdDesg1KeyTyped
 
-    private void ListFournisseurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListFournisseurActionPerformed
-        // TODO add your handling code here://                                              //dernier point stoped
-        /*
-        FournisserRemplissage.GetNumFournisseur((String) ListFournisseur.getSelectedItem());
-
-        Frn_ID_Num.setText(""+FournisserRemplissage.getID_Fournisseur());*/
-    }//GEN-LAST:event_ListFournisseurActionPerformed
-
     private void ListCategorieFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ListCategorieFocusGained
         // TODO add your handling code here:
 
@@ -1102,26 +1290,6 @@ public class Home extends javax.swing.JFrame {
             evt.consume();}*/
     }//GEN-LAST:event_TxtPrdQtyKeyTyped
 
-    private void TxtPrdPrix3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix3FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix3FocusGained
-
-    private void TxtPrdPrix3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix3FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix3FocusLost
-
-    private void TxtPrdPrix3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix3ActionPerformed
-
-    private void TxtPrdPrix3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix3KeyPressed
-
-    private void TxtPrdPrix3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix3KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix3KeyTyped
-
     private void TxtPrdPrix4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix4FocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrdPrix4FocusGained
@@ -1142,9 +1310,41 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrdPrix4KeyTyped
 
-    private void txtDatArrivage1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDatArrivage1FocusLost
+    private void TxtPrdDesgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdDesgActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDatArrivage1FocusLost
+    }//GEN-LAST:event_TxtPrdDesgActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (!jComboBox1.getSelectedItem().equals("قطعة")) {
+            
+            
+           String nameLab= Nbr_Pcs_label.getText().substring(0,Nbr_Pcs_label.getText().indexOf(":"));
+           
+           JOptionPane.showMessageDialog(null, "Test PCS Value "+nameLab);
+           
+           Nbr_Pcs_label.setText(nameLab+" ب"+jComboBox1.getSelectedItem()+" :");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void TxtPrdPrix5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix5FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix5FocusGained
+
+    private void TxtPrdPrix5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix5FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix5FocusLost
+
+    private void TxtPrdPrix5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix5ActionPerformed
+
+    private void TxtPrdPrix5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix5KeyPressed
+
+    private void TxtPrdPrix5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix5KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPrdPrix5KeyTyped
 
     /**
      * @param args the command line arguments
@@ -1183,36 +1383,32 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Frn_ID10;
     private javax.swing.JLabel Frn_ID12;
     private javax.swing.JLabel Frn_ID15;
     private javax.swing.JLabel Frn_ID16;
     private javax.swing.JLabel Frn_ID25;
     private javax.swing.JLabel Frn_ID26;
-    private javax.swing.JLabel Frn_ID28;
+    private javax.swing.JLabel Frn_ID27;
     private javax.swing.JLabel Frn_ID3;
     private javax.swing.JLabel Frn_ID4;
-    private javax.swing.JLabel Frn_ID47;
-    private javax.swing.JLabel Frn_ID48;
     private javax.swing.JLabel Frn_ID5;
-    private javax.swing.JLabel Frn_ID7;
-    private javax.swing.JLabel Frn_ID8;
     private javax.swing.JLabel Frn_ID9;
     private javax.swing.JComboBox<String> ListCategorie;
-    private javax.swing.JComboBox<String> ListFournisseur;
+    private javax.swing.JLabel Nbr_Pcs_label;
     private javax.swing.JTextField TxtPrdDesg;
     private javax.swing.JTextField TxtPrdDesg1;
     private javax.swing.JTextField TxtPrdPrix;
-    private javax.swing.JTextField TxtPrdPrix1;
-    private javax.swing.JTextField TxtPrdPrix3;
     private javax.swing.JTextField TxtPrdPrix4;
+    private javax.swing.JTextField TxtPrdPrix5;
     private javax.swing.JTextField TxtPrdQty;
-    private javax.swing.JTextField TxtPrdQty1;
-    private javax.swing.JTextField TxtPrdQty3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1220,9 +1416,20 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1245,21 +1452,25 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JFormattedTextField txtDatArrivage;
-    private javax.swing.JFormattedTextField txtDatArrivage1;
     // End of variables declaration//GEN-END:variables
 }
