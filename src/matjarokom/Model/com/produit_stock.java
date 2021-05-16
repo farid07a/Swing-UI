@@ -24,11 +24,11 @@ public class produit_stock {
     private int QtyEnStock;
     private int StockMin=5;
     
-    private Categorie categorie;
+  //  private Categorie categorie;
     private int ID_Categorie;
     
     
-    private ConnectionDB cnx=new ConnectionDB();
+//    private ConnectionDB cnx=new ConnectionDB();
     
     private ArrayList<String> listProduit=new ArrayList<>();
     
@@ -54,8 +54,8 @@ public class produit_stock {
            /* prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,Prix_Unitaire,QtyEnStock,StockMin,ID_Categorie)"
                     + "VALUES (?,?,?,?,?)");*/
             
-                 prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,"+""/*"Prix_Unitaire,"*/+"QtyEnStock,ID_Categorie)"
-                    + "VALUES (?,?,?)");
+//                 prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,"+""/*"Prix_Unitaire,"*/+"QtyEnStock,ID_Categorie)"
+//                    + "VALUES (?,?,?)");
             prstm.setString(1, getDesignation());
             //prstm.setDouble(2, getPrix_Unitaire());
             prstm.setInt(2, getQtyEnStock());
@@ -63,7 +63,7 @@ public class produit_stock {
             prstm.setInt(3, getID_Categorie());
             int x=prstm.executeUpdate();
             if (x>0) {
-                JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
+    //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
             }else {
                 
             JOptionPane.showMessageDialog(null, prstm);
@@ -76,7 +76,7 @@ public class produit_stock {
         
         try {
             prstm.close();
-            getCnx().Deconnect();
+//            getCnx().Deconnect();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR IN CLOSED "+e.getMessage());
         }
@@ -98,7 +98,7 @@ public class produit_stock {
         
         System.out.println("aUTOCOMPLETjTEXTfIELD.GetNameUser() ");
         try { 
-            stm=getCnx().getConnect().createStatement();
+//            stm=getCnx().getConnect().createStatement();
             res=stm.executeQuery("SELECT  * FROM  produit_stock");
               
             while (res.next()) {                
@@ -169,7 +169,7 @@ public class produit_stock {
     ResultSet res=null;
     
         try {
-            stm=getCnx().getConnect().createStatement();
+//            stm=getCnx().getConnect().createStatement();
             res=stm.executeQuery("SELECT ID_Prod FROM produit_stock WHERE Designation= '"+Designation+"'");
             
            if( res.next()){
@@ -185,7 +185,7 @@ public class produit_stock {
         try {
             stm.close();
             res.close();
-            cnx.Deconnect();
+      //      cnx.Deconnect();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR IN CLOSED "+e.getMessage());
         }
@@ -197,14 +197,14 @@ public class produit_stock {
         PreparedStatement prs=null;
         String SQlReq="UPDATE produit_stock SET QtyEnStock=QtyEnStock+"+Qty+" where ID_Prod="+NumPrd+"";
    try {    
-            prs=cnx.getConnect().prepareStatement(SQlReq);    
+        //    prs=cnx.getConnect().prepareStatement(SQlReq);    
            int xx= prs.executeUpdate();
             if (xx>0) {
                 JOptionPane.showMessageDialog(null, "The Value is updated");
             }else {
             JOptionPane.showMessageDialog(null, "Error in update Value");
             }
-            cnx.Deconnect();
+          //  cnx.Deconnect();
             prs.close();
                   
         } catch (SQLException e) {
@@ -218,14 +218,14 @@ public class produit_stock {
      PreparedStatement prs=null;
         String SQlReq="UPDATE produit_stock SET QtyEnStock=QtyEnStock-"+Qty+" where ID_Prod="+NumPrd+"";
           try {    
-            prs=cnx.getConnect().prepareStatement(SQlReq);    
+        //    prs=cnx.getConnect().prepareStatement(SQlReq);    
            int xx= prs.executeUpdate();
             if (xx>0) {
                 JOptionPane.showMessageDialog(null, "The Value is updated");
             }else {
             JOptionPane.showMessageDialog(null, "Error in update Value");
             }
-            cnx.Deconnect();
+        //    cnx.Deconnect();
             prs.close();
                   
         } catch (SQLException e) {
@@ -243,7 +243,7 @@ public class produit_stock {
         String Requette="SELECT categorie.Name_Ctg FROM categorie,produit_stock "
                 + "WHERE produit_stock.ID_Prod="+NumPrd+" AND produit_stock.ID_Categorie=categorie.ID_Categorie";
         try {
-            stm=cnx.getConnect().createStatement();
+        //    stm=cnx.getConnect().createStatement();
             res=stm.executeQuery(Requette);
             
             if (res.next()) {
@@ -259,7 +259,7 @@ public class produit_stock {
         try {
             stm.close();
             res.close();
-            cnx.Deconnect();
+        //    cnx.Deconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -273,7 +273,7 @@ public class produit_stock {
     String requette="SELECT MAX(ID_Prod)FROM produit_stock";
     
         try {
-            stm=cnx.getConnect().createStatement();
+        //    stm=cnx.getConnect().createStatement();
             res=stm.executeQuery(requette);
             if (res.next()) {
                 lastNumPrd=res.getInt(1);
@@ -286,7 +286,7 @@ public class produit_stock {
         try {
             stm.close();
             res.close();
-            cnx.Deconnect();
+        //    cnx.Deconnect();
         } catch (SQLException e) {
         }
         
@@ -332,7 +332,7 @@ public class produit_stock {
          df.setRowCount(0);
         try {
             
-            stm=cnx.getConnect().createStatement();
+        //    stm=cnx.getConnect().createStatement();
             res=stm.executeQuery(Requette);
            // JOptionPane.showMessageDialog(null, "EXECUT QUERY IS Crrct");
             
@@ -354,7 +354,7 @@ public class produit_stock {
         try {
             stm.close();
             res.close();
-            cnx.Deconnect();
+        //    cnx.Deconnect();
         } catch (Exception e) {
         }
         
@@ -450,16 +450,16 @@ public class produit_stock {
     /**
      * @return the cnx
      */
-    public ConnectionDB getCnx() {
-        return cnx;
-    }
+//    public ConnectionDB getCnx() {
+//        return cnx;
+//    }
 
     /**
      * @param cnx the cnx to set
      */
-    public void setCnx(ConnectionDB cnx) {
-        this.cnx = cnx;
-    }
+//    public void setCnx(ConnectionDB cnx) {
+//        this.cnx = cnx;
+//    }
 
     /**
      * @return the listProduit
@@ -478,15 +478,15 @@ public class produit_stock {
     /**
      * @return the categorie
      */
-    public Categorie getCategorie() {
-        return categorie;
-    }
+//    public Categorie getCategorie() {
+//        return categorie;
+//    }
 
     /**
      * @param categorie the categorie to set
      */
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
+//    public void setCategorie(Categorie categorie) {
+//        this.categorie = categorie;
+//    }
     
 }
