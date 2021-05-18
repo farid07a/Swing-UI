@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -19,70 +20,94 @@ import javax.swing.table.DefaultTableModel;
 public class produit_stock {
     
     private int ID_Prod;
+    
     private String Designation;
-    private double Prix_Unitaire;
-    private int QtyEnStock;
-    private int StockMin=5;
+    private String Reference_Pro;
+    private int ID_Categorie;
+    private int Qty_En_Stock;
+    private Date Date_Expiration;
+    private double Prix_Vente;
+    private double Prix_Achat;
+    
+    private int Min_Stock=5;
+    private int Id_Unit;
+    private int Id_Stocke;
+    private int Position_Produit;
+    private boolean Check_Produit;
+    private String Remarque_Produit;
+    
+    
     
   //  private Categorie categorie;
-    private int ID_Categorie;
+    
     
     
 //    private ConnectionDB cnx=new ConnectionDB();
     
     private ArrayList<String> listProduit=new ArrayList<>();
-    
-    public produit_stock(int ID_Prod,String Designation,double Prix_Unitaire,int QtyEnStock,int categorie){
-    this.ID_Prod=ID_Prod;
-    this.Designation=Designation;
-    this.Prix_Unitaire=Prix_Unitaire;
-    this.QtyEnStock=QtyEnStock;
-    this.ID_Categorie=categorie;
-        
-    
+
+    public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, int Qty_En_Stock, Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Id_Unit, int Id_Stocke, int Position_Produit, boolean Check_Produit, String Remarque_Produit) {
+        this.ID_Prod = ID_Prod;
+        this.Designation = Designation;
+        this.Reference_Pro = Reference_Pro;
+        this.ID_Categorie = ID_Categorie;
+        this.Qty_En_Stock = Qty_En_Stock;
+        this.Date_Expiration = Date_Expiration;
+        this.Prix_Vente = Prix_Vente;
+        this.Prix_Achat = Prix_Achat;
+        this.Id_Unit = Id_Unit;
+        this.Id_Stocke = Id_Stocke;
+        this.Position_Produit = Position_Produit;
+        this.Check_Produit = Check_Produit;
+        this.Remarque_Produit = Remarque_Produit;
     }
-    public produit_stock(){}
-    
-    
-    
-    public void AddProduit(){
-        PreparedStatement prstm =null;
-        //ResultSet res=null;
-        
-        try {
-            
-           /* prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,Prix_Unitaire,QtyEnStock,StockMin,ID_Categorie)"
-                    + "VALUES (?,?,?,?,?)");*/
-            
-//                 prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,"+""/*"Prix_Unitaire,"*/+"QtyEnStock,ID_Categorie)"
-//                    + "VALUES (?,?,?)");
-            prstm.setString(1, getDesignation());
-            //prstm.setDouble(2, getPrix_Unitaire());
-            prstm.setInt(2, getQtyEnStock());
-           // prstm.setInt(4, 5);
-            prstm.setInt(3, getID_Categorie());
-            int x=prstm.executeUpdate();
-            if (x>0) {
-    //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
-            }else {
-                
-            JOptionPane.showMessageDialog(null, prstm);
-            
-            }
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error in Function INSERT Data :"+e.getMessage());
-        }
-        
-        try {
-            prstm.close();
-//            getCnx().Deconnect();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR IN CLOSED "+e.getMessage());
-        }
-        
-    
+
+    private produit_stock() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+   
+    
+    
+    
+//    public void AddProduit(){
+//        PreparedStatement prstm =null;
+//        //ResultSet res=null;
+//        
+//        try {
+//            
+//           /* prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,Prix_Unitaire,QtyEnStock,StockMin,ID_Categorie)"
+//                    + "VALUES (?,?,?,?,?)");*/
+//            
+////                 prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,"+""/*"Prix_Unitaire,"*/+"QtyEnStock,ID_Categorie)"
+////                    + "VALUES (?,?,?)");
+//            prstm.setString(1, getDesignation());
+//            //prstm.setDouble(2, getPrix_Unitaire());
+//            prstm.setInt(2, getQtyEnStock());
+//           // prstm.setInt(4, 5);
+//            prstm.setInt(3, getID_Categorie());
+//            int x=prstm.executeUpdate();
+//            if (x>0) {
+//    //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
+//            }else {
+//                
+//            JOptionPane.showMessageDialog(null, prstm);
+//            
+//            }
+//            
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Error in Function INSERT Data :"+e.getMessage());
+//        }
+//        
+//        try {
+//            prstm.close();
+////            getCnx().Deconnect();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "ERROR IN CLOSED "+e.getMessage());
+//        }
+//        
+//    
+//    }
     
     
     public int Exist(){
@@ -362,108 +387,7 @@ public class produit_stock {
         
     }
     
-    
-    /**
-     * @return the ID_Prod
-     */
-    public int getID_Prod() {
-        return ID_Prod;
-    }
-
-    /**
-     * @param ID_Prod the ID_Prod to set
-     */
-    public void setID_Prod(int ID_Prod) {
-        this.ID_Prod = ID_Prod;
-    }
-
-    /**
-     * @return the Designation
-     */
-    public String getDesignation() {
-        return Designation;
-    }
-
-    /**
-     * @param Designation the Designation to set
-     */
-    public void setDesignation(String Designation) {
-        this.Designation = Designation;
-    }
-
-    /**
-     * @return the Prix_Unitaire
-     */
-    public double getPrix_Unitaire() {
-        return Prix_Unitaire;
-    }
-
-    /**
-     * @param Prix_Unitaire the Prix_Unitaire to set
-     */
-    public void setPrix_Unitaire(double Prix_Unitaire) {
-        this.Prix_Unitaire = Prix_Unitaire;
-    }
-
-    /**
-     * @return the QtyEnStock
-     */
-    public int getQtyEnStock() {
-        return QtyEnStock;
-    }
-
-    /**
-     * @param QtyEnStock the QtyEnStock to set
-     */
-    public void setQtyEnStock(int QtyEnStock) {
-        this.QtyEnStock = QtyEnStock;
-    }
-
-    /**
-     * @return the StockMin
-     */
-    public int getStockMin() {
-        return StockMin;
-    }
-
-    /**
-     * @param StockMin the StockMin to set
-     */
-    public void setStockMin(int StockMin) {
-        this.StockMin = StockMin;
-    }
-
-    /**
-     * @return the ID_Categorie
-     */
-    public int getID_Categorie() {
-        return ID_Categorie;
-    }
-
-    /**
-     * @param ID_Categorie the ID_Categorie to set
-     */
-    public void setID_Categorie(int ID_Categorie) {
-        this.ID_Categorie = ID_Categorie;
-    }
-
-    /**
-     * @return the cnx
-     */
-//    public ConnectionDB getCnx() {
-//        return cnx;
-//    }
-
-    /**
-     * @param cnx the cnx to set
-     */
-//    public void setCnx(ConnectionDB cnx) {
-//        this.cnx = cnx;
-//    }
-
-    /**
-     * @return the listProduit
-     */
+   
     public ArrayList<String> getListProduit() {
         return listProduit;
     }
@@ -475,18 +399,6 @@ public class produit_stock {
         this.listProduit = listProduit;
     }
 
-    /**
-     * @return the categorie
-     */
-//    public Categorie getCategorie() {
-//        return categorie;
-//    }
 
-    /**
-     * @param categorie the categorie to set
-     */
-//    public void setCategorie(Categorie categorie) {
-//        this.categorie = categorie;
-//    }
     
 }
