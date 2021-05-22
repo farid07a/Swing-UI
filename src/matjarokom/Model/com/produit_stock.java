@@ -63,7 +63,7 @@ public class produit_stock {
     }
 
     private produit_stock() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
    
@@ -155,9 +155,9 @@ public class produit_stock {
     int last=txt.length();  //2
     int a;
     int etat=0;
-    for (a = 0; a< listProduit.size(); a++) {
-        if (listProduit.get(a).toString().startsWith(txt)) {
-            complete=listProduit.get(a).toString();   //complete =bouchon
+    for (a = 0; a< getListProduit().size(); a++) {
+        if (getListProduit().get(a).toString().startsWith(txt)) {
+            complete=getListProduit().get(a).toString();   //complete =bouchon
             last=complete.length();                     //6
            jTextField1.setForeground(Color.green);
             etat=1;
@@ -199,7 +199,7 @@ public class produit_stock {
             
            if( res.next()){
             
-            ID_Prod=res.getInt(1);
+                setID_Prod(res.getInt(1));
            
            }
             
@@ -318,23 +318,26 @@ public class produit_stock {
     return lastNumPrd;
     }
     
-     String Filename=null;
-     byte [] ImageProduct=null;
+     private String Filename=null;
+     private byte [] ImageProduct=null;
     public void InsertImage(){
         JFileChooser chooserfile=new JFileChooser();
         chooserfile.showOpenDialog(null);
         File filImg=chooserfile.getSelectedFile();
         
-        Filename=filImg.getAbsolutePath();
+        setFilename(filImg.getAbsolutePath());
     
-        ImageIcon imgIcon=new ImageIcon(Filename);
+        ImageIcon imgIcon=new ImageIcon(getFilename());
     }
     
     
     public static void main(String[] args) {
-      produit_stock pr=  new produit_stock();
+     
+          System.out.println(new Categorie().GetIdCategorie("مشروبات"));  
+
+// produit_stock pr=  new produit_stock();
                 //pr.GetAllProductInTable(null);
-                pr.ConsumQty(10, 1);
+         //       pr.ConsumQty(10, 1);
                 //pr.GetID_Product("bouteille");
         //System.out.println("produit_stock.main()"+pr.getID_Prod()); 
         
@@ -397,6 +400,230 @@ public class produit_stock {
      */
     public void setListProduit(ArrayList<String> listProduit) {
         this.listProduit = listProduit;
+    }
+
+    /**
+     * @return the ID_Prod
+     */
+    public int getID_Prod() {
+        return ID_Prod;
+    }
+
+    /**
+     * @param ID_Prod the ID_Prod to set
+     */
+    public void setID_Prod(int ID_Prod) {
+        this.ID_Prod = ID_Prod;
+    }
+
+    /**
+     * @return the Designation
+     */
+    public String getDesignation() {
+        return Designation;
+    }
+
+    /**
+     * @param Designation the Designation to set
+     */
+    public void setDesignation(String Designation) {
+        this.Designation = Designation;
+    }
+
+    /**
+     * @return the Reference_Pro
+     */
+    public String getReference_Pro() {
+        return Reference_Pro;
+    }
+
+    /**
+     * @param Reference_Pro the Reference_Pro to set
+     */
+    public void setReference_Pro(String Reference_Pro) {
+        this.Reference_Pro = Reference_Pro;
+    }
+
+    /**
+     * @return the ID_Categorie
+     */
+    public int getID_Categorie() {
+        return ID_Categorie;
+    }
+
+    /**
+     * @param ID_Categorie the ID_Categorie to set
+     */
+    public void setID_Categorie(int ID_Categorie) {
+        this.ID_Categorie = ID_Categorie;
+    }
+
+    /**
+     * @return the Qty_En_Stock
+     */
+    public int getQty_En_Stock() {
+        return Qty_En_Stock;
+    }
+
+    /**
+     * @param Qty_En_Stock the Qty_En_Stock to set
+     */
+    public void setQty_En_Stock(int Qty_En_Stock) {
+        this.Qty_En_Stock = Qty_En_Stock;
+    }
+
+    /**
+     * @return the Date_Expiration
+     */
+    public Date getDate_Expiration() {
+        return Date_Expiration;
+    }
+
+    /**
+     * @param Date_Expiration the Date_Expiration to set
+     */
+    public void setDate_Expiration(Date Date_Expiration) {
+        this.Date_Expiration = Date_Expiration;
+    }
+
+    /**
+     * @return the Prix_Vente
+     */
+    public double getPrix_Vente() {
+        return Prix_Vente;
+    }
+
+    /**
+     * @param Prix_Vente the Prix_Vente to set
+     */
+    public void setPrix_Vente(double Prix_Vente) {
+        this.Prix_Vente = Prix_Vente;
+    }
+
+    /**
+     * @return the Prix_Achat
+     */
+    public double getPrix_Achat() {
+        return Prix_Achat;
+    }
+
+    /**
+     * @param Prix_Achat the Prix_Achat to set
+     */
+    public void setPrix_Achat(double Prix_Achat) {
+        this.Prix_Achat = Prix_Achat;
+    }
+
+    /**
+     * @return the Min_Stock
+     */
+    public int getMin_Stock() {
+        return Min_Stock;
+    }
+
+    /**
+     * @param Min_Stock the Min_Stock to set
+     */
+    public void setMin_Stock(int Min_Stock) {
+        this.Min_Stock = Min_Stock;
+    }
+
+    /**
+     * @return the Id_Unit
+     */
+    public int getId_Unit() {
+        return Id_Unit;
+    }
+
+    /**
+     * @param Id_Unit the Id_Unit to set
+     */
+    public void setId_Unit(int Id_Unit) {
+        this.Id_Unit = Id_Unit;
+    }
+
+    /**
+     * @return the Id_Stocke
+     */
+    public int getId_Stocke() {
+        return Id_Stocke;
+    }
+
+    /**
+     * @param Id_Stocke the Id_Stocke to set
+     */
+    public void setId_Stocke(int Id_Stocke) {
+        this.Id_Stocke = Id_Stocke;
+    }
+
+    /**
+     * @return the Position_Produit
+     */
+    public int getPosition_Produit() {
+        return Position_Produit;
+    }
+
+    /**
+     * @param Position_Produit the Position_Produit to set
+     */
+    public void setPosition_Produit(int Position_Produit) {
+        this.Position_Produit = Position_Produit;
+    }
+
+    /**
+     * @return the Check_Produit
+     */
+    public boolean isCheck_Produit() {
+        return Check_Produit;
+    }
+
+    /**
+     * @param Check_Produit the Check_Produit to set
+     */
+    public void setCheck_Produit(boolean Check_Produit) {
+        this.Check_Produit = Check_Produit;
+    }
+
+    /**
+     * @return the Remarque_Produit
+     */
+    public String getRemarque_Produit() {
+        return Remarque_Produit;
+    }
+
+    /**
+     * @param Remarque_Produit the Remarque_Produit to set
+     */
+    public void setRemarque_Produit(String Remarque_Produit) {
+        this.Remarque_Produit = Remarque_Produit;
+    }
+
+    /**
+     * @return the Filename
+     */
+    public String getFilename() {
+        return Filename;
+    }
+
+    /**
+     * @param Filename the Filename to set
+     */
+    public void setFilename(String Filename) {
+        this.Filename = Filename;
+    }
+
+    /**
+     * @return the ImageProduct
+     */
+    public byte[] getImageProduct() {
+        return ImageProduct;
+    }
+
+    /**
+     * @param ImageProduct the ImageProduct to set
+     */
+    public void setImageProduct(byte[] ImageProduct) {
+        this.ImageProduct = ImageProduct;
     }
 
 
