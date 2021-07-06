@@ -6,6 +6,7 @@
 package matjarokom.ui.view;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -138,14 +139,23 @@ public class CategorieView extends javax.swing.JDialog {
         jLabel1.setIcon(icon1);
         
         
+        
+        JLabel lb1=new JLabel();
+        
         ImageIcon [][] Rows={
                           {icon1,icon2,icon3}
                           };
-        
+        JLabel [][] RowsLab={
+                          {new JLabel(icon3),new JLabel(icon2),new JLabel(icon1)}
+                          };
         String colums[]={"col1","col2","col3"};
         
         
-        DefaultTableModel df=new DefaultTableModel(Rows,colums);
+        DefaultTableModel df=new DefaultTableModel(RowsLab,colums){
+        
+        
+        
+        };
         
         
         

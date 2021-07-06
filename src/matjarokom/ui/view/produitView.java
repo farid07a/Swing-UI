@@ -24,6 +24,7 @@ public class produitView extends javax.swing.JFrame {
 
     private produit_stock prduitStock;
     
+    
     Categorie categorie=null;
     public produitView() {
         initComponents();
@@ -91,14 +92,14 @@ public class produitView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 190, 220));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 220, 290));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,7 +219,7 @@ public class produitView extends javax.swing.JFrame {
         QuantityStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         QuantityStok_produit.setText("20");
         QuantityStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(QuantityStok_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 85, 32));
+        jPanel3.add(QuantityStok_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 80, 32));
 
         Frn_ID28.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         Frn_ID28.setText("الكمية المتاحة :");
@@ -377,7 +378,7 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID23.setText("فاتورات الشراء :");
-        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 90, 30));
+        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 90, 30));
 
         Frn_ID24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -422,10 +423,10 @@ public class produitView extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 100, 40));
 
         jButton2.setText("jButton1");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 423, 90, 40));
 
         try {
             DateDormatField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -449,7 +450,7 @@ public class produitView extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 113, 50, 30));
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 113, 40, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -601,22 +602,18 @@ public class produitView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         categorie=new Categorie();
+        String RefProduit=Ref_produit.getText(); // get Ref produit
+        String DesgProduit=Desg_produit.getText();// Des prod
+        int id_categorie=categorie.GetIdCategorie("عام"); // id catgorie
+        int QuantityStock=Integer.valueOf(QuantityStok_produit.getText()); //QuantityInStock
         
-        String RefProduit=Ref_produit.getText();
-        String DesgProduit=Desg_produit.getText();
+        double Prix_Vente=Double.valueOf(prixVente_produit.getText()); // Prix vente prod
         
         
+        String Stocke=Stokage_produit.getText();   // Nom locale de stockage
         
-        int id_categorie=categorie.GetIdCategorie("عام");
-        
-        int QtyStok=Integer.valueOf(QuantityStok_produit.getText());
-        double Prix_Vente=Double.valueOf(prixVente_produit.getText());
-        
-        String Stocke=Stokage_produit.getText();
-        int QuantityStock=Integer.valueOf(QuantityStok_produit.getText());
         Date DateExpirProduit=null;
         String StringDate=DateDormatField.getText();
-        
         try {
              DateExpirProduit=new SimpleDateFormat("dd/MM/yyyy").parse(StringDate);   //create Date expiration Of product
              
@@ -627,13 +624,14 @@ public class produitView extends javax.swing.JFrame {
         
         }
         
-        int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock
+        int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock get From arrivageLine 
         
-        String Postion_produit_in_stock=Postion_produit.getText();
+        String Postion_produit_in_stock=Postion_produit.getText();// position in stock position // 1 ere etage
+        
         int MinStok_produit_in_stock=Integer.valueOf(MinStok_produit.getText());// get Min Stock for produit
-        double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText());
+        double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText()); // last Date Bye for product 
         
-        byte check=1;
+        byte check; // check prod in viewForm 
         
         
       check= (byte) ((ShowScreen_produit.isSelected()) ? 1 :0);   //check in panel access product
@@ -642,7 +640,9 @@ public class produitView extends javax.swing.JFrame {
       RemarqueProduit.append(remarque_produit.getText());
       
       
-      
+      prduitStock=new produit_stock(1, DesgProduit, RefProduit, id_categorie, 
+              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Vente, WIDTH,
+              id_categorie, EXIT_ON_CLOSE, rootPaneCheckingEnabled, RefProduit);
       
         
         
