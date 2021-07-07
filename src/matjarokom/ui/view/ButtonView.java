@@ -46,6 +46,9 @@ public class ButtonView extends JButton implements MouseListener{
     entredColor=getBackground().brighter();
     pressedColor=getBackground().darker();
     lineColor=Color.BLACK;
+    setContentAreaFilled(false);
+    setFocusPainted(false);
+        addMouseListener(this);
     }
 
     @Override
@@ -207,27 +210,27 @@ public class ButtonView extends JButton implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    pressed=true;    
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    pressed=false;    
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    entred=true;    
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    entred=false;    
     }
     
     

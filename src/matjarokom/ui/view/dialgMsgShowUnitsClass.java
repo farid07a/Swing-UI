@@ -27,17 +27,65 @@ public class dialgMsgShowUnitsClass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonView1 = new matjarokom.ui.view.ButtonView();
+        buttonView2 = new matjarokom.ui.view.ButtonView();
+        buttonView4 = new matjarokom.ui.view.ButtonView();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        buttonView1.setBackground(new java.awt.Color(0, 0, 204));
+        buttonView1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView1.setText("لا");
+        buttonView1.setBackgroundPainted(true);
+        buttonView1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView1.setGradientBackgroundColor(null);
+        buttonView1.setGradientLineColor(null);
+        buttonView1.setRounded(true);
+
+        buttonView2.setBackground(new java.awt.Color(0, 0, 204));
+        buttonView2.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView2.setText("نعم");
+        buttonView2.setBackgroundPainted(true);
+        buttonView2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView2.setGradientBackgroundColor(null);
+        buttonView2.setGradientLineColor(null);
+        buttonView2.setRounded(true);
+
+        buttonView4.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView4.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView4.setText("تأكيد");
+        buttonView4.setBackgroundPainted(true);
+        buttonView4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView4.setGradientBackgroundColor(null);
+        buttonView4.setGradientLineColor(new java.awt.Color(255, 51, 0));
+        buttonView4.setLinePainted(true);
+        buttonView4.setRounded(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -79,5 +127,8 @@ public class dialgMsgShowUnitsClass extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private matjarokom.ui.view.ButtonView buttonView1;
+    private matjarokom.ui.view.ButtonView buttonView2;
+    private matjarokom.ui.view.ButtonView buttonView4;
     // End of variables declaration//GEN-END:variables
 }
