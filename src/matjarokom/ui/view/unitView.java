@@ -24,35 +24,42 @@ public class unitView extends javax.swing.JDialog {
      */
     
     //how to change Size of jtable or jpanel
+    
+    Unit unit_getData,unit_SetData;
+    
     public unitView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        new Unit(0, "", "").FillingAllUnit_InTable(jTable1);
+        
+        unit_getData=new Unit();                        // Initialise Object Unit Of Get Data 
+        
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(10);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-        
         cellRenderer.setHorizontalAlignment(JLabel.CENTER);
-        
         jTable1.getColumnModel().getColumn(3).setCellRenderer(cellRenderer);
         jTable1.getColumnModel().getColumn(4).setCellRenderer(cellRenderer);
-        jTable1.getColumnModel().getColumn(5).setCellRenderer(cellRenderer);
-        
-        
-        
+//      jTable1.getColumnModel().getColumn(5).setCellRenderer(cellRenderer);
         this.setLocationRelativeTo(null);
-        
-        
         jPanel2.setPreferredSize(new Dimension(500,20));
-        
-        
         //jPanel2.repaint();
         jPanel2.revalidate();
         //jPanel2.setSize(50, 50);
+        
+        DisplayData_in_GUI_Unit();
     }
     
+    public void DisplayData_in_GUI_Unit(){ //display data In Component
+    unit_getData.FillingAllUnit_InTable(jTable1); //// Fill Table In UnitView
+    int OrderUnit=unit_getData.GetLast_Order_Categorie();
     
+    StringBuilder StBl=new StringBuilder();
+    StBl.append(OrderUnit);
+    
+    LstOrd_Ctg.setText(StBl.toString());
+    
+    }
     
 
     /**
@@ -69,7 +76,7 @@ public class unitView extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable(){
 
             public Class getColumnClass(int column) {
-                return (column == 0 || column == 1 || column == 2 || column==5 ) ? Icon.class : Object.class;
+                return (column == 0 || column == 1 ) ? Icon.class : Object.class;
             }
 
         };
@@ -85,7 +92,7 @@ public class unitView extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        LstOrd_Ctg = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,13 +105,13 @@ public class unitView extends javax.swing.JDialog {
         jTable1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "حذف", "تعديل", "جديد", "الوصـف", "الوحـدة", "الرقــم"
+                "حذف", "تعديل", "الوصـف", "الوحـدة", "الرقــم"
             }
         ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -197,9 +204,10 @@ public class unitView extends javax.swing.JDialog {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 30, 20));
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
+        LstOrd_Ctg.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        LstOrd_Ctg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LstOrd_Ctg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(LstOrd_Ctg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,26 +228,18 @@ public class unitView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
-        int col=jTable1.columnAtPoint(evt.getPoint());
-        int row=jTable1.rowAtPoint(evt.getPoint());
-        
-        
+       int col=jTable1.columnAtPoint(evt.getPoint());
+       int row=jTable1.rowAtPoint(evt.getPoint());
        switch(col){
        case 0:
            JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           
            break;
-           
        case 1:
            JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           
            break;
-       
-       case 2:
+       /*case 2:
            JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           
-           break;
+           break;*/
        }
         
         
@@ -258,7 +258,7 @@ public class unitView extends javax.swing.JDialog {
         Cursor DefaultCursor=Cursor.getDefaultCursor();
         
        switch(col){
-       case 0: case 1: case 2:
+       case 0: case 1:
            //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            jTable1.setCursor(handCursor);
            
@@ -323,6 +323,7 @@ public class unitView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField LstOrd_Ctg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -338,6 +339,5 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
