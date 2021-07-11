@@ -59,7 +59,7 @@ public class ConnectionDB {
 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             String DB;
             System.out.println("Success Download ");          
-            DB = "jdbc:ucanaccess:////E:\\StoreDB.accdb";
+            DB = "jdbc:ucanaccess:////D:\\StoreDB.accdb";
              cnx=DriverManager.getConnection(DB);
                 System.out.println("Success Connecting... ");
            // JOptionPane.showMessageDialog(null, "The connection is etablished...");

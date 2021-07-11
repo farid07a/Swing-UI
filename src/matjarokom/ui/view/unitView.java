@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import matjarokom.Model.com.Unit;
 
 /**
@@ -87,8 +88,8 @@ public class unitView extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        Unit_Nam = new javax.swing.JTextField();
+        Unit_Desc = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -176,15 +177,15 @@ public class unitView extends javax.swing.JDialog {
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 100, 30));
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 200, 30));
+        Unit_Nam.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        Unit_Nam.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Unit_Nam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(Unit_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 200, 30));
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 200, 30));
+        Unit_Desc.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        Unit_Desc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Unit_Desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(Unit_Desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -207,6 +208,7 @@ public class unitView extends javax.swing.JDialog {
         LstOrd_Ctg.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         LstOrd_Ctg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         LstOrd_Ctg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        LstOrd_Ctg.setEnabled(false);
         jPanel2.add(LstOrd_Ctg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,21 +232,55 @@ public class unitView extends javax.swing.JDialog {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
        int col=jTable1.columnAtPoint(evt.getPoint());
        int row=jTable1.rowAtPoint(evt.getPoint());
+        DefaultTableModel defMdl=(DefaultTableModel) jTable1.getModel();
+       
        switch(col){
        case 0:
-           JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
+           
+           int IdOrder=(int) jTable1.getValueAt(row, 4);
+           int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
+           JOptionPane.showMessageDialog(null, Conf);
+           
+           if (Conf==0) {
+               
+           int valCon=unit_getData.DeleteCategorie(IdOrder);
+           
+           if (valCon>0) defMdl.removeRow(row); //add Mesg information data;
+           }
+           
+            
+           
+           
+           
+           
+           
+           
+           
+           
+           // Function Delete Categorie
+           
+           
+           
+           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            break;
        case 1:
-           JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
+           
+           Unit_Desc.setText((String) jTable1.getValueAt(row, 2));
+           Unit_Nam.setText((String) jTable1.getValueAt(row, 3));
+           LstOrd_Ctg.setText( jTable1.getValueAt(row, 4)+"");
+           
+           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            break;
-       /*case 2:
-           JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           break;*/
+
        }
         
         
     }//GEN-LAST:event_jTable1MouseClicked
-
+    
+    
+    
+    
+    
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseEntered
@@ -324,6 +360,8 @@ public class unitView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField LstOrd_Ctg;
+    private javax.swing.JTextField Unit_Desc;
+    private javax.swing.JTextField Unit_Nam;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -337,7 +375,5 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

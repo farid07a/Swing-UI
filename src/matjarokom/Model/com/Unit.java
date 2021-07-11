@@ -26,6 +26,7 @@ public class Unit {
     private String Description;
     
     private Statement stm;
+    private PreparedStatement prst;
     private ResultSet res;
     private ConnectionDB connection_db = new ConnectionDB();
     
@@ -170,6 +171,33 @@ public class Unit {
         
       return Last_Order;
     }
+/******************Delete Data Categorie
+     * @param Id_Unit
+     * @return  ****************************/
+public int DeleteCategorie(int Id_Unit){
+    
+    String Query="DELETE  FROM  Unit WHERE Id_Unit = "+Id_Unit+" ;";
+    
+    try {
+        prst=connection_db.getConnect().prepareStatement(Query);
+        System.out.println("PASSE STEP PREPARESTATEMENT");
+        int Stat_Del=prst.executeUpdate();
+        System.out.println("test Execute update ");
+        
+        if (Stat_Del>0) 
+            return Stat_Del;
+//            JOptionPane.showMessageDialog(null, "Success Delete data");
+        else JOptionPane.showMessageDialog(null, "Cannot Delete Data"); 
+        
+        prst.close();
+        connection_db.Deconnect();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0;
+    }
+/********************************************************************/
+
     
     
     
@@ -178,6 +206,9 @@ public class Unit {
         //new Unit(1, "وحدة متعددة", "وحدة متعددة").addUnit();
         int N_Order=new Unit(1, "وحدة متعددة", "وحدة متعددة").GetLast_Order_Categorie();
         System.out.println("Last Order :"+N_Order);
+        
+        
+        new Unit().DeleteCategorie(8);
         
     }
 }
