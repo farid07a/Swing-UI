@@ -6,6 +6,7 @@
 package matjarokom.ui.view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -215,7 +216,8 @@ public class ButtonView extends JButton implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-    pressed=true;    
+    pressed=true;
+    
     }
 
     @Override
@@ -225,13 +227,17 @@ public class ButtonView extends JButton implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-    entred=true;    
+    entred=true;
+    this.setCursor( Cursor.getPredefinedCursor(Cursor.HAND_CURSOR) );
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
     entred=false;    
+    this.setCursor( Cursor.getDefaultCursor() );
     }
+
+ 
     
     
     
