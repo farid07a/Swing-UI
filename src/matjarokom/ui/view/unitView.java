@@ -27,10 +27,15 @@ public class unitView extends javax.swing.JDialog {
     //how to change Size of jtable or jpanel
     
     Unit unit_getData,unit_SetData;
+    dialgMsgUnits UnitCnfMsg;
+    
+    
     
     public unitView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        UnitCnfMsg=new dialgMsgUnits(parent, modal);
+        
         
         unit_getData=new Unit();                        // Initialise Object Unit Of Get Data 
         
@@ -236,11 +241,10 @@ public class unitView extends javax.swing.JDialog {
        
        switch(col){
        case 0:
-           
            int IdOrder=(int) jTable1.getValueAt(row, 4);
            int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
            JOptionPane.showMessageDialog(null, Conf);
-           
+           UnitCnfMsg.setVisible(true);
            if (Conf==0) {
                
            int valCon=unit_getData.DeleteCategorie(IdOrder);
