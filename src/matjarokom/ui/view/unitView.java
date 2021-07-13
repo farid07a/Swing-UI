@@ -9,7 +9,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import matjarokom.Model.com.Unit;
@@ -100,6 +99,8 @@ public class unitView extends javax.swing.JDialog {
         UpdInputUntDt = new matjarokom.ui.view.ButtonView();
         SavInputUntDt = new matjarokom.ui.view.ButtonView();
         buttonView1 = new matjarokom.ui.view.ButtonView();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -151,7 +152,7 @@ public class unitView extends javax.swing.JDialog {
                 jTextField1FocusGained(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 200, 30));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 200, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -202,7 +203,7 @@ public class unitView extends javax.swing.JDialog {
         DelInputUntDt.setLineColor(new java.awt.Color(0, 51, 51));
         DelInputUntDt.setLinePainted(true);
         DelInputUntDt.setRounded(true);
-        jPanel2.add(DelInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 80, 30));
+        jPanel2.add(DelInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 80, 30));
 
         CnlInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         CnlInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,7 +218,7 @@ public class unitView extends javax.swing.JDialog {
                 CnlInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(CnlInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 80, 30));
+        jPanel2.add(CnlInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 80, 30));
 
         UpdInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         UpdInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,7 +233,7 @@ public class unitView extends javax.swing.JDialog {
                 UpdInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(UpdInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 80, 30));
+        jPanel2.add(UpdInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 80, 30));
 
         SavInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         SavInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,13 +253,31 @@ public class unitView extends javax.swing.JDialog {
                 SavInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(SavInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, 30));
+        jPanel2.add(SavInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 80, 30));
 
         buttonView1.setBackground(new java.awt.Color(255, 255, 255));
         buttonView1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/SearchIconUnits.png"))); // NOI18N
         buttonView1.setBackgroundPainted(false);
         buttonView1.setOpaque(true);
-        jPanel2.add(buttonView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 40, 30));
+        jPanel2.add(buttonView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 40, 30));
+
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jRadioButton1.setText("عدة وحدات");
+        jRadioButton1.setContentAreaFilled(false);
+        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRadioButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jRadioButton2.setText("وحدة واحدة");
+        jRadioButton2.setContentAreaFilled(false);
+        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRadioButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -446,6 +465,8 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
