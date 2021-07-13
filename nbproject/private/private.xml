@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Control/com/ConnectionDB.java</file>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/dialgMsgUnits.java</file>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/unitView.java</file>
+            <file>file:/K:/Swing-UI/src/matjarokom/Model/com/Unit.java</file>
+            <file>file:/K:/Swing-UI/src/matjarokom/ui/view/dialgMsgUnits.java</file>
+            <file>file:/K:/Swing-UI/src/matjarokom/Control/com/ConnectionDB.java</file>
+            <file>file:/K:/Swing-UI/src/matjarokom/ui/view/unitView.java</file>
         </group>
     </open-files>
 </project-private>

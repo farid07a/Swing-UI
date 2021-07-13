@@ -42,18 +42,19 @@ public class unitView extends javax.swing.JDialog {
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(10);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
+        jTable1.getColumnModel().getColumn(4).setPreferredWidth(2);
         DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
         cellRenderer.setHorizontalAlignment(JLabel.CENTER);
         jTable1.getColumnModel().getColumn(3).setCellRenderer(cellRenderer);
         jTable1.getColumnModel().getColumn(4).setCellRenderer(cellRenderer);
 //      jTable1.getColumnModel().getColumn(5).setCellRenderer(cellRenderer);
-        this.setLocationRelativeTo(null);
+        super.setLocationRelativeTo(null);
         jPanel2.setPreferredSize(new Dimension(500,20));
         //jPanel2.repaint();
         jPanel2.revalidate();
         //jPanel2.setSize(50, 50);
         
-        DisplayData_in_GUI_Unit();
+       // DisplayData_in_GUI_Unit();
     }
     
     public void DisplayData_in_GUI_Unit(){ //display data In Component
@@ -86,12 +87,7 @@ public class unitView extends javax.swing.JDialog {
             }
 
         };
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         Unit_Nam = new javax.swing.JTextField();
         Unit_Desc = new javax.swing.JTextField();
@@ -99,10 +95,15 @@ public class unitView extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LstOrd_Ctg = new javax.swing.JTextField();
+        DelInputUntDt = new matjarokom.ui.view.ButtonView();
+        CnlInputUntDt = new matjarokom.ui.view.ButtonView();
+        UpdInputUntDt = new matjarokom.ui.view.ButtonView();
+        SavInputUntDt = new matjarokom.ui.view.ButtonView();
+        buttonView1 = new matjarokom.ui.view.ButtonView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(363, 400));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -139,58 +140,35 @@ public class unitView extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 186, 520, 250));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/SearchIconUnits.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 155, 30, 30));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 470, 250));
 
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("ادخل اسم النوع");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 155, 200, 30));
-
-        jButton4.setText("حفظ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(102, 102, 102)));
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 490, 90, 30));
-
-        jButton3.setText("حذف");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 90, 33));
-
-        jButton1.setText("جديد");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 80, 34));
-
-        jButton2.setText("تعديل");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 80, 28));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 200, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/IconUnits.png"))); // NOI18N
         jLabel3.setText("الوحدة    :   ");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 100, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 100, 30));
 
         Unit_Nam.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Unit_Nam.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Unit_Nam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(Unit_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 200, 30));
+        jPanel2.add(Unit_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 200, 30));
 
         Unit_Desc.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Unit_Desc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Unit_Desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(Unit_Desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 200, 30));
+        jPanel2.add(Unit_Desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -198,14 +176,14 @@ public class unitView extends javax.swing.JDialog {
         jLabel2.setText("الوصف  :  ");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 100, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/IconHashTagNbr.png"))); // NOI18N
         jLabel4.setText("الرقــم       :");
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 10, 90, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 90, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 30, 20));
@@ -214,13 +192,79 @@ public class unitView extends javax.swing.JDialog {
         LstOrd_Ctg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         LstOrd_Ctg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LstOrd_Ctg.setEnabled(false);
-        jPanel2.add(LstOrd_Ctg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
+        jPanel2.add(LstOrd_Ctg, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 90, 30));
+
+        DelInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
+        DelInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
+        DelInputUntDt.setText("حذف");
+        DelInputUntDt.setBackgroundPainted(true);
+        DelInputUntDt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        DelInputUntDt.setLineColor(new java.awt.Color(0, 51, 51));
+        DelInputUntDt.setLinePainted(true);
+        DelInputUntDt.setRounded(true);
+        jPanel2.add(DelInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 80, 30));
+
+        CnlInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
+        CnlInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
+        CnlInputUntDt.setText("الغاء");
+        CnlInputUntDt.setBackgroundPainted(true);
+        CnlInputUntDt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        CnlInputUntDt.setLineColor(new java.awt.Color(0, 51, 51));
+        CnlInputUntDt.setLinePainted(true);
+        CnlInputUntDt.setRounded(true);
+        CnlInputUntDt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CnlInputUntDtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CnlInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 80, 30));
+
+        UpdInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
+        UpdInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
+        UpdInputUntDt.setText("تعديل");
+        UpdInputUntDt.setBackgroundPainted(true);
+        UpdInputUntDt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        UpdInputUntDt.setLineColor(new java.awt.Color(0, 51, 51));
+        UpdInputUntDt.setLinePainted(true);
+        UpdInputUntDt.setRounded(true);
+        UpdInputUntDt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdInputUntDtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(UpdInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 80, 30));
+
+        SavInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
+        SavInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
+        SavInputUntDt.setText("حفظ");
+        SavInputUntDt.setBackgroundPainted(true);
+        SavInputUntDt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        SavInputUntDt.setLineColor(new java.awt.Color(0, 51, 51));
+        SavInputUntDt.setLinePainted(true);
+        SavInputUntDt.setRounded(true);
+        SavInputUntDt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SavInputUntDtMouseClicked(evt);
+            }
+        });
+        SavInputUntDt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SavInputUntDtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(SavInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 80, 30));
+
+        buttonView1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonView1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/SearchIconUnits.png"))); // NOI18N
+        buttonView1.setBackgroundPainted(false);
+        buttonView1.setOpaque(true);
+        jPanel2.add(buttonView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,54 +274,44 @@ public class unitView extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
        int col=jTable1.columnAtPoint(evt.getPoint());
        int row=jTable1.rowAtPoint(evt.getPoint());
         DefaultTableModel defMdl=(DefaultTableModel) jTable1.getModel();
-       
+       int IdOrder=(int) jTable1.getValueAt(row, 4);
+       byte conf=0;
        switch(col){
        case 0:
-           int IdOrder=(int) jTable1.getValueAt(row, 4);
-           int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
-           JOptionPane.showMessageDialog(null, Conf);
-           UnitCnfMsg.setVisible(true);
-           if (Conf==0) {
+             UnitCnfMsg.SetMsgTextShow("do you want to delete Data");
+             dialgMsgUnits.ShowmessgConf();
+//           int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
+//           JOptionPane.showMessageDialog(null, Conf);
+            
+            conf=dialgMsgUnits.getYes_No();
+           if (conf==1) {
                
            int valCon=unit_getData.DeleteCategorie(IdOrder);
            
            if (valCon>0) defMdl.removeRow(row); //add Mesg information data;
            }
            
-            
-           
-           
-           
-           
-           
-           
-           
-           
            // Function Delete Categorie
-           
-           
-           
            //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            break;
        case 1:
+           UnitCnfMsg.SetMsgTextShow("do you want to update data");
+           dialgMsgUnits.ShowmessgConf();
            
+           
+          
+           conf=dialgMsgUnits.getYes_No();
+           if (conf==1) {
            Unit_Desc.setText((String) jTable1.getValueAt(row, 2));
            Unit_Nam.setText((String) jTable1.getValueAt(row, 3));
            LstOrd_Ctg.setText( jTable1.getValueAt(row, 4)+"");
-           
-           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           break;
-
-       }
-        
+           }
+         break;   
+       } 
         
     }//GEN-LAST:event_jTable1MouseClicked
     
@@ -301,24 +335,64 @@ public class unitView extends javax.swing.JDialog {
        case 0: case 1:
            //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            jTable1.setCursor(handCursor);
-           
-           
            break;
            
        default:
             jTable1.setCursor(DefaultCursor);
-           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           
-           break;
-       
-       
+           break;       
        }
-        
     }//GEN-LAST:event_jTable1MouseMoved
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void SavInputUntDtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavInputUntDtMouseClicked
+       
+           
+    }//GEN-LAST:event_SavInputUntDtMouseClicked
+
+    private void SavInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavInputUntDtActionPerformed
+        UnitCnfMsg.SetMsgTextShow("do you want to save new record ");
+           dialgMsgUnits.ShowmessgConf();
+           byte conf=dialgMsgUnits.getYes_No();
+           if (conf==1) {
+            unit_SetData=new Unit(Integer.valueOf(LstOrd_Ctg.getText()), Unit_Nam.getText(), Unit_Desc.getText());
+            unit_SetData.addUnit();
+            DisplayData_in_GUI_Unit();
+            CnlInputUntDtActionPerformed(null);
+             
+        }else {
+               CnlInputUntDtActionPerformed(null);
+               //DisplayData_in_GUI_Unit();
+           }
+        
+        
+    }//GEN-LAST:event_SavInputUntDtActionPerformed
+
+    private void CnlInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CnlInputUntDtActionPerformed
+       Unit_Nam.setText("");
+       Unit_Desc.setText("");
+    }//GEN-LAST:event_CnlInputUntDtActionPerformed
+
+    private void UpdInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdInputUntDtActionPerformed
+        unit_SetData=new Unit(Integer.valueOf(LstOrd_Ctg.getText()), Unit_Nam.getText(), Unit_Desc.getText());
+        UnitCnfMsg.SetMsgTextShow("do you want to Update data ");
+           dialgMsgUnits.ShowmessgConf();
+           byte conf=dialgMsgUnits.getYes_No();
+           
+           if (conf==1) {
+            
+            unit_SetData.UpdateUnit();      // update data 
+            DisplayData_in_GUI_Unit();    // Reload data in frame 
+               CnlInputUntDtActionPerformed(null);//n for clear textField 
+               unit_SetData=null;   // free the object
+        }else {
+               CnlInputUntDtActionPerformed(null);
+               unit_SetData=null;  // free the object of Unit
+            //DisplayData_in_GUI_Unit();
+           }
+    }//GEN-LAST:event_UpdInputUntDtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,41 +410,37 @@ public class unitView extends javax.swing.JDialog {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(unitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(unitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(unitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(unitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                unitView dialog = new unitView(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            unitView dialog = new unitView(new javax.swing.JFrame(), true);
+            dialog.DisplayData_in_GUI_Unit();
+            
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private matjarokom.ui.view.ButtonView CnlInputUntDt;
+    private matjarokom.ui.view.ButtonView DelInputUntDt;
     private javax.swing.JTextField LstOrd_Ctg;
+    private matjarokom.ui.view.ButtonView SavInputUntDt;
     private javax.swing.JTextField Unit_Desc;
     private javax.swing.JTextField Unit_Nam;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private matjarokom.ui.view.ButtonView UpdInputUntDt;
+    private matjarokom.ui.view.ButtonView buttonView1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

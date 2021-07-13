@@ -67,7 +67,7 @@ public class JCTextField extends JTextField{
         g2.setFont(new Font("Times New Roman",Font.ITALIC,12));
         g2.setColor(phColor);
         //g2.drawString(placeholder, getInsets().left, g.getFontMetrics().getMaxAscent() + getInsets().bottom);
-        g2.drawString(placeholder, CENTER, g.getFontMetrics().getMaxAscent() + getInsets().top);
+        g2.drawString(placeholder, 50, 50);
     }
      
      

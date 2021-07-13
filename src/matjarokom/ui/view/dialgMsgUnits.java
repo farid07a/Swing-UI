@@ -15,22 +15,31 @@ public class dialgMsgUnits extends javax.swing.JDialog {
      * Creates new form dialgMsgUnits
      */
     
-    private static byte Yes_No;
+    private static byte Yes_No=0;
+    /************
+     * 0 for No
+     * 1 for yes
+     ************/
+    private static dialgMsgUnits obj_Static;
     //public static byte ;
     
     public dialgMsgUnits(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         super.setLocationRelativeTo(null);
-        this.setVisible(true);
+        dialgMsgUnits.obj_Static=this;
+        //super.setVisible(true);
     }
-
+    
     public static void ShowmessgConf(){
-    
-     //this.setVisible(true);
+        
+     dialgMsgUnits.obj_Static.setVisible(true);
+     //return Yes_No;
     }
     
-    
+    public  void SetMsgTextShow(String Mesg){
+     MesgText.setText(Mesg);
+    }
     
     
     /**
@@ -45,8 +54,8 @@ public class dialgMsgUnits extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        buttonView3 = new matjarokom.ui.view.ButtonView();
-        buttonView4 = new matjarokom.ui.view.ButtonView();
+        BtnYes = new matjarokom.ui.view.ButtonView();
+        BtnNo = new matjarokom.ui.view.ButtonView();
         MesgText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,35 +68,35 @@ public class dialgMsgUnits extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/IconQustMarkWhite.png"))); // NOI18N
         jLabel1.setOpaque(true);
 
-        jPanel2.setBackground(new java.awt.Color(64, 224, 208));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        buttonView3.setBackground(new java.awt.Color(255, 51, 102));
-        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView3.setText("نعم");
-        buttonView3.setBackgroundPainted(true);
-        buttonView3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buttonView3.setRounded(true);
-        buttonView3.addActionListener(new java.awt.event.ActionListener() {
+        BtnYes.setBackground(new java.awt.Color(255, 51, 102));
+        BtnYes.setForeground(new java.awt.Color(255, 255, 255));
+        BtnYes.setText("نعم");
+        BtnYes.setBackgroundPainted(true);
+        BtnYes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnYes.setRounded(true);
+        BtnYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonView3ActionPerformed(evt);
+                BtnYesActionPerformed(evt);
             }
         });
 
-        buttonView4.setBackground(new java.awt.Color(255, 51, 102));
-        buttonView4.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView4.setText("لا");
-        buttonView4.setBackgroundPainted(true);
-        buttonView4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buttonView4.setRounded(true);
-        buttonView4.addActionListener(new java.awt.event.ActionListener() {
+        BtnNo.setBackground(new java.awt.Color(255, 51, 102));
+        BtnNo.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNo.setText("لا");
+        BtnNo.setBackgroundPainted(true);
+        BtnNo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnNo.setRounded(true);
+        BtnNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonView4ActionPerformed(evt);
+                BtnNoActionPerformed(evt);
             }
         });
 
-        MesgText.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        MesgText.setForeground(new java.awt.Color(255, 255, 255));
+        MesgText.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
         MesgText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MesgText.setText("هل انت متأكد من العملية");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,9 +105,9 @@ public class dialgMsgUnits extends javax.swing.JDialog {
             .addComponent(MesgText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
-                .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -106,10 +115,10 @@ public class dialgMsgUnits extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(MesgText, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -123,16 +132,16 @@ public class dialgMsgUnits extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -144,16 +153,17 @@ public class dialgMsgUnits extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonView4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView4ActionPerformed
+    private void BtnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNoActionPerformed
         dialgMsgUnits.setYes_No((byte) 0);
-    }//GEN-LAST:event_buttonView4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BtnNoActionPerformed
 
-    private void buttonView3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView3ActionPerformed
+    private void BtnYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnYesActionPerformed
         dialgMsgUnits.setYes_No((byte) 1);
-        this.setVisible(false);
-    }//GEN-LAST:event_buttonView3ActionPerformed
+        super.dispose();
+    }//GEN-LAST:event_BtnYesActionPerformed
 
-   
+ 
     
     /**
      * @param args the command line arguments
@@ -196,9 +206,9 @@ public class dialgMsgUnits extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private matjarokom.ui.view.ButtonView BtnNo;
+    private matjarokom.ui.view.ButtonView BtnYes;
     private javax.swing.JLabel MesgText;
-    private matjarokom.ui.view.ButtonView buttonView3;
-    private matjarokom.ui.view.ButtonView buttonView4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

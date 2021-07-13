@@ -107,6 +107,28 @@ public class Unit {
         }
     
     }
+    /**************************Update Unit In table***********************/
+    public void UpdateUnit(){
+    String Query;
+    
+        Query = "UPDATE Unit SET Unit_Name='"+Unit_Name+"', Description='"+Description+"' WHERE Id_Unit="+Id_Unit+"";
+        try {
+         this.prst=connection_db.getConnect().prepareStatement(Query);
+         int x=prst.executeUpdate();
+            if (x>0) {
+                JOptionPane.showMessageDialog(null, "Success Update...");
+            }
+            else JOptionPane.showMessageDialog(null, "cannot Update...");
+            
+            
+        prst.close();
+        connection_db.Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
     
     /*************************Show Units In Table Units*******************/
     
