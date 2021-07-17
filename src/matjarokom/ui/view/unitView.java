@@ -58,13 +58,10 @@ public class unitView extends javax.swing.JDialog {
     
     public void DisplayData_in_GUI_Unit(){ //display data In Component
     unit_getData.FillingAllUnit_InTable(jTable1); //// Fill Table In UnitView
-    int OrderUnit=unit_getData.GetLast_Order_Categorie();
-    
+    int OrderUnit=unit_getData.GetLast_Order_Categorie()+1;
     StringBuilder StBl=new StringBuilder();
     StBl.append(OrderUnit);
-    
     LstOrd_Ctg.setText(StBl.toString());
-    
     }
     
 

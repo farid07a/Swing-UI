@@ -5,16 +5,24 @@
  */
 package matjarokom.ui.view;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import matjarokom.Model.com.Categorie;
+import matjarokom.Model.com.Unit;
 import matjarokom.Model.com.produit_stock;
+import matjarokom.Model.com.Stocke;
 
 /**
  *
@@ -23,11 +31,16 @@ import matjarokom.Model.com.produit_stock;
 public class produitView extends javax.swing.JFrame {
 
     private produit_stock prduitStock;
-    
-    
+    produit_stock produitstockGetDat,produitstockSetDat;
+    Unit unit_GetData=new Unit();
+    Stocke stockGetData=new Stocke();
+    JFileChooser chooserfile;
+    File ProduitImageDesc;
     Categorie categorie=null;
     public produitView() {
         initComponents();
+        
+        
     }
 
     /**
@@ -67,7 +80,7 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID21 = new javax.swing.JLabel();
         Frn_ID22 = new javax.swing.JLabel();
         Postion_produit = new javax.swing.JTextField();
-        Stokage_produit = new javax.swing.JTextField();
+        Prix_Achat_prd = new javax.swing.JTextField();
         Frn_ID10 = new javax.swing.JLabel();
         Ref_produit = new javax.swing.JTextField();
         CheckDateExp_produit = new javax.swing.JCheckBox();
@@ -81,7 +94,11 @@ public class produitView extends javax.swing.JFrame {
         DateDormatField = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         remarque_produit = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
+        BrowseCatg = new matjarokom.ui.view.ButtonView();
+        Stock_produit = new javax.swing.JTextField();
+        LocalStock = new javax.swing.JComboBox<>();
+        ImageProduit = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,10 +113,10 @@ public class produitView extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 220, 290));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 140));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -214,7 +231,7 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID6.setText("النـــوع :");
         jPanel3.add(Frn_ID6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 110, -1, 40));
-        jPanel3.add(Catg_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 219, 30));
+        jPanel3.add(Catg_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, 219, 40));
 
         QuantityStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         QuantityStok_produit.setText("20");
@@ -238,7 +255,7 @@ public class produitView extends javax.swing.JFrame {
                 Unit_produitActionPerformed(evt);
             }
         });
-        jPanel3.add(Unit_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 160, 30));
+        jPanel3.add(Unit_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 230, 80, 30));
 
         LastDateAchat_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LastDateAchat_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -272,7 +289,7 @@ public class produitView extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 1140, 170));
 
         View_prices.setText("الاسعار القديمة");
-        jPanel3.add(View_prices, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 80, 30));
+        jPanel3.add(View_prices, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 30, 30));
 
         Frn_ID20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -283,8 +300,8 @@ public class produitView extends javax.swing.JFrame {
         jPanel3.add(ShowScreen_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 200, -1));
 
         UnitForQuantity_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        UnitForQuantity_produit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
         UnitForQuantity_produit.setBorder(null);
+        UnitForQuantity_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UnitForQuantity_produit.setOpaque(false);
         jPanel3.add(UnitForQuantity_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 110, 32));
 
@@ -330,33 +347,33 @@ public class produitView extends javax.swing.JFrame {
         Postion_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(Postion_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 250, 30));
 
-        Stokage_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Stokage_produit.setForeground(new java.awt.Color(204, 204, 204));
-        Stokage_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Stokage_produit.setText("00");
-        Stokage_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Stokage_produit.addFocusListener(new java.awt.event.FocusAdapter() {
+        Prix_Achat_prd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Prix_Achat_prd.setForeground(new java.awt.Color(204, 204, 204));
+        Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Prix_Achat_prd.setText("00");
+        Prix_Achat_prd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Prix_Achat_prd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                Stokage_produitFocusGained(evt);
+                Prix_Achat_prdFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                Stokage_produitFocusLost(evt);
+                Prix_Achat_prdFocusLost(evt);
             }
         });
-        Stokage_produit.addActionListener(new java.awt.event.ActionListener() {
+        Prix_Achat_prd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Stokage_produitActionPerformed(evt);
+                Prix_Achat_prdActionPerformed(evt);
             }
         });
-        Stokage_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+        Prix_Achat_prd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Stokage_produitKeyPressed(evt);
+                Prix_Achat_prdKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                Stokage_produitKeyTyped(evt);
+                Prix_Achat_prdKeyTyped(evt);
             }
         });
-        jPanel3.add(Stokage_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 230, 40));
+        jPanel3.add(Prix_Achat_prd, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 230, 140, 40));
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -378,12 +395,12 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID23.setText("فاتورات الشراء :");
-        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 90, 30));
+        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 90, 30));
 
         Frn_ID24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID24.setText("الموردين :");
-        jPanel3.add(Frn_ID24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 90, 30));
+        jPanel3.add(Frn_ID24, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, 30));
 
         TxtPrdPrix9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix9.setForeground(new java.awt.Color(204, 204, 204));
@@ -411,11 +428,11 @@ public class produitView extends javax.swing.JFrame {
                 TxtPrdPrix9KeyTyped(evt);
             }
         });
-        jPanel3.add(TxtPrdPrix9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 120, 30));
+        jPanel3.add(TxtPrdPrix9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 120, 30));
 
         Forns_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Forns_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(Forns_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
+        jPanel3.add(Forns_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, 30));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +443,7 @@ public class produitView extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 100, 40));
 
         jButton2.setText("jButton1");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 423, 90, 40));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 90, 40));
 
         try {
             DateDormatField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -442,15 +459,58 @@ public class produitView extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 270, -1));
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton3.setText("...");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        BrowseCatg.setBackground(new java.awt.Color(255, 255, 255));
+        BrowseCatg.setText("+");
+        jPanel3.add(BrowseCatg, new org.netbeans.lib.awtextra.AbsoluteConstraints(712, 112, 50, 30));
+
+        Stock_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Stock_produit.setForeground(new java.awt.Color(204, 204, 204));
+        Stock_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Stock_produit.setText("00");
+        Stock_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Stock_produit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Stock_produitFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Stock_produitFocusLost(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 113, 40, 30));
+        Stock_produit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Stock_produitActionPerformed(evt);
+            }
+        });
+        Stock_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Stock_produitKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Stock_produitKeyTyped(evt);
+            }
+        });
+        jPanel3.add(Stock_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 50, 40));
+
+        LocalStock.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        LocalStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(LocalStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, 160, 40));
+
+        ImageProduit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ImageProduit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageProduit.setText("الصورة");
+        ImageProduit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ImageProduit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(ImageProduit, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 90));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini_h.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 20, 40, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -472,25 +532,25 @@ public class produitView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Stokage_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stokage_produitFocusGained
+    private void Prix_Achat_prdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Prix_Achat_prdFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_Stokage_produitFocusGained
+    }//GEN-LAST:event_Prix_Achat_prdFocusGained
 
-    private void Stokage_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stokage_produitFocusLost
+    private void Prix_Achat_prdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Prix_Achat_prdFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_Stokage_produitFocusLost
+    }//GEN-LAST:event_Prix_Achat_prdFocusLost
 
-    private void Stokage_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stokage_produitActionPerformed
+    private void Prix_Achat_prdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prix_Achat_prdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Stokage_produitActionPerformed
+    }//GEN-LAST:event_Prix_Achat_prdActionPerformed
 
-    private void Stokage_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stokage_produitKeyPressed
+    private void Prix_Achat_prdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prix_Achat_prdKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Stokage_produitKeyPressed
+    }//GEN-LAST:event_Prix_Achat_prdKeyPressed
 
-    private void Stokage_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stokage_produitKeyTyped
+    private void Prix_Achat_prdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prix_Achat_prdKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_Stokage_produitKeyTyped
+    }//GEN-LAST:event_Prix_Achat_prdKeyTyped
 
     private void Desg_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Desg_produitFocusGained
         // TODO add your handling code here:
@@ -601,28 +661,45 @@ public class produitView extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtPrdPrix9KeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+        
+//         public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, 
+//            int Qty_En_Stock,
+//            Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Id_Unit, int Id_Stocke,
+//            int Position_Produit, boolean Check_Produit, String Remarque_Produit) {
+        
+        
         categorie=new Categorie();
-        String RefProduit=Ref_produit.getText(); // get Ref produit
+        //unit_GetData=new Unit();
         String DesgProduit=Desg_produit.getText();// Des prod
+        String RefProduit=Ref_produit.getText(); // get Ref produit
+        
         int id_categorie=categorie.GetIdCategorie("عام"); // id catgorie
         int QuantityStock=Integer.valueOf(QuantityStok_produit.getText()); //QuantityInStock
         
-        double Prix_Vente=Double.valueOf(prixVente_produit.getText()); // Prix vente prod
+        Date DateExpirProduit;
         
-        
-        String Stocke=Stokage_produit.getText();   // Nom locale de stockage
-        
-        Date DateExpirProduit=null;
         String StringDate=DateDormatField.getText();
         try {
              DateExpirProduit=new SimpleDateFormat("dd/MM/yyyy").parse(StringDate);   //create Date expiration Of product
-             
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "The Date Entree is Not Valid please verify ");
-            
             return;
-        
         }
+        
+        double Prix_Vente=Double.valueOf(prixVente_produit.getText()); // Prix vente prod
+        double Prix_Achat;
+        Prix_Achat = Double.parseDouble(Prix_Achat_prd.getText());
+        int Id_Unit;
+        
+        Id_Unit=unit_GetData.GetIdUnit((String)UnitForQuantity_produit.getSelectedItem());
+        String Stocke=Stock_produit.getText();   // Nom locale de stockage
+        int id_Stock;
+        id_Stock = stockGetData.GetIdStockLocal(Stocke);
+        
+        
+        //Id_Stocke
+      
         
         int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock get From arrivageLine 
         
@@ -631,18 +708,15 @@ public class produitView extends javax.swing.JFrame {
         int MinStok_produit_in_stock=Integer.valueOf(MinStok_produit.getText());// get Min Stock for produit
         double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText()); // last Date Bye for product 
         
-        byte check; // check prod in viewForm 
+        boolean check; // check prod in viewForm 
         
         
-      check= (byte) ((ShowScreen_produit.isSelected()) ? 1 :0);   //check in panel access product
+      check= ShowScreen_produit.isSelected();   //check in panel access product
         
-      StringBuilder RemarqueProduit=new StringBuilder();
-      RemarqueProduit.append(remarque_produit.getText());
-      
-      
+      String RemarqueProduit=remarque_produit.getText(); //get Remarque about Product
       prduitStock=new produit_stock(1, DesgProduit, RefProduit, id_categorie, 
-              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Vente, WIDTH,
-              id_categorie, EXIT_ON_CLOSE, rootPaneCheckingEnabled, RefProduit);
+              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Achat,MinStok_produit_in_stock,Id_Unit,
+              id_Stock, Postion_produit_in_stock, check, RemarqueProduit);
       
         
         
@@ -665,47 +739,99 @@ public class produitView extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void Stock_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stock_produitFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Stock_produitFocusGained
 
+    private void Stock_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stock_produitFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Stock_produitFocusLost
+
+    private void Stock_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stock_produitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Stock_produitActionPerformed
+
+    private void Stock_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stock_produitKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Stock_produitKeyPressed
+
+    private void Stock_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stock_produitKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Stock_produitKeyTyped
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       UIManager.put("FileChooser.cancelButtonText","الغاء");
+       chooserfile=new JFileChooser();
+       chooserfile.setApproveButtonText("حفظ");
+       int valShoice=chooserfile.showDialog(this,"اختر صورة المنتج");
+       //int valShoice=chooserfile.showOpenDialog(this);
+        
+        if (valShoice==JFileChooser.APPROVE_OPTION) {
+            //ProduitImageDesc=
+            ProduitImageDesc=chooserfile.getSelectedFile();  // select
+            ImageProduit.setText("");
+            
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));
+            ImageProduit.setIcon(imageIcon);
+            //ImageProduit.setIcon( new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));  // set Icon to produit label
+        }else{
+        
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));
+            ImageProduit.setIcon(imageIcon);
+        }    
+        
+      
+//        
+//        produitstockGetDat=new produit_stock();
+//        produitstockGetDat.InsertImage();
+//        ImageProduit.setIcon(produitstockGetDat.InsertImage());
+    }//GEN-LAST:event_jLabel2MouseClicked
+    
+    public void FillDataStockLocal(){
+        LocalStock.removeAllItems();
+        Iterator<Stocke> itr=stockGetData.GetlistDataLocaleStock().iterator();
+        Stocke next;
+        while (itr.hasNext()) {
+            next = itr.next();
+            LocalStock.addItem(next.getLocale_Stocke());
+        }
+        itr=null;
+        next=null;
+    }
+    /*************************************/
+       public void FillDataUnits(){
+        UnitForQuantity_produit.removeAllItems();
+        
+        Iterator<Unit> itr=unit_GetData.GetlistDataUnits().iterator();
+        Unit next;
+        while (itr.hasNext()) {
+            next = itr.next();
+            UnitForQuantity_produit.addItem(next.getUnit_Name());
+        }
+        itr=null;
+        next=null;
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(produitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(produitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(produitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(produitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        produitView prdView=new produitView();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new produitView().setVisible(true);
+                prdView.FillDataStockLocal();
+                prdView.FillDataUnits();
+                prdView.setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private matjarokom.ui.view.ButtonView BrowseCatg;
     private java.awt.Choice Catg_produit;
     private javax.swing.JCheckBox CheckDateExp_produit;
     private javax.swing.JFormattedTextField DateDormatField;
@@ -725,22 +851,25 @@ public class produitView extends javax.swing.JFrame {
     private javax.swing.JLabel Frn_ID5;
     private javax.swing.JLabel Frn_ID6;
     private javax.swing.JLabel Frn_ID9;
+    private javax.swing.JLabel ImageProduit;
     private javax.swing.JTextField LastDateAchat_produit;
+    private javax.swing.JComboBox<String> LocalStock;
     private javax.swing.JTextField MinStok_produit;
     private javax.swing.JTextField NbrPcsInQty_produit;
     private javax.swing.JLabel Nbr_Pcs_label1;
     private javax.swing.JTextField Postion_produit;
+    private javax.swing.JTextField Prix_Achat_prd;
     private javax.swing.JTextField QuantityStok_produit;
     private javax.swing.JTextField Ref_produit;
     private javax.swing.JCheckBox ShowScreen_produit;
-    private javax.swing.JTextField Stokage_produit;
+    private javax.swing.JTextField Stock_produit;
     private javax.swing.JTextField TxtPrdPrix9;
     private javax.swing.JComboBox<String> UnitForQuantity_produit;
     private javax.swing.JComboBox<String> Unit_produit;
     private javax.swing.JLabel View_prices;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

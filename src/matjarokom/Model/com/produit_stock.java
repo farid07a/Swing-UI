@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import matjarokom.Control.com.ConnectionDB;
 
 
 public class produit_stock {
@@ -32,11 +35,17 @@ public class produit_stock {
     private int Min_Stock=5;
     private int Id_Unit;
     private int Id_Stocke;
-    private int Position_Produit;
+    private String Position_Produit;
     private boolean Check_Produit;
     private String Remarque_Produit;
-    
-    
+    private String Filename=null;
+     
+     
+    private byte [] ImageProduct=null;
+    ConnectionDB connection_db=new ConnectionDB();
+    PreparedStatement prepStm;
+    Statement stm;
+    ResultSet res;
     
   //  private Categorie categorie;
     
@@ -46,7 +55,9 @@ public class produit_stock {
     
     private ArrayList<String> listProduit=new ArrayList<>();
 
-    public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, int Qty_En_Stock, Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Id_Unit, int Id_Stocke, int Position_Produit, boolean Check_Produit, String Remarque_Produit) {
+    public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, int Qty_En_Stock,
+            Date Date_Expiration, double Prix_Vente, double Prix_Achat,int Min_Stock ,int Id_Unit, int Id_Stocke,
+            String Position_Produit, boolean Check_Produit, String Remarque_Produit) {
         this.ID_Prod = ID_Prod;
         this.Designation = Designation;
         this.Reference_Pro = Reference_Pro;
@@ -55,6 +66,7 @@ public class produit_stock {
         this.Date_Expiration = Date_Expiration;
         this.Prix_Vente = Prix_Vente;
         this.Prix_Achat = Prix_Achat;
+        this.Min_Stock=Min_Stock;
         this.Id_Unit = Id_Unit;
         this.Id_Stocke = Id_Stocke;
         this.Position_Produit = Position_Produit;
@@ -62,7 +74,7 @@ public class produit_stock {
         this.Remarque_Produit = Remarque_Produit;
     }
 
-    private produit_stock() {
+    public produit_stock() {
        
     }
     
@@ -70,12 +82,37 @@ public class produit_stock {
     
     
     
-//    public void AddProduit(){
-//        PreparedStatement prstm =null;
-//        //ResultSet res=null;
-//        
-//        try {
-//            
+    public void AddProduit(){
+        //PreparedStatement prstm =null;
+        //ResultSet res=null;
+        
+        String Query="INSERT INTO Produit (Designation,Reference_Pro,ID_Categorie,Qty_En_Stock,Date_Expiration,Prix_Vente,"
+                + " Prix_Achat,Min_Stock,Id_Unit,Id_Stocke,Position_Produit,Check_Produit,Remarque_Produit) VALUES ("
+                + " '"+Designation+"','"+Reference_Pro+"',"+ID_Categorie+","+Qty_En_Stock+",#"+Date_Expiration+"#,"+Prix_Vente+
+                ","+Prix_Achat+","+Min_Stock+","+Id_Unit+","+Id_Stocke+",'"+Position_Produit+"','"+Remarque_Produit+"' )";
+                
+         String Query2="INSERT INTO Produit (Designation,Reference_Pro,ID_Categorie,Qty_En_Stock,Date_Expiration,Prix_Vente,"
+                + " Prix_Achat,Min_Stock,Id_Unit,Id_Stocke,Position_Produit,Check_Produit,Remarque_Produit,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+         try {
+            prepStm=connection_db.getConnect().prepareStatement(Query);
+            int x=prepStm.executeUpdate();  
+            
+            prepStm.setString(1, Designation);
+            prepStm.setString(2, Reference_Pro);
+            prepStm.setInt(3, ID_Categorie);
+            prepStm.setInt(4, Qty_En_Stock);
+            prepStm.setDate(5, new java.sql.Date(Date_Expiration.getTime()));
+            prepStm.setDouble(6, Prix_Vente);
+            prepStm.setDouble(7, Prix_Achat);
+            prepStm.setInt(8, Min_Stock);
+            prepStm.setInt(9, Id_Unit);
+            prepStm.setInt(10, Id_Stocke);
+            prepStm.setString(11, Position_Produit);
+            prepStm.setBoolean(12, Check_Produit);
+            prepStm.setString(13, Remarque_Produit);
+           // prepStm.setBinaryStream(14, ImageProduct., x);
+            
 //           /* prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,Prix_Unitaire,QtyEnStock,StockMin,ID_Categorie)"
 //                    + "VALUES (?,?,?,?,?)");*/
 //            
@@ -87,27 +124,20 @@ public class produit_stock {
 //           // prstm.setInt(4, 5);
 //            prstm.setInt(3, getID_Categorie());
 //            int x=prstm.executeUpdate();
-//            if (x>0) {
-//    //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
-//            }else {
-//                
-//            JOptionPane.showMessageDialog(null, prstm);
-//            
-//            }
-//            
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Error in Function INSERT Data :"+e.getMessage());
-//        }
-//        
-//        try {
-//            prstm.close();
-////            getCnx().Deconnect();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "ERROR IN CLOSED "+e.getMessage());
-//        }
-//        
-//    
-//    }
+            if (x>0) {
+    //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
+            JOptionPane.showMessageDialog(null, "Success add product");
+            }else {
+                
+            JOptionPane.showMessageDialog(null, "Cannot added product");
+            
+            }
+            prepStm.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error in Function add product :"+e.getMessage());
+        }
+    }
     
     
     public int Exist(){
@@ -318,16 +348,26 @@ public class produit_stock {
     return lastNumPrd;
     }
     
-     private String Filename=null;
-     private byte [] ImageProduct=null;
-    public void InsertImage(){
+     
+    public ImageIcon InsertImage(){
+        UIManager.put("FileChooser.cancelButtonText","الغاء");
         JFileChooser chooserfile=new JFileChooser();
+        chooserfile.setApproveButtonText("حفظ");
+      //  chooserfile.showDialog(this,"اختر صورة المنتج");
+        
+        
+        
         chooserfile.showOpenDialog(null);
         File filImg=chooserfile.getSelectedFile();
         
+        
         setFilename(filImg.getAbsolutePath());
     
+        
+        
         ImageIcon imgIcon=new ImageIcon(getFilename());
+        
+        return imgIcon;
     }
     
     
@@ -559,14 +599,14 @@ public class produit_stock {
     /**
      * @return the Position_Produit
      */
-    public int getPosition_Produit() {
+    public String getPosition_Produit() {
         return Position_Produit;
     }
 
     /**
      * @param Position_Produit the Position_Produit to set
      */
-    public void setPosition_Produit(int Position_Produit) {
+    public void setPosition_Produit(String Position_Produit) {
         this.Position_Produit = Position_Produit;
     }
 

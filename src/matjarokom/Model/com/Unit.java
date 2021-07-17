@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -176,7 +177,7 @@ public class Unit {
     public int GetLast_Order_Categorie(){
     
         int Last_Order=0;
-        String Query="SELECT count(Id_Unit) FROM Unit";
+        String Query="SELECT MAX(Id_Unit) FROM Unit";
         try {
             stm=connection_db.getConnect().createStatement();
             res=stm.executeQuery(Query);
@@ -193,6 +194,26 @@ public class Unit {
         
       return Last_Order;
     }
+    /***************************************************************/
+    public int GetIdUnit(String Unit_Name){
+    String QueryIdUnit="SELECT Id_Unit FROM Unit WHERE Unit_Name='"+Unit_Name+"' ";
+        try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(QueryIdUnit);
+            
+            if (res.next()) 
+                return Id_Unit=res.getInt(1);
+           // }else return 1;
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+        }
+    
+        return 0;
+    }
+    
+    
 /******************Delete Data Categorie
      * @param Id_Unit
      * @return  ****************************/
@@ -218,8 +239,32 @@ public int DeleteCategorie(int Id_Unit){
     }
     return 0;
     }
-/********************************************************************/
-
+/**
+     * @return ******************************************************************/
+     public  ArrayList<Unit>  GetlistDataUnits(){
+        ArrayList listDataUnits;
+        listDataUnits = new ArrayList<Unit>();
+        String Query="SELECT * FROM Unit ";
+        try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(Query);
+            Unit unitObj;
+            while (res.next()) {                
+                unitObj=new Unit(res.getInt(1), res.getString("Unit_Name"),res.getString("Description"));
+                listDataUnits.add(unitObj);
+             
+             }
+            unitObj=null;
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+    return listDataUnits;
+    }
     
     /**********************/
     
