@@ -21,23 +21,29 @@ public class ConnectSqlExpres {
     
     public static void main(String[] args) {
         
-         Connection conn = null;
+        
+        Connection conn = null;
  
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbURL = "jdbc:sqlserver://.\\SQLExpress:1433;instance=SQLEXPRESS;databaseName=DB_Residence";  //DB_Residence 
-                                                                                                     //jdbc:sqlserver://127.0.0.1:1433;instance=SQLEXPRESS;databaseName=jdo;
-            
-             String drvConn="jdbc:sqlserver://localhost:1433;instance=sqlexpress;databaseName=DB_Residence;";                                                                                        
-                               
+//            String dbURL = "jdbc:sqlserver://.\\SQLExpress:1433;instance=SQLEXPRESS;databaseName=DB_Residence";  //DB_Residence 
+//                                                                                                     //jdbc:sqlserver://127.0.0.1:1433;instance=SQLEXPRESS;databaseName=jdo;
+//            
+             String drvConn="jdbc:sqlserver://localhost:1433;instance=sqlexpress;databaseName=DB_Residence;";
              
-               String dbURL1 = "jdbc:sqlserver://soft\\sqlexpress:1433;instance=SQLEXPRESS;databaseName=DB_Residence";
-               
-               String dbURL12 = "jdbc:sqlserver://localhost/sqlexpress:1433;databaseName=DB_Residence ";
+              drvConn="jdbc:sqlserver://localhost:49679;databaseName=testdb;";
+//                               
+//             
+//               String dbURL1 = "jdbc:sqlserver://soft\\sqlexpress:1433;instance=SQLEXPRESS;databaseName=DB_Residence";
+//               
+//               String dbURL12 = "jdbc:sqlserver://localhost/sqlexpress:1433;databaseName=DB_Residence ";
+               String ss="jdbc:sqlserver://SOFT\\SQLEXPRESS:49679;databaseName=master";
+               String dbur2="jdbc:sqlserver://localhost\\sqlexpress;user=sa;password=farid";
                
             String user = "sa";
-            String pass = "farid";
-            conn = DriverManager.getConnection(dbURL12, user, pass);
+            String pass = "";
+            conn = DriverManager.getConnection(ss);
+            //conn = DriverManager.getConnection(drvConn);
             if (conn != null) {
                 DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
                 System.out.println("Driver name: " + dm.getDriverName());
@@ -58,8 +64,9 @@ public class ConnectSqlExpres {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-        }
     }
         
     }
+    
+}
 

@@ -2,13 +2,21 @@ package matjarokom.Model.com;
 
 
 import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -39,9 +47,9 @@ public class produit_stock {
     private boolean Check_Produit;
     private String Remarque_Produit;
     private String Filename=null;
+    private InputStream ProductPict;
      
-     
-    private byte [] ImageProduct=null;
+    private File ImageProduct=null;
     ConnectionDB connection_db=new ConnectionDB();
     PreparedStatement prepStm;
     Statement stm;
@@ -57,7 +65,7 @@ public class produit_stock {
 
     public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, int Qty_En_Stock,
             Date Date_Expiration, double Prix_Vente, double Prix_Achat,int Min_Stock ,int Id_Unit, int Id_Stocke,
-            String Position_Produit, boolean Check_Produit, String Remarque_Produit) {
+            String Position_Produit, boolean Check_Produit, String Remarque_Produit,InputStream ProductPict) {
         this.ID_Prod = ID_Prod;
         this.Designation = Designation;
         this.Reference_Pro = Reference_Pro;
@@ -72,6 +80,7 @@ public class produit_stock {
         this.Position_Produit = Position_Produit;
         this.Check_Produit = Check_Produit;
         this.Remarque_Produit = Remarque_Produit;
+        this.ProductPict=ProductPict;
     }
 
     public produit_stock() {
@@ -92,11 +101,11 @@ public class produit_stock {
                 ","+Prix_Achat+","+Min_Stock+","+Id_Unit+","+Id_Stocke+",'"+Position_Produit+"','"+Remarque_Produit+"' )";
                 
          String Query2="INSERT INTO Produit (Designation,Reference_Pro,ID_Categorie,Qty_En_Stock,Date_Expiration,Prix_Vente,"
-                + " Prix_Achat,Min_Stock,Id_Unit,Id_Stocke,Position_Produit,Check_Produit,Remarque_Produit,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + " Prix_Achat,Min_Stock,Id_Unit,Id_Stocke,Position_Produit,Check_Produit,Remarque_Produit,image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
          try {
-            prepStm=connection_db.getConnect().prepareStatement(Query);
-            int x=prepStm.executeUpdate();  
+            prepStm=connection_db.getConnect().prepareStatement(Query2);
+            //int x=prepStm.executeUpdate();  
             
             prepStm.setString(1, Designation);
             prepStm.setString(2, Reference_Pro);
@@ -111,7 +120,10 @@ public class produit_stock {
             prepStm.setString(11, Position_Produit);
             prepStm.setBoolean(12, Check_Produit);
             prepStm.setString(13, Remarque_Produit);
-           // prepStm.setBinaryStream(14, ImageProduct., x);
+            //ProductPict
+            prepStm.setBinaryStream(14, getProductPict());        
+                    
+            //prepStm.setBinaryStream(14, new FileInputStream(ProductPict));
             
 //           /* prstm=getCnx().getConnect().prepareStatement("insert into produit_stock (Designation,Prix_Unitaire,QtyEnStock,StockMin,ID_Categorie)"
 //                    + "VALUES (?,?,?,?,?)");*/
@@ -123,8 +135,8 @@ public class produit_stock {
 //            prstm.setInt(2, getQtyEnStock());
 //           // prstm.setInt(4, 5);
 //            prstm.setInt(3, getID_Categorie());
-//            int x=prstm.executeUpdate();
-            if (x>0) {
+          int xء=prepStm.executeUpdate();
+            if (xء>0) {
     //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
             JOptionPane.showMessageDialog(null, "Success add product");
             }else {
@@ -138,6 +150,91 @@ public class produit_stock {
             JOptionPane.showMessageDialog(null, "Error in Function add product :"+e.getMessage());
         }
     }
+    
+    public void RetreiveProduct(int id){
+    String Query="SELECT * FROM Produit WHERE ID_Produit="+id+" ";
+    
+        try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(Query);
+            if (res.next()) {
+                
+                //"INSERT INTO Produit (Designation,Reference_Pro,ID_Categorie,Qty_En_Stock,Date_Expiration,Prix_Vente,"
+                //+ " Prix_Achat,Min_Stock,Id_Unit,Id_Stocke,Position_Produit,Check_Produit,Remarque_Produit,image) VALUES 
+                //(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+                
+                ID_Prod=res.getInt("ID_Produit");
+                Designation=res.getString("Designation");
+                Reference_Pro=res.getString("Reference_Pro");
+                ID_Categorie=res.getInt("ID_Categorie");
+                Qty_En_Stock=res.getInt("Qty_En_Stock");
+                Date_Expiration=res.getDate("Date_Expiration");
+                Prix_Vente=res.getDouble("Prix_Vente");
+                Prix_Achat=res.getDouble("Prix_Achat");
+                Min_Stock=res.getInt("Min_Stock");
+                Id_Unit=res.getInt("Id_Unit");
+                Id_Stocke=res.getInt("Id_Stocke");
+                Position_Produit=res.getString("Position_Produit");
+                Check_Produit=res.getBoolean("Check_Produit");
+                Remarque_Produit=res.getString("Remarque_Produit");
+                
+                
+                //InputStream in = null;
+                setProductPict(res.getBinaryStream("image"));
+                /*byte ByteArray[]=new byte[in.available()];
+                in.read(ByteArray);
+                FileOutputStream fout=new FileOutputStream("F:\\imgeGenerate.jpg");
+                fout.write(ByteArray);
+                fout.close();*/
+            }
+            
+            
+            res.close();
+            stm.close();
+            connection_db.Deconnect();
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    
+    
+    
+    }
+    
+    
+    public void DisplayImg(JLabel LabImage){
+    String Query="SELECT * FROM Produit";
+    
+    
+        try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(Query);
+            InputStream in = null;
+            if (res.next()) {
+                
+                in = res.getBinaryStream("image");
+                
+            }
+            byte arrByte[]=new byte[in.available()];
+            
+            in.read(arrByte);
+             LabImage.setIcon(new ImageIcon(new ImageIcon(arrByte).getImage().getScaledInstance(LabImage.getWidth(), LabImage.getHeight(), Image.SCALE_SMOOTH) ));
+            
+            in.close();
+            
+            
+            res.close();
+            stm.close();
+            connection_db.Deconnect();
+        }catch(SQLException | IOException e){
+            Logger.getLogger(produit_stock.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        }
+    
+    
+    
     
     
     public int Exist(){
@@ -655,15 +752,29 @@ public class produit_stock {
     /**
      * @return the ImageProduct
      */
-    public byte[] getImageProduct() {
+    public File getImageProduct() {
         return ImageProduct;
     }
 
     /**
      * @param ImageProduct the ImageProduct to set
      */
-    public void setImageProduct(byte[] ImageProduct) {
+    public void setImageProduct(File ImageProduct) {
         this.ImageProduct = ImageProduct;
+    }
+
+    /**
+     * @return the ProductPict
+     */
+    public InputStream getProductPict() {
+        return ProductPict;
+    }
+
+    /**
+     * @param ProductPict the ProductPict to set
+     */
+    public void setProductPict(InputStream ProductPict) {
+        this.ProductPict = ProductPict;
     }
 
 

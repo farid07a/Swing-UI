@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -24,13 +26,15 @@ import javax.swing.table.DefaultTableModel;
  * @author formation
  */
 public class Categorie {
-    ConnectionDB cnx=new ConnectionDB();
-    Statement stm;
-    ResultSet res;
+    private ConnectionDB connectiondb=new ConnectionDB();
+    private Statement stm;
+    private ResultSet res;
     private int ID_Categorie;
     private String Name_Ctg;
     private String Description_Ctg;
     private int TypePrd;
+    private ArrayList<Categorie> ListCategorie=new ArrayList<>();
+    
     public Categorie(int ID_Categorie,String Name_Ctg,String Description_Ctg,int TypePrd){
     this.ID_Categorie=ID_Categorie;
     this.Name_Ctg=Name_Ctg;
@@ -44,6 +48,30 @@ public class Categorie {
     
     }
    
+    public void GetListOfCategories(){
+    
+        String Query="SELECT *  FROM Categorie";
+        try {
+            setStm(getConnectiondb().getConnect().createStatement());
+            setRes(getStm().executeQuery(Query));
+            Categorie catg;
+            while (getRes().next()) {                
+                catg=new Categorie(getRes().getInt(1), getRes().getString(2), getRes().getString(3), 0);
+                getListCategorie().add(catg);
+            }
+            
+            getStm().close();
+            getRes().close();
+            getConnectiondb().Deconnect();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+          
+    }
+    
+    
+    
     
    /*******Function Filling Combobox************************************************/ 
     
@@ -111,7 +139,9 @@ public class Categorie {
     
     }*/
 
-/******************************Close Function Filling Table Categorie************************/    
+/******************************Close Function Fillin
+     * @param name    
+     * @return ***********************/    
     
     
     
@@ -123,10 +153,10 @@ public class Categorie {
         
         
         try {
-            stm=cnx.getConnect().createStatement();
-            res=stm.executeQuery(sqlRequette);
-            while (res.next()) {                
-                NumCatg=res.getInt(1);
+            setStm(getConnectiondb().getConnect().createStatement());
+            setRes(getStm().executeQuery(sqlRequette));
+            while (getRes().next()) {                
+                NumCatg=getRes().getInt(1);
                 
             }
             System.out.println("The id categorie is: "+NumCatg);
@@ -136,18 +166,39 @@ public class Categorie {
         
         
         try {
-        stm.close();
-        res.close();
+            getStm().close();
+            getRes().close();
         } catch (SQLException e) {
             
             JOptionPane.showMessageDialog(null, "Error when cloing statement and connection :"+e.getMessage());
         }
-           cnx.Deconnect();
+           getConnectiondb().Deconnect();
         
         
     return NumCatg;
         
     }
+    
+    public String GetNameCategorieById(int id){
+    
+        Iterator<Categorie> itr=getListCategorie().iterator(); // get ArrayList.To Iterator()
+    Categorie next;
+    
+    while (itr.hasNext()) {
+            next = itr.next();
+            
+            if (next.getID_Categorie()==id) return next.getName_Ctg();
+            
+            //Catg_produit.addItem(next.getName_Ctg());
+        }
+   // next=null;
+    //itr=null;
+    
+    return "";
+    
+    }
+    
+    
     
 /**********************Close Function GetIdCategorie***********************************/    
     
@@ -299,5 +350,75 @@ public class Categorie {
      */
     public void setDescription_Ctg(String Description_Ctg) {
         this.Description_Ctg = Description_Ctg;
+    }
+
+    /**
+     * @return the connectiondb
+     */
+    public ConnectionDB getConnectiondb() {
+        return connectiondb;
+    }
+
+    /**
+     * @param connectiondb the connectiondb to set
+     */
+    public void setConnectiondb(ConnectionDB connectiondb) {
+        this.connectiondb = connectiondb;
+    }
+
+    /**
+     * @return the stm
+     */
+    public Statement getStm() {
+        return stm;
+    }
+
+    /**
+     * @param stm the stm to set
+     */
+    public void setStm(Statement stm) {
+        this.stm = stm;
+    }
+
+    /**
+     * @return the res
+     */
+    public ResultSet getRes() {
+        return res;
+    }
+
+    /**
+     * @param res the res to set
+     */
+    public void setRes(ResultSet res) {
+        this.res = res;
+    }
+
+    /**
+     * @return the TypePrd
+     */
+    public int getTypePrd() {
+        return TypePrd;
+    }
+
+    /**
+     * @param TypePrd the TypePrd to set
+     */
+    public void setTypePrd(int TypePrd) {
+        this.TypePrd = TypePrd;
+    }
+
+    /**
+     * @return the ListCategorie
+     */
+    public ArrayList<Categorie> getListCategorie() {
+        return ListCategorie;
+    }
+
+    /**
+     * @param ListCategorie the ListCategorie to set
+     */
+    public void setListCategorie(ArrayList<Categorie> ListCategorie) {
+        this.ListCategorie = ListCategorie;
     }
 }

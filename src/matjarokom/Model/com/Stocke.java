@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import matjarokom.Control.com.ConnectionDB;
@@ -167,6 +168,21 @@ public class Stocke {
         }
     return 0;
     }
+    
+    public String GetLocalStockById(int id){
+    
+     Iterator<Stocke> itr=GetlistDataLocaleStock().iterator();
+        Stocke next;
+        while (itr.hasNext()) {
+            next = itr.next();
+            if (next.getId_Stock()==id) return next.getLocale_Stocke();
+        }
+        
+        return "";
+    }
+    
+    
+    
     
 
     /**

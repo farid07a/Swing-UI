@@ -5,14 +5,19 @@
  */
 package matjarokom.ui.view;
 
+import java.awt.ComponentOrientation;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -30,15 +35,16 @@ import matjarokom.Model.com.Stocke;
  */
 public class produitView extends javax.swing.JFrame {
 
-    private produit_stock prduitStock;
-    produit_stock produitstockGetDat,produitstockSetDat;
+    //private produit_stock prduitStock;
+    produit_stock produitstockGetDat=new produit_stock(),produitstockSetDat;
     Unit unit_GetData=new Unit();
     Stocke stockGetData=new Stocke();
     JFileChooser chooserfile;
-    File ProduitImageDesc;
-    Categorie categorie=null;
+    File ProduitPicture;
+    Categorie categorieGetData=new Categorie(),categorieSetData=null;
     public produitView() {
         initComponents();
+        
         
         
     }
@@ -99,6 +105,9 @@ public class produitView extends javax.swing.JFrame {
         LocalStock = new javax.swing.JComboBox<>();
         ImageProduit = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        ImagLabelGetIt = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,14 +118,14 @@ public class produitView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 170, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 140));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 170, 140));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,30 +144,6 @@ public class produitView extends javax.swing.JFrame {
         Desg_produit.setForeground(new java.awt.Color(204, 204, 204));
         Desg_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Desg_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Desg_produit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Desg_produitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Desg_produitFocusLost(evt);
-            }
-        });
-        Desg_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Desg_produitActionPerformed(evt);
-            }
-        });
-        Desg_produit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Desg_produitKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Desg_produitKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Desg_produitKeyTyped(evt);
-            }
-        });
         jPanel3.add(Desg_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 218, 30));
 
         NbrPcsInQty_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -166,27 +151,6 @@ public class produitView extends javax.swing.JFrame {
         NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NbrPcsInQty_produit.setText("00.00");
         NbrPcsInQty_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        NbrPcsInQty_produit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                NbrPcsInQty_produitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                NbrPcsInQty_produitFocusLost(evt);
-            }
-        });
-        NbrPcsInQty_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NbrPcsInQty_produitActionPerformed(evt);
-            }
-        });
-        NbrPcsInQty_produit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NbrPcsInQty_produitKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                NbrPcsInQty_produitKeyTyped(evt);
-            }
-        });
         jPanel3.add(NbrPcsInQty_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 250, 32));
 
         Nbr_Pcs_label1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -199,27 +163,6 @@ public class produitView extends javax.swing.JFrame {
         prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         prixVente_produit.setText("00");
         prixVente_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        prixVente_produit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                prixVente_produitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                prixVente_produitFocusLost(evt);
-            }
-        });
-        prixVente_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prixVente_produitActionPerformed(evt);
-            }
-        });
-        prixVente_produit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                prixVente_produitKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                prixVente_produitKeyTyped(evt);
-            }
-        });
         jPanel3.add(prixVente_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 230, 40));
 
         Frn_ID11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -250,11 +193,6 @@ public class produitView extends javax.swing.JFrame {
         Unit_produit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
         Unit_produit.setBorder(null);
         Unit_produit.setOpaque(false);
-        Unit_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Unit_produitActionPerformed(evt);
-            }
-        });
         jPanel3.add(Unit_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 230, 80, 30));
 
         LastDateAchat_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -303,34 +241,13 @@ public class produitView extends javax.swing.JFrame {
         UnitForQuantity_produit.setBorder(null);
         UnitForQuantity_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         UnitForQuantity_produit.setOpaque(false);
-        jPanel3.add(UnitForQuantity_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 110, 32));
+        jPanel3.add(UnitForQuantity_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 120, 32));
 
         MinStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         MinStok_produit.setForeground(new java.awt.Color(204, 204, 204));
         MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MinStok_produit.setText("00");
         MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        MinStok_produit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                MinStok_produitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                MinStok_produitFocusLost(evt);
-            }
-        });
-        MinStok_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MinStok_produitActionPerformed(evt);
-            }
-        });
-        MinStok_produit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MinStok_produitKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                MinStok_produitKeyTyped(evt);
-            }
-        });
         jPanel3.add(MinStok_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 250, 40));
 
         Frn_ID21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -352,27 +269,6 @@ public class produitView extends javax.swing.JFrame {
         Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Prix_Achat_prd.setText("00");
         Prix_Achat_prd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Prix_Achat_prd.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Prix_Achat_prdFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Prix_Achat_prdFocusLost(evt);
-            }
-        });
-        Prix_Achat_prd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Prix_Achat_prdActionPerformed(evt);
-            }
-        });
-        Prix_Achat_prd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prix_Achat_prdKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Prix_Achat_prdKeyTyped(evt);
-            }
-        });
         jPanel3.add(Prix_Achat_prd, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 230, 140, 40));
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -395,44 +291,23 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID23.setText("فاتورات الشراء :");
-        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 90, 30));
+        jPanel3.add(Frn_ID23, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 90, 30));
 
         Frn_ID24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID24.setText("الموردين :");
-        jPanel3.add(Frn_ID24, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, 30));
+        jPanel3.add(Frn_ID24, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 90, 30));
 
         TxtPrdPrix9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix9.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdPrix9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         TxtPrdPrix9.setText("00");
         TxtPrdPrix9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TxtPrdPrix9.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix9FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtPrdPrix9FocusLost(evt);
-            }
-        });
-        TxtPrdPrix9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPrdPrix9ActionPerformed(evt);
-            }
-        });
-        TxtPrdPrix9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix9KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtPrdPrix9KeyTyped(evt);
-            }
-        });
-        jPanel3.add(TxtPrdPrix9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 120, 30));
+        jPanel3.add(TxtPrdPrix9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 120, 30));
 
         Forns_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Forns_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(Forns_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, 30));
+        jPanel3.add(Forns_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, 30));
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -443,6 +318,11 @@ public class produitView extends javax.swing.JFrame {
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 100, 40));
 
         jButton2.setText("jButton1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 90, 40));
 
         try {
@@ -454,7 +334,15 @@ public class produitView extends javax.swing.JFrame {
         jPanel3.add(DateDormatField, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 220, 30));
 
         remarque_produit.setColumns(20);
+        remarque_produit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         remarque_produit.setRows(5);
+        remarque_produit.setText("اكنب ملاحظاتك ....");
+        remarque_produit.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        remarque_produit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                remarque_produitFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(remarque_produit);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 270, -1));
@@ -468,27 +356,6 @@ public class produitView extends javax.swing.JFrame {
         Stock_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Stock_produit.setText("00");
         Stock_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Stock_produit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Stock_produitFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Stock_produitFocusLost(evt);
-            }
-        });
-        Stock_produit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Stock_produitActionPerformed(evt);
-            }
-        });
-        Stock_produit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Stock_produitKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Stock_produitKeyTyped(evt);
-            }
-        });
         jPanel3.add(Stock_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 50, 40));
 
         LocalStock.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -497,20 +364,56 @@ public class produitView extends javax.swing.JFrame {
 
         ImageProduit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ImageProduit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageProduit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/addimgPrd2.png"))); // NOI18N
         ImageProduit.setText("الصورة");
         ImageProduit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ImageProduit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(ImageProduit, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 90));
+        ImageProduit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ImageProduit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ImageProduit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ImageProduitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ImageProduitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ImageProduitMouseExited(evt);
+            }
+        });
+        jPanel3.add(ImageProduit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 120, 130));
 
+        jLabel2.setVisible(false);
+        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini_h.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Delete_Mini_h.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setOpaque(true);
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 20, 40, 40));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 15, 30, 30));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini_h.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 40, 40));
+        jPanel3.add(ImagLabelGetIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, 100, 100));
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -532,149 +435,13 @@ public class produitView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Prix_Achat_prdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Prix_Achat_prdFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Prix_Achat_prdFocusGained
-
-    private void Prix_Achat_prdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Prix_Achat_prdFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Prix_Achat_prdFocusLost
-
-    private void Prix_Achat_prdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prix_Achat_prdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Prix_Achat_prdActionPerformed
-
-    private void Prix_Achat_prdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prix_Achat_prdKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Prix_Achat_prdKeyPressed
-
-    private void Prix_Achat_prdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prix_Achat_prdKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Prix_Achat_prdKeyTyped
-
-    private void Desg_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Desg_produitFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitFocusGained
-
-    private void Desg_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Desg_produitFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitFocusLost
-
-    private void Desg_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Desg_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitActionPerformed
-
-    private void Desg_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Desg_produitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitKeyPressed
-
-    private void Desg_produitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Desg_produitKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitKeyReleased
-
-    private void Desg_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Desg_produitKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Desg_produitKeyTyped
-
-    private void NbrPcsInQty_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NbrPcsInQty_produitFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NbrPcsInQty_produitFocusGained
-
-    private void NbrPcsInQty_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NbrPcsInQty_produitFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NbrPcsInQty_produitFocusLost
-
-    private void NbrPcsInQty_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NbrPcsInQty_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NbrPcsInQty_produitActionPerformed
-
-    private void NbrPcsInQty_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NbrPcsInQty_produitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NbrPcsInQty_produitKeyPressed
-
-    private void NbrPcsInQty_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NbrPcsInQty_produitKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NbrPcsInQty_produitKeyTyped
-
-    private void prixVente_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prixVente_produitFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prixVente_produitFocusGained
-
-    private void prixVente_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_prixVente_produitFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prixVente_produitFocusLost
-
-    private void prixVente_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prixVente_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prixVente_produitActionPerformed
-
-    private void prixVente_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prixVente_produitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prixVente_produitKeyPressed
-
-    private void prixVente_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_prixVente_produitKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prixVente_produitKeyTyped
-
-    private void Unit_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Unit_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Unit_produitActionPerformed
-
-    private void MinStok_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MinStok_produitFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinStok_produitFocusGained
-
-    private void MinStok_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MinStok_produitFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinStok_produitFocusLost
-
-    private void MinStok_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinStok_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinStok_produitActionPerformed
-
-    private void MinStok_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MinStok_produitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinStok_produitKeyPressed
-
-    private void MinStok_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MinStok_produitKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MinStok_produitKeyTyped
-
-    private void TxtPrdPrix9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix9FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix9FocusGained
-
-    private void TxtPrdPrix9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrix9FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix9FocusLost
-
-    private void TxtPrdPrix9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPrdPrix9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix9ActionPerformed
-
-    private void TxtPrdPrix9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix9KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix9KeyPressed
-
-    private void TxtPrdPrix9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtPrdPrix9KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtPrdPrix9KeyTyped
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
-        
-//         public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, 
-//            int Qty_En_Stock,
-//            Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Id_Unit, int Id_Stocke,
-//            int Position_Produit, boolean Check_Produit, String Remarque_Produit) {
-        
-        
-        categorie=new Categorie();
-        //unit_GetData=new Unit();
-        String DesgProduit=Desg_produit.getText();// Des prod
+    public void CreateProduitByCompenent(){
+    
+    String DesgProduit=Desg_produit.getText();// Des prod
         String RefProduit=Ref_produit.getText(); // get Ref produit
-        
-        int id_categorie=categorie.GetIdCategorie("عام"); // id catgorie
+        String NamCatg=Catg_produit.getSelectedItem();
+        int id_categorie=categorieGetData.GetIdCategorie(NamCatg); // id catgorie
         int QuantityStock=Integer.valueOf(QuantityStok_produit.getText()); //QuantityInStock
         
         Date DateExpirProduit;
@@ -693,7 +460,7 @@ public class produitView extends javax.swing.JFrame {
         int Id_Unit;
         
         Id_Unit=unit_GetData.GetIdUnit((String)UnitForQuantity_produit.getSelectedItem());
-        String Stocke=Stock_produit.getText();   // Nom locale de stockage
+        String Stocke=(String) LocalStock.getSelectedItem();   // Nom locale de stockage
         int id_Stock;
         id_Stock = stockGetData.GetIdStockLocal(Stocke);
         
@@ -701,12 +468,12 @@ public class produitView extends javax.swing.JFrame {
         //Id_Stocke
       
         
-        int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock get From arrivageLine 
+        //int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock get From arrivageLine 
         
         String Postion_produit_in_stock=Postion_produit.getText();// position in stock position // 1 ere etage
         
         int MinStok_produit_in_stock=Integer.valueOf(MinStok_produit.getText());// get Min Stock for produit
-        double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText()); // last Date Bye for product 
+        //double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText()); // last Date Bye for product 
         
         boolean check; // check prod in viewForm 
         
@@ -714,24 +481,41 @@ public class produitView extends javax.swing.JFrame {
       check= ShowScreen_produit.isSelected();   //check in panel access product
         
       String RemarqueProduit=remarque_produit.getText(); //get Remarque about Product
-      prduitStock=new produit_stock(1, DesgProduit, RefProduit, id_categorie, 
-              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Achat,MinStok_produit_in_stock,Id_Unit,
-              id_Stock, Postion_produit_in_stock, check, RemarqueProduit);
-      
-        
-        
-        
-        
-        
-        
-        
+      FileInputStream in = null;
+        try {
+            in = new FileInputStream(ProduitPicture);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(produitView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
-       
-       
-       
+     produitstockSetDat=new produit_stock(1, DesgProduit, RefProduit, id_categorie, 
+              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Achat,MinStok_produit_in_stock,Id_Unit,
+              id_Stock, Postion_produit_in_stock, check, RemarqueProduit,in);
+                
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
         
-       
-      /*  
+//         public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, 
+//            int Qty_En_Stock,
+//            Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Id_Unit, int Id_Stocke,
+//            int Position_Produit, boolean Check_Produit, String Remarque_Produit) {
+        
+        
+        //categorie=new Categorie();
+        //unit_GetData=new Unit();
+        
+        CreateProduitByCompenent();// function to create New  Product with compenents 
+      produitstockSetDat.AddProduit();// function to add new data of product
+    /*  
         
         prduitStock=new produit_stock(1,DesgProduit , RefProduit, 
                 id_categorie, QtyStok, DateExpirProduit, Prix_Vente, LastDateAchat_prod, WIDTH, WIDTH, 
@@ -739,27 +523,26 @@ public class produitView extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void Stock_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stock_produitFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stock_produitFocusGained
-
-    private void Stock_produitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Stock_produitFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stock_produitFocusLost
-
-    private void Stock_produitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stock_produitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stock_produitActionPerformed
-
-    private void Stock_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stock_produitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stock_produitKeyPressed
-
-    private void Stock_produitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stock_produitKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Stock_produitKeyTyped
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        JOptionPane.showMessageDialog(null, "MousE Close Clicked");
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/imgs/addimgPrd2.png"));
+            ImageProduit.setIcon(imageIcon);
+            ImageProduit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+            ImageProduit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+            ImageProduit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+//        
+//        produitstockGetDat=new produit_stock();
+//        produitstockGetDat.InsertImage();
+//        ImageProduit.setIcon(produitstockGetDat.InsertImage());
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void remarque_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_remarque_produitFocusGained
+        remarque_produit.setText("");
+    }//GEN-LAST:event_remarque_produitFocusGained
+
+    private void ImageProduitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageProduitMouseClicked
+      
+       
        UIManager.put("FileChooser.cancelButtonText","الغاء");
        chooserfile=new JFileChooser();
        chooserfile.setApproveButtonText("حفظ");
@@ -768,24 +551,69 @@ public class produitView extends javax.swing.JFrame {
         
         if (valShoice==JFileChooser.APPROVE_OPTION) {
             //ProduitImageDesc=
-            ProduitImageDesc=chooserfile.getSelectedFile();  // select
+            ProduitPicture=chooserfile.getSelectedFile();  // select
             ImageProduit.setText("");
             
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(ProduitPicture.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));
             ImageProduit.setIcon(imageIcon);
             //ImageProduit.setIcon( new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));  // set Icon to produit label
         }else{
         
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(ProduitImageDesc.getAbsolutePath()).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_DEFAULT));
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/imgs/addimgPrd2.png"));
+                
             ImageProduit.setIcon(imageIcon);
+            ImageProduit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+            ImageProduit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+            ImageProduit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         }    
-        
-      
-//        
-//        produitstockGetDat=new produit_stock();
-//        produitstockGetDat.InsertImage();
-//        ImageProduit.setIcon(produitstockGetDat.InsertImage());
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_ImageProduitMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void ImageProduitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageProduitMouseEntered
+        jLabel2.setVisible(true);
+    }//GEN-LAST:event_ImageProduitMouseEntered
+
+    private void ImageProduitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ImageProduitMouseExited
+        jLabel2.setVisible(false);
+    }//GEN-LAST:event_ImageProduitMouseExited
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        produitstockGetDat.DisplayImg(ImagLabelGetIt);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            produitstockGetDat.RetreiveProduct(4);
+            
+            Ref_produit.setText(produitstockGetDat.getReference_Pro());
+            Desg_produit.setText(produitstockGetDat.getDesignation());
+            
+            Catg_produit.select(categorieGetData.GetNameCategorieById(produitstockGetDat.getID_Categorie()));
+            DateDormatField.setText(new SimpleDateFormat("dd/MM/yyyy").format(produitstockGetDat.getDate_Expiration()));
+            Prix_Achat_prd.setText(String.valueOf( produitstockGetDat.getPrix_Achat()) );
+            prixVente_produit.setText(String.valueOf(produitstockGetDat.getPrix_Vente()));
+            LocalStock.setSelectedItem(stockGetData.GetLocalStockById(produitstockGetDat.getId_Stocke()));   //GetLocalStockById
+            QuantityStok_produit.setText(String.valueOf(produitstockGetDat.getQty_En_Stock()));
+            NbrPcsInQty_produit.setText("20");
+            Postion_produit.setText(produitstockGetDat.getPosition_Produit());
+            MinStok_produit.setText(String.valueOf(produitstockGetDat.getMin_Stock()));
+            ShowScreen_produit.setSelected(produitstockGetDat.isCheck_Produit());
+            remarque_produit.setText(produitstockGetDat.getRemarque_Produit());
+            InputStream StreamImg=produitstockGetDat.getProductPict();
+            int SizeOfByte=StreamImg.available();
+            byte [] arrayImgByte=new byte[SizeOfByte];
+            StreamImg.read(arrayImgByte);
+            ImageProduit.setText("");
+            ImageProduit.setIcon(new ImageIcon(new ImageIcon(arrayImgByte).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_SMOOTH) ));
+            //ImageProduit.setIcon(new ImageIcon(new ImageIcon(arrayImgByte).getImage().getScaledInstance(WIDTH, HEIGHT, WIDTH)));
+        } catch (IOException ex) {
+            System.out.println(ex.toString());
+        }
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     public void FillDataStockLocal(){
         LocalStock.removeAllItems();
@@ -811,7 +639,20 @@ public class produitView extends javax.swing.JFrame {
         itr=null;
         next=null;
     }
+    /***************************************/
+    public void FillDataCategorie(){
+    Catg_produit.removeAll();
+    categorieGetData.GetListOfCategories(); // fill arrayList for Categories
+    Iterator<Categorie> itr=categorieGetData.getListCategorie().iterator(); // get ArrayList.To Iterator()
+    Categorie next;
     
+    while (itr.hasNext()) {
+            next = itr.next();
+            Catg_produit.addItem(next.getName_Ctg());
+        }
+    }
+    /***************************************/   
+       
     
     
     /**
@@ -824,6 +665,8 @@ public class produitView extends javax.swing.JFrame {
             public void run() {
                 prdView.FillDataStockLocal();
                 prdView.FillDataUnits();
+                prdView.FillDataCategorie();
+                
                 prdView.setVisible(true);
                 
             }
@@ -851,6 +694,7 @@ public class produitView extends javax.swing.JFrame {
     private javax.swing.JLabel Frn_ID5;
     private javax.swing.JLabel Frn_ID6;
     private javax.swing.JLabel Frn_ID9;
+    private javax.swing.JLabel ImagLabelGetIt;
     private javax.swing.JLabel ImageProduit;
     private javax.swing.JTextField LastDateAchat_produit;
     private javax.swing.JComboBox<String> LocalStock;
@@ -869,7 +713,9 @@ public class produitView extends javax.swing.JFrame {
     private javax.swing.JLabel View_prices;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -884,13 +730,13 @@ public class produitView extends javax.swing.JFrame {
      * @return the prduitStock
      */
     public produit_stock getPrduitStock() {
-        return prduitStock;
+        return produitstockSetDat;
     }
 
     /**
      * @param prduitStock the prduitStock to set
      */
     public void setPrduitStock(produit_stock prduitStock) {
-        this.prduitStock = prduitStock;
+        this.produitstockSetDat = prduitStock;
     }
 }
