@@ -18,8 +18,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -79,7 +77,6 @@ public class produitView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         View_prices = new javax.swing.JLabel();
-        Frn_ID20 = new javax.swing.JLabel();
         ShowScreen_produit = new javax.swing.JCheckBox();
         UnitForQuantity_produit = new javax.swing.JComboBox<>();
         MinStok_produit = new javax.swing.JTextField();
@@ -108,6 +105,7 @@ public class produitView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         ImagLabelGetIt = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        buttonView1 = new matjarokom.ui.view.ButtonView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,10 +120,10 @@ public class produitView extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 170, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 170, 140));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 170));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,25 +131,25 @@ public class produitView extends javax.swing.JFrame {
         Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID15.setText("الباركـود :");
-        jPanel3.add(Frn_ID15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, 60, 30));
+        jPanel3.add(Frn_ID15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, 60, 30));
 
         Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID5.setText(" المنتـج :");
-        jPanel3.add(Frn_ID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 50, 60, 40));
+        jPanel3.add(Frn_ID5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 70, 60, 40));
 
         Desg_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Desg_produit.setForeground(new java.awt.Color(204, 204, 204));
         Desg_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Desg_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(Desg_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 218, 30));
+        jPanel3.add(Desg_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 80, 218, 30));
 
         NbrPcsInQty_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         NbrPcsInQty_produit.setForeground(new java.awt.Color(204, 204, 204));
         NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NbrPcsInQty_produit.setText("00.00");
         NbrPcsInQty_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(NbrPcsInQty_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 250, 32));
+        jPanel3.add(NbrPcsInQty_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 110, 32));
 
         Nbr_Pcs_label1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Nbr_Pcs_label1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -197,7 +195,7 @@ public class produitView extends javax.swing.JFrame {
 
         LastDateAchat_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LastDateAchat_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(LastDateAchat_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, 30));
+        jPanel3.add(LastDateAchat_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 110, 30));
 
         Frn_ID19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -229,13 +227,10 @@ public class produitView extends javax.swing.JFrame {
         View_prices.setText("الاسعار القديمة");
         jPanel3.add(View_prices, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 30, 30));
 
-        Frn_ID20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Frn_ID20.setText("ملاحظات :");
-        jPanel3.add(Frn_ID20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 50, 30));
-
-        ShowScreen_produit.setText("اظهار المنتج في شاشة المنتجات :");
-        jPanel3.add(ShowScreen_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 200, -1));
+        ShowScreen_produit.setText("اظهار المنتج في شاشة المنتجات");
+        ShowScreen_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ShowScreen_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel3.add(ShowScreen_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 180, -1));
 
         UnitForQuantity_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         UnitForQuantity_produit.setBorder(null);
@@ -248,7 +243,7 @@ public class produitView extends javax.swing.JFrame {
         MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MinStok_produit.setText("00");
         MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(MinStok_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 250, 40));
+        jPanel3.add(MinStok_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 110, 40));
 
         Frn_ID21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Frn_ID21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -278,7 +273,7 @@ public class produitView extends javax.swing.JFrame {
 
         Ref_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Ref_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(Ref_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 220, 30));
+        jPanel3.add(Ref_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 220, 30));
 
         CheckDateExp_produit.setText("تاريخ الصلاحية :");
         jPanel3.add(CheckDateExp_produit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 150, -1, -1));
@@ -336,7 +331,9 @@ public class produitView extends javax.swing.JFrame {
         remarque_produit.setColumns(20);
         remarque_produit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         remarque_produit.setRows(5);
-        remarque_produit.setText("اكنب ملاحظاتك ....");
+        remarque_produit.setText("\n");
+        remarque_produit.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "الملاحظة", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.ABOVE_TOP));
+        remarque_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         remarque_produit.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         remarque_produit.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -345,7 +342,7 @@ public class produitView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(remarque_produit);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 270, -1));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 270, -1));
 
         BrowseCatg.setBackground(new java.awt.Color(255, 255, 255));
         BrowseCatg.setText("+");
@@ -413,7 +410,14 @@ public class produitView extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, 30));
+
+        buttonView1.setBackground(new java.awt.Color(51, 51, 0));
+        buttonView1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView1.setText("Save");
+        buttonView1.setBackgroundPainted(true);
+        buttonView1.setRounded(true);
+        jPanel3.add(buttonView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 420, 90, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -684,7 +688,6 @@ public class produitView extends javax.swing.JFrame {
     private javax.swing.JLabel Frn_ID11;
     private javax.swing.JLabel Frn_ID15;
     private javax.swing.JLabel Frn_ID19;
-    private javax.swing.JLabel Frn_ID20;
     private javax.swing.JLabel Frn_ID21;
     private javax.swing.JLabel Frn_ID22;
     private javax.swing.JLabel Frn_ID23;
@@ -711,6 +714,7 @@ public class produitView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> UnitForQuantity_produit;
     private javax.swing.JComboBox<String> Unit_produit;
     private javax.swing.JLabel View_prices;
+    private matjarokom.ui.view.ButtonView buttonView1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
