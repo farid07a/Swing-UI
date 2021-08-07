@@ -42,9 +42,6 @@ public class produitView extends javax.swing.JFrame {
     Categorie categorieGetData=new Categorie(),categorieSetData=null;
     public produitView() {
         initComponents();
-        
-        
-        
     }
 
     /**
@@ -594,7 +591,6 @@ public class produitView extends javax.swing.JFrame {
             
             Ref_produit.setText(produitstockGetDat.getReference_Pro());
             Desg_produit.setText(produitstockGetDat.getDesignation());
-            
             Catg_produit.select(categorieGetData.GetNameCategorieById(produitstockGetDat.getID_Categorie()));
             DateDormatField.setText(new SimpleDateFormat("dd/MM/yyyy").format(produitstockGetDat.getDate_Expiration()));
             Prix_Achat_prd.setText(String.valueOf( produitstockGetDat.getPrix_Achat()) );
@@ -611,7 +607,8 @@ public class produitView extends javax.swing.JFrame {
             byte [] arrayImgByte=new byte[SizeOfByte];
             StreamImg.read(arrayImgByte);
             ImageProduit.setText("");
-            ImageProduit.setIcon(new ImageIcon(new ImageIcon(arrayImgByte).getImage().getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_SMOOTH) ));
+            ImageProduit.setIcon(new ImageIcon(new ImageIcon(arrayImgByte).getImage().
+                    getScaledInstance(ImageProduit.getWidth(), ImageProduit.getHeight(), Image.SCALE_SMOOTH) ));
             //ImageProduit.setIcon(new ImageIcon(new ImageIcon(arrayImgByte).getImage().getScaledInstance(WIDTH, HEIGHT, WIDTH)));
         } catch (IOException ex) {
             System.out.println(ex.toString());
@@ -665,15 +662,12 @@ public class produitView extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         produitView prdView=new produitView();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                prdView.FillDataStockLocal();
-                prdView.FillDataUnits();
-                prdView.FillDataCategorie();
-                
-                prdView.setVisible(true);
-                
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            prdView.FillDataStockLocal();
+            prdView.FillDataUnits();
+            prdView.FillDataCategorie();
+            
+            prdView.setVisible(true);
         });
     }
 

@@ -22,6 +22,8 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        
+        
     }
 
     /**
@@ -115,11 +117,14 @@ public class Home extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -1022,23 +1027,21 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setOpaque(false);
         jMenuBar1.setPreferredSize(new java.awt.Dimension(56, 40));
 
+        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
         jMenu2.setBorder(null);
         jMenu2.setText("الشـــركة");
         jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenu2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenuItem1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("العنوان");
         jMenuItem2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1051,8 +1054,9 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
         jMenu3.setBorder(null);
-        jMenu3.setText("بيـــانات أســاسيـة");
+        jMenu3.setText("بيـــانات الاصناف");
         jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1066,15 +1070,63 @@ public class Home extends javax.swing.JFrame {
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem4.setText("اضافة منتج");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem5.setText("اضافة تصنيف");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
+
         jMenuBar1.add(jMenu3);
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setBorder(null);
         jMenu1.setText("عمـلاء و مورديـن");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem6.setText("اضافة مورد");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem7.setText("اضافة عميل");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
         jMenuBar1.add(jMenu1);
 
+        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
         jMenu4.setBorder(null);
         jMenu4.setText("المبيعـات");
         jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1082,6 +1134,7 @@ public class Home extends javax.swing.JFrame {
         jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setBackground(new java.awt.Color(255, 255, 255));
         jMenu5.setBorder(null);
         jMenu5.setText("المشتريــات");
         jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1089,6 +1142,7 @@ public class Home extends javax.swing.JFrame {
         jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setBackground(new java.awt.Color(255, 255, 255));
         jMenu6.setBorder(null);
         jMenu6.setText("القبــض و الصرف");
         jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1096,6 +1150,7 @@ public class Home extends javax.swing.JFrame {
         jMenu6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setBackground(new java.awt.Color(255, 255, 255));
         jMenu7.setBorder(null);
         jMenu7.setText("الحســـابات");
         jMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1103,6 +1158,7 @@ public class Home extends javax.swing.JFrame {
         jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu7);
 
+        jMenu8.setBackground(new java.awt.Color(255, 255, 255));
         jMenu8.setBorder(null);
         jMenu8.setText("اعدادات");
         jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1110,6 +1166,7 @@ public class Home extends javax.swing.JFrame {
         jMenu8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu8);
 
+        jMenu9.setBackground(new java.awt.Color(255, 255, 255));
         jMenu9.setBorder(null);
         jMenu9.setText("البحـث");
         jMenu9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1117,6 +1174,7 @@ public class Home extends javax.swing.JFrame {
         jMenu9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu9);
 
+        jMenu10.setBackground(new java.awt.Color(255, 255, 255));
         jMenu10.setBorder(null);
         jMenu10.setText("الخدمات");
         jMenu10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1124,18 +1182,24 @@ public class Home extends javax.swing.JFrame {
         jMenu10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuBar1.add(jMenu10);
 
+        jMenu11.setBackground(new java.awt.Color(255, 255, 255));
         jMenu11.setBorder(null);
         jMenu11.setText("مسـاعدة");
         jMenu11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu11.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenu11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jMenuBar1.add(jMenu11);
 
+        jMenu12.setBackground(new java.awt.Color(255, 255, 255));
         jMenu12.setBorder(null);
         jMenu12.setText("خروج");
         jMenu12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu12.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenu12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jMenuBar1.add(jMenu12);
 
         jMenuBar1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -1146,15 +1210,15 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        JOptionPane.showMessageDialog(null, "Test MenuItem");
-        jPanel8.setVisible(true);
-        jPanel2.setVisible(false);
+//        JOptionPane.showMessageDialog(null, "Test MenuItem");
+       // jPanel8.setVisible(true);
+        //jPanel2.setVisible(false);
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenu3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu3StateChanged
-          JOptionPane.showMessageDialog(null, "Test MenuItem");
-        jPanel8.setVisible(true);
-        jPanel2.setVisible(false);
+        //  JOptionPane.showMessageDialog(null, "Test MenuItem");
+        //jPanel8.setVisible(true);
+        //jPanel2.setVisible(false);
     }//GEN-LAST:event_jMenu3StateChanged
 
     private void TxtPrdPrixFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdPrixFocusGained
@@ -1416,6 +1480,28 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrdPrix5KeyTyped
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+          FormAddProduct fradd=new FormAddProduct();
+          fradd.FillDataStockLocal();
+          fradd.FillDataUnits();
+          fradd.FillDataCategorie();
+          fradd.FillTableOfProductList();
+          fradd.setVisible(true);
+          fradd.setExtendedState(FormAddProduct.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1445,10 +1531,11 @@ public class Home extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            Home home;
+            home = new Home();
+            home.setVisible(true);
+            home.setExtendedState(Home.MAXIMIZED_BOTH);
         });
     }
 
@@ -1524,9 +1611,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
