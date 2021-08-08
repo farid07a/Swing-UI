@@ -60,7 +60,8 @@ public class KeyTester {
         pane.add(jbutton2, BorderLayout.CENTER);
 
         pane.add(jbutton3, BorderLayout.SOUTH);
-
+        
+        /*********************************************************/
         KeyStroke keStroke = KeyStroke.getKeyStroke("typed A");
 
         Action act = new MyActionListener("Action occured!");
@@ -72,6 +73,7 @@ public class KeyTester {
         ActionMap actionMap = jbutton1.getActionMap();
 
         actionMap.put(aKey, act);
+        /**********************************************************/
 
         keStroke = KeyStroke.getKeyStroke("ctrl Z");  // to get a KeyStroke object that represent the keystroke you dictated.
 
@@ -84,7 +86,8 @@ public class KeyTester {
         actionMap = jbutton2.getActionMap();
 
         actionMap.put(aKey, act);
-
+        /*********************************************************/
+        
         keStroke = KeyStroke.getKeyStroke("shift released L");
 
         act = new MyActionListener("What Happened?");
@@ -96,7 +99,8 @@ public class KeyTester {
         actionMap = jbutton3.getActionMap();
 
         actionMap.put(aKey, act);
-
+        /*********************************************************/
+        
         jFrame.setSize(200, 200);
 
         jFrame.show();
