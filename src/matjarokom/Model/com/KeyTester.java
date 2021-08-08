@@ -73,7 +73,7 @@ public class KeyTester {
 
         actionMap.put(aKey, act);
 
-        keStroke = KeyStroke.getKeyStroke("ctrl Z");
+        keStroke = KeyStroke.getKeyStroke("ctrl Z");  // to get a KeyStroke object that represent the keystroke you dictated.
 
         act = new MyActionListener("No Action");
 
