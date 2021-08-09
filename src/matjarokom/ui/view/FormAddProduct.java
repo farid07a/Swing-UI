@@ -108,6 +108,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         buttonView3 = new matjarokom.ui.view.ButtonView();
         buttonView4 = new matjarokom.ui.view.ButtonView();
         TopPanel = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
         BottomPanel = new javax.swing.JPanel();
         SidePanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -638,15 +639,17 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         TopPanel.setPreferredSize(new java.awt.Dimension(1283, 40));
 
+        jToolBar1.setRollover(true);
+
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1338, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1338, Short.MAX_VALUE)
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         getContentPane().add(TopPanel, java.awt.BorderLayout.PAGE_START);
@@ -1147,6 +1150,7 @@ public class FormAddProduct extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField prixVente_produit;
     private javax.swing.JTextArea remarque_produit;
     // End of variables declaration//GEN-END:variables
