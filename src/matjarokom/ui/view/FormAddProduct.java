@@ -103,14 +103,14 @@ public class FormAddProduct extends javax.swing.JFrame {
         ProductsTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        buttonView1 = new matjarokom.ui.view.ButtonView();
-        buttonView2 = new matjarokom.ui.view.ButtonView();
-        buttonView3 = new matjarokom.ui.view.ButtonView();
-        buttonView4 = new matjarokom.ui.view.ButtonView();
         TopPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         BottomPanel = new javax.swing.JPanel();
         SidePanel = new javax.swing.JPanel();
+        buttonView2 = new matjarokom.ui.view.ButtonView();
+        buttonView1 = new matjarokom.ui.view.ButtonView();
+        buttonView3 = new matjarokom.ui.view.ButtonView();
+        buttonView4 = new matjarokom.ui.view.ButtonView();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -545,51 +545,18 @@ public class FormAddProduct extends javax.swing.JFrame {
             }
         });
 
-        buttonView1.setBackground(new java.awt.Color(102, 0, 0));
-        buttonView1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView1.setText("buttonView1");
-        buttonView1.setBackgroundPainted(true);
-        buttonView1.setRounded(true);
-
-        buttonView2.setBackground(new java.awt.Color(102, 0, 0));
-        buttonView2.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView2.setText("buttonView1");
-        buttonView2.setBackgroundPainted(true);
-        buttonView2.setRounded(true);
-
-        buttonView3.setBackground(new java.awt.Color(102, 0, 0));
-        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView3.setText("buttonView1");
-        buttonView3.setBackgroundPainted(true);
-        buttonView3.setRounded(true);
-
-        buttonView4.setBackground(new java.awt.Color(102, 0, 0));
-        buttonView4.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView4.setText("buttonView1");
-        buttonView4.setBackgroundPainted(true);
-        buttonView4.setRounded(true);
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jButton1)
-                .addGap(279, 279, 279)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(228, 228, 228)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,12 +567,6 @@ public class FormAddProduct extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -620,7 +581,8 @@ public class FormAddProduct extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CenterPanelLayout.setVerticalGroup(
             CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,7 +607,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1338, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1339, Short.MAX_VALUE)
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -660,7 +622,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         BottomPanel.setLayout(BottomPanelLayout);
         BottomPanelLayout.setHorizontalGroup(
             BottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1338, Short.MAX_VALUE)
+            .addGap(0, 1339, Short.MAX_VALUE)
         );
         BottomPanelLayout.setVerticalGroup(
             BottomPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -669,15 +631,63 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         getContentPane().add(BottomPanel, java.awt.BorderLayout.PAGE_END);
 
+        SidePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        buttonView2.setBackground(new java.awt.Color(102, 0, 0));
+        buttonView2.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView2.setText("منتج جديد");
+        buttonView2.setBackgroundPainted(true);
+        buttonView2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView2.setRounded(true);
+
+        buttonView1.setBackground(new java.awt.Color(102, 0, 0));
+        buttonView1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView1.setText("تعديل");
+        buttonView1.setBackgroundPainted(true);
+        buttonView1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView1.setRounded(true);
+
+        buttonView3.setBackground(new java.awt.Color(102, 0, 0));
+        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView3.setText("حذف");
+        buttonView3.setBackgroundPainted(true);
+        buttonView3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView3.setRounded(true);
+
+        buttonView4.setBackground(new java.awt.Color(102, 0, 0));
+        buttonView4.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView4.setText("اضافة سريعة");
+        buttonView4.setBackgroundPainted(true);
+        buttonView4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView4.setRounded(true);
+
         javax.swing.GroupLayout SidePanelLayout = new javax.swing.GroupLayout(SidePanel);
         SidePanel.setLayout(SidePanelLayout);
         SidePanelLayout.setHorizontalGroup(
             SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(SidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonView1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonView3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonView4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(SidePanelLayout.createSequentialGroup()
+                        .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         SidePanelLayout.setVerticalGroup(
             SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
+            .addGroup(SidePanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         getContentPane().add(SidePanel, java.awt.BorderLayout.LINE_END);

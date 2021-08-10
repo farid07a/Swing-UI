@@ -38,46 +38,54 @@ public class testKeyStoke extends javax.swing.JFrame {
     
     public testKeyStoke() {
         initComponents();
+        
     String ACTION_KEY = "theAction";
-    KeyStroke space = KeyStroke.getKeyStroke(' ');
-    InputMap inputMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+    KeyStroke space = KeyStroke.getKeyStroke("ctrl Z");
+    InputMap inputMap = jButton1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
     inputMap.put(space, ACTION_KEY);
     ActionMap actionMap = jButton1.getActionMap();
+     //   System.out.println("The Name :"+jButton1.getAction().getValue(Action.NAME));
+        System.out.println("The Name :"+jButton1.getAction());
     actionMap.put(ACTION_KEY, jButton1.getAction());
-    jButton1.setActionMap(actionMap);
+    
+    //jButton1.setActionMap(actionMap);
         
     /******************Btn 2*****************************/
 
-    ACTION_KEY = "testAct";
-    space = KeyStroke.getKeyStroke("shift released L");
-    inputMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-    inputMap.put(space, ACTION_KEY);
-    actionMap = jButton2.getActionMap();
-    actionMap.put(ACTION_KEY, jButton2.getAction());
-    jButton2.setActionMap(actionMap);
+//    ACTION_KEY = "testAct";
+//    space = KeyStroke.getKeyStroke("shift released L");
+//    inputMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//    inputMap.put(space, ACTION_KEY);
+//    actionMap = jButton2.getActionMap();
+//    actionMap.put(ACTION_KEY, jButton2.getAction());
+//    jButton2.setActionMap(actionMap);
+    
+    
     /**********************Btn 3*************************/
     
-    ACTION_KEY = "Action";
-    space = KeyStroke.getKeyStroke("ctrl Z");
-    inputMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-    inputMap.put(space, ACTION_KEY);
-    actionMap = jButton3.getActionMap();
-    actionMap.put(ACTION_KEY, jButton3.getAction());
-    jButton3.setActionMap(actionMap);
+//    ACTION_KEY = "Action";
+//    space = KeyStroke.getKeyStroke("ctrl Z");
+//    inputMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//    inputMap.put(space, ACTION_KEY);
+//    actionMap = jButton3.getActionMap();
+//    actionMap.put(ACTION_KEY, jButton3.getAction());
+//    jButton3.setActionMap(actionMap);
         
     /*****************************************************/
-     KeyStroke keStroke = KeyStroke.getKeyStroke("ctrl R");  // to get a KeyStroke object that represent the keystroke you dictated.
+    
+//     KeyStroke keStroke = KeyStroke.getKeyStroke("ctrl R");  // to get a KeyStroke object that represent the keystroke you dictated.
+//
+//        //act = new KeyTester.MyActionListener("No Action");
+//        String aKey="Action";
+//        InputMap iMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//
+//        iMap.put(keStroke, aKey);
+//
+//        actionMap = jPanel1.getActionMap();
+//
+//        actionMap.put(aKey, jButton4.getAction());
+//        jButton4.setActionMap(actionMap);
 
-        //act = new KeyTester.MyActionListener("No Action");
-        String aKey="Action";
-        InputMap iMap = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-
-        iMap.put(keStroke, aKey);
-
-        actionMap = jPanel1.getActionMap();
-
-        actionMap.put(aKey, jButton4.getAction());
-        jButton4.setActionMap(actionMap);
     /****************************************************/
         
         
@@ -145,47 +153,36 @@ public class testKeyStoke extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(303, 303, 303)
-                            .addComponent(jButton4))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(87, 87, 87)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton2)
-                                    .addGap(236, 236, 236))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addGap(43, 43, 43)))))
-                    .addContainerGap()))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(124, 124, 124))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButton2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                    .addComponent(jButton3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addGap(51, 51, 51)
-                    .addComponent(jButton4)
-                    .addContainerGap()))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addGap(65, 65, 65)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(56, 56, 56)
+                .addComponent(jButton4)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 118, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -5,13 +5,15 @@
  */
 package testSwing;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import matjarokom.Model.com.KeyTester;
 
 /**
  *
@@ -25,21 +27,72 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
  //       KeyStroke keStroke = KeyStroke.getKeyStroke("typed A");
+        String aKey="Action";
+       KeyStroke keStroke = KeyStroke.getKeyStroke("ctrl Z");  // to get a KeyStroke object that represent the keystroke you dictated.
 
-        String aKey = "Action";
+        AbstractAction act;
+        act = new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                
+                //JOptionPane.showMessageDialog(null, "Test Inner class");
+                if (e.getSource()==Btn1) {
+                    JOptionPane.showMessageDialog(null, e.getActionCommand());
+                    
+                    
+                }
+                 
+            }
+        };
 
-        
-        KeyStroke keStroke = KeyStroke.getKeyStroke(' ');  // to get a KeyStroke object that represent the keystroke you dictated.
-
-        Action act = jButton2.getAction();
-
-        InputMap iMap = jButton2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-
+        InputMap iMap = Btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        iMap = Btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        iMap = Btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        iMap = Btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        
         iMap.put(keStroke, aKey);
 
-        ActionMap actionMap = jButton2.getActionMap();
+        ActionMap actionMap = Btn1.getActionMap();
 
-        actionMap.put(aKey, act);
+        
+        ActionListener [] arr = Btn1.getActionListeners();
+        
+        System.out.println("first array :"+arr.length);
+        
+        //actionMap.put(aKey, act); 
+        actionMap.put(aKey,act ); 
+        System.out.println("The Name :"+Btn1.getAction());
+        /***********************************************************************/
+        
+        Action Ac1=new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource()==jPanel1) {
+                    
+                    JOptionPane.showMessageDialog(null, "test Jpanel"+e.getModifiers());
+                    
+                }
+            }
+        };
+        aKey="action";
+        KeyStroke keStrokepan = KeyStroke.getKeyStroke("ctrl R");
+        InputMap iMapPan = jPanel1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        
+        iMapPan.put(keStrokepan, aKey);
+         
+        ActionMap actionMappan = jPanel1.getActionMap();
+
+        
+        //ActionListener [] arr1 = jPanel1.getActionListeners();
+        
+       // System.out.println("first array :"+arr.length);
+        
+        //actionMap.put(aKey, act); 
+        actionMappan.put(aKey,Ac1); 
+    
+       
     
     }
 
@@ -52,17 +105,24 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        Btn1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        Btn1.setText("jButton1");
+        Btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn1ActionPerformed(evt);
             }
         });
 
@@ -73,71 +133,59 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("jButton4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(53, 53, 53)
+                .addComponent(Btn1)
+                .addGap(33, 33, 33)
+                .addComponent(jButton2))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Btn1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(70, 70, 70)
-                .addComponent(jButton3)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(42, 42, 42)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       JOptionPane.showMessageDialog(null, "Btn 4");
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Btn 1");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(null, "Btn 3");
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn1ActionPerformed
+        JOptionPane.showMessageDialog(null, "test getAction()");
+    }//GEN-LAST:event_Btn1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(null, "Btn 2");
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -176,9 +224,9 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Btn1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
