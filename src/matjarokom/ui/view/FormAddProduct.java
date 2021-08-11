@@ -141,6 +141,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Ref_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Ref_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Ref_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -153,7 +154,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         Desg_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Desg_produit.setForeground(new java.awt.Color(204, 204, 204));
-        Desg_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Desg_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Desg_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         QuantityStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -178,7 +179,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         NbrPcsInQty_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         NbrPcsInQty_produit.setForeground(new java.awt.Color(204, 204, 204));
-        NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         NbrPcsInQty_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Frn_ID6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -206,7 +207,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         Prix_Achat_prd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Prix_Achat_prd.setForeground(new java.awt.Color(204, 204, 204));
-        Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Prix_Achat_prd.setText("00");
         Prix_Achat_prd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -220,7 +221,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         prixVente_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         prixVente_produit.setForeground(new java.awt.Color(204, 204, 204));
-        prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         prixVente_produit.setText("00");
         prixVente_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -331,6 +332,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         Frn_ID24.setText("الموردين :");
 
         Forns_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Forns_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Forns_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         TxtPrdPrix9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -349,7 +351,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         MinStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         MinStok_produit.setForeground(new java.awt.Color(204, 204, 204));
-        MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         MinStok_produit.setText("00");
         MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -364,6 +366,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         ShowScreen_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         Postion_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Postion_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Postion_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -635,9 +638,10 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         buttonView2.setBackground(new java.awt.Color(102, 0, 0));
         buttonView2.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView2.setText("منتج جديد");
+        buttonView2.setText("<html><b>منتج جديد</b><br> Ctrl N </html> ");
         buttonView2.setBackgroundPainted(true);
         buttonView2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonView2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonView2.setRounded(true);
 
         buttonView1.setBackground(new java.awt.Color(102, 0, 0));
@@ -929,13 +933,11 @@ public class FormAddProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_ImageProduitMouseExited
 
     private void jMenu3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu3StateChanged
-        JOptionPane.showMessageDialog(null, "Test MenuItem");
-     //   jPanel8.setVisible(true);
-     //   jPanel2.setVisible(false);
+
     }//GEN-LAST:event_jMenu3StateChanged
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        JOptionPane.showMessageDialog(null, "Test MenuItem");
+        //JOptionPane.showMessageDialog(null, "Test MenuItem");
      //   jPanel8.setVisible(true);
        // jPanel2.setVisible(false);
     }//GEN-LAST:event_jMenu3ActionPerformed
