@@ -6,9 +6,19 @@
 package matjarokom.ui.view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Font;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.MenuElement;
+import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicMenuBarUI;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -22,7 +32,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        
+        customizeMenuBar(jMenuBar1);
         
     }
 
@@ -1027,14 +1037,15 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel8, java.awt.BorderLayout.CENTER);
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuBar1.setOpaque(false);
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(56, 40));
+        jMenuBar1.setBackground(new java.awt.Color(0, 51, 102));
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(56, 50));
 
         jMenu2.setBackground(new java.awt.Color(255, 255, 255));
         jMenu2.setBorder(null);
@@ -1073,7 +1084,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenuItem4.setText("اضافة منتج");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1084,7 +1095,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jMenuItem5.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jMenuItem5.setText("اضافة تصنيف");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1278,7 +1289,52 @@ public class Home extends javax.swing.JFrame {
         }
         System.out.println("  The TestIs Designation de produit AND Color is Black ");
     }//GEN-LAST:event_TxtPrdDesgFocusGained
+    
+    private void customizeMenuBar(JMenuBar menuBar) {
 
+    menuBar.setUI(new BasicMenuBarUI() {
+
+        @Override
+        public void paint(Graphics g, JComponent c) {
+            g.setColor(Color.black);
+            g.fillRect(0, 0, c.getWidth(), c.getHeight());
+        }
+
+    });
+
+    MenuElement[] menus = menuBar.getSubElements();
+
+    for (MenuElement menuElement : menus) {
+
+        JMenu menu = (JMenu) menuElement.getComponent();
+        changeComponentColors(menu);
+        menu.setOpaque(true);
+
+        MenuElement[] menuElements = menu.getSubElements();
+
+        for (MenuElement popupMenuElement : menuElements) {
+
+            JPopupMenu popupMenu = (JPopupMenu) popupMenuElement.getComponent();
+            popupMenu.setBorder(null);
+
+            MenuElement[] menuItens = popupMenuElement.getSubElements();
+
+            for (MenuElement menuItemElement : menuItens) {
+
+                JMenuItem menuItem = (JMenuItem) menuItemElement.getComponent();
+                changeComponentColors(menuItem);
+                menuItem.setOpaque(true);
+
+            }
+        }
+    }
+}
+
+private void changeComponentColors(Component comp) {
+    comp.setBackground(Color.black);
+    comp.setForeground(Color.white);
+}
+    
     private void TxtPrdDesgFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPrdDesgFocusLost
         // TODO add your handling code here:
         // enq=null;
@@ -1498,6 +1554,7 @@ public class Home extends javax.swing.JFrame {
           fradd.FillDataUnits();
           fradd.FillDataCategorie();
           fradd.FillTableOfProductList();
+          fradd.CreateShortKey();
           fradd.setVisible(true);
           fradd.setExtendedState(FormAddProduct.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
