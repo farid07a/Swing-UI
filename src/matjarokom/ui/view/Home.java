@@ -1555,6 +1555,7 @@ private void changeComponentColors(Component comp) {
           fradd.FillDataCategorie();
           fradd.FillTableOfProductList();
           fradd.CreateShortKey();
+          fradd.CustomizeTableProduct();
           fradd.setVisible(true);
           fradd.setExtendedState(FormAddProduct.MAXIMIZED_BOTH);
     }//GEN-LAST:event_jMenuItem4ActionPerformed

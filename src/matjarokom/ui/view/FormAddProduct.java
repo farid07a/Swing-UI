@@ -7,6 +7,8 @@ package matjarokom.ui.view;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -27,10 +29,13 @@ import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import matjarokom.Control.com.RoundedLineBorder;
 import matjarokom.Model.com.Categorie;
 import matjarokom.Model.com.Stocke;
@@ -122,10 +127,10 @@ public class FormAddProduct extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         ImageProduit = new javax.swing.JLabel();
-        buttonView5 = new matjarokom.ui.view.ButtonView();
+        BtnInerSavUpd = new matjarokom.ui.view.ButtonView();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        check_update_add = new javax.swing.JCheckBox();
         SidePanel = new javax.swing.JPanel();
         BtnNewPrduct = new matjarokom.ui.view.ButtonView();
         buttonView1 = new matjarokom.ui.view.ButtonView();
@@ -162,7 +167,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         jPanel2.setBorder(roundedLineBorder);
 
         Ref_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Ref_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Ref_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Ref_produit.setBorder(roundedLineBorder);
 
         Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -175,7 +180,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         Desg_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Desg_produit.setForeground(new java.awt.Color(204, 204, 204));
-        Desg_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Desg_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Desg_produit.setBorder(roundedLineBorder);
 
         QuantityStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -200,7 +205,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         NbrPcsInQty_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         NbrPcsInQty_produit.setForeground(new java.awt.Color(204, 204, 204));
-        NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NbrPcsInQty_produit.setBorder(roundedLineBorder);
 
         Frn_ID6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -229,7 +234,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         Prix_Achat_prd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Prix_Achat_prd.setForeground(new java.awt.Color(204, 204, 204));
-        Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Prix_Achat_prd.setText("00");
         Prix_Achat_prd.setBorder(roundedLineBorder);
 
@@ -243,7 +248,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         prixVente_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         prixVente_produit.setForeground(new java.awt.Color(204, 204, 204));
-        prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         prixVente_produit.setText("00");
         prixVente_produit.setBorder(roundedLineBorder);
 
@@ -358,9 +363,9 @@ public class FormAddProduct extends javax.swing.JFrame {
                     .addComponent(Nbr_Pcs_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Frn_ID28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QuantityStok_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NbrPcsInQty_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NbrPcsInQty_produit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(QuantityStok_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -378,7 +383,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         Frn_ID24.setText("الموردين :");
 
         Forns_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Forns_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Forns_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Forns_produit.setBorder(roundedLineBorder);
 
         TxtPrdPrix9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -397,7 +402,7 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         MinStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         MinStok_produit.setForeground(new java.awt.Color(204, 204, 204));
-        MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MinStok_produit.setText("00");
         MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -412,7 +417,7 @@ public class FormAddProduct extends javax.swing.JFrame {
         ShowScreen_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         Postion_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Postion_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Postion_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Postion_produit.setBorder(roundedLineBorder);
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -634,20 +639,29 @@ public class FormAddProduct extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        buttonView5.setBackground(new java.awt.Color(102, 0, 0));
-        buttonView5.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView5.setText("حفظ");
-        buttonView5.setBackgroundPainted(true);
-        buttonView5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        buttonView5.setRounded(true);
+        BtnInerSavUpd.setBackground(new java.awt.Color(102, 0, 0));
+        BtnInerSavUpd.setForeground(new java.awt.Color(255, 255, 255));
+        BtnInerSavUpd.setText("حفظ");
+        BtnInerSavUpd.setBackgroundPainted(true);
+        BtnInerSavUpd.setEnabled(false);
+        BtnInerSavUpd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnInerSavUpd.setRounded(true);
 
         jLabel1.setText("العدد الكلي:");
 
         jLabel2.setText("عدد المنتجات:");
 
-        jCheckBox1.setText("jCheckBox1");
-        jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        check_update_add.setBackground(new java.awt.Color(255, 255, 255));
+        check_update_add.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        check_update_add.setText("تفعيل عمليات الاضافة و التعديل");
+        check_update_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        check_update_add.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        check_update_add.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        check_update_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_update_addActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CenterPanelLayout = new javax.swing.GroupLayout(CenterPanel);
         CenterPanel.setLayout(CenterPanelLayout);
@@ -660,11 +674,12 @@ public class FormAddProduct extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(buttonView5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE)
+                    .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CenterPanelLayout.createSequentialGroup()
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(check_update_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -691,8 +706,8 @@ public class FormAddProduct extends javax.swing.JFrame {
                     .addGroup(CenterPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonView5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1))))
+                            .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(check_update_add))))
                 .addGap(71, 71, 71))
         );
 
@@ -982,7 +997,31 @@ public class FormAddProduct extends javax.swing.JFrame {
         
     }
     
-    
+    public void CustomizeTableProduct(){
+        ProductsTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+        ProductsTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+        ProductsTable.getColumnModel().getColumn(2).setPreferredWidth(20);
+        ProductsTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        ProductsTable.getColumnModel().getColumn(7).setPreferredWidth(2);
+        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+        cellRenderer.setHorizontalAlignment(JLabel.LEFT);
+        ProductsTable.getColumnModel().getColumn(0).setCellRenderer(cellRenderer);
+        ProductsTable.getColumnModel().getColumn(1).setCellRenderer(cellRenderer);
+        ProductsTable.getColumnModel().getColumn(2).setCellRenderer(cellRenderer);
+        ProductsTable.getColumnModel().getColumn(6).setCellRenderer(cellRenderer);
+        cellRenderer.setHorizontalAlignment(JLabel.RIGHT);
+        ProductsTable.getColumnModel().getColumn(3).setCellRenderer(cellRenderer);
+        ProductsTable.getColumnModel().getColumn(4).setCellRenderer(cellRenderer);
+        ProductsTable.getColumnModel().getColumn(5).setCellRenderer(cellRenderer);
+        //ProductsTable
+        
+        JTableHeader tableHeader = ProductsTable.getTableHeader();
+        
+        tableHeader.setPreferredSize(new Dimension(jScrollPane2.getWidth(), 35));
+        tableHeader.setFont(new Font("Time new roman", Font.BOLD, 12));
+        tableHeader.setBackground(Color.red);
+        
+    }
     
     private void remarque_produitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_remarque_produitFocusGained
         remarque_produit.setText("");
@@ -1089,6 +1128,15 @@ public class FormAddProduct extends javax.swing.JFrame {
             add_prduct.setLocationRelativeTo(null);
             add_prduct.setVisible(true);
     }//GEN-LAST:event_BtnNewPrductActionPerformed
+
+    private void check_update_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_update_addActionPerformed
+        
+        //(check_update_add.isSelected())?BtnInerSavUpd.setEnabled(true):BtnInerSavUpd.setEnabled(false);
+        if (check_update_add.isSelected()) 
+            BtnInerSavUpd.setEnabled(true);
+        else BtnInerSavUpd.setEnabled(false);
+        
+    }//GEN-LAST:event_check_update_addActionPerformed
     public void FillDataStockLocal(){
         LocalStock.removeAllItems();
         Iterator<Stocke> itr=stockGetData.GetlistDataLocaleStock().iterator();
@@ -1199,6 +1247,7 @@ public class FormAddProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private matjarokom.ui.view.ButtonView BtnInerSavUpd;
     private matjarokom.ui.view.ButtonView BtnNewPrduct;
     private javax.swing.JComboBox<String> Catg_produit_cmb;
     private javax.swing.JPanel CenterPanel;
@@ -1240,9 +1289,8 @@ public class FormAddProduct extends javax.swing.JFrame {
     private matjarokom.ui.view.ButtonView buttonView1;
     private matjarokom.ui.view.ButtonView buttonView3;
     private matjarokom.ui.view.ButtonView buttonView4;
-    private matjarokom.ui.view.ButtonView buttonView5;
+    private javax.swing.JCheckBox check_update_add;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
