@@ -115,7 +115,7 @@ public class AddProductView extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(3, 4, 27));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         ImageProduit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -138,7 +138,7 @@ public class AddProductView extends javax.swing.JDialog {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(3, 4, 27));
         jPanel2.setBorder(roundedLineBorder);
 
         Ref_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -146,10 +146,12 @@ public class AddProductView extends javax.swing.JDialog {
         Ref_produit.setBorder(roundedLineBorder);
 
         Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID15.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID15.setText("الباركـود        :");
 
         Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID5.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID5.setText(" اسم المنتج    :");
 
@@ -164,6 +166,7 @@ public class AddProductView extends javax.swing.JDialog {
         QuantityStok_produit.setBorder(roundedLineBorder);
 
         Frn_ID29.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID29.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID29.setText("الوحدة ");
 
         UnitForQuantity_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -172,9 +175,11 @@ public class AddProductView extends javax.swing.JDialog {
         UnitForQuantity_produit.setOpaque(false);
 
         Frn_ID28.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        Frn_ID28.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID28.setText("الكمية المتاحة");
 
         Nbr_Pcs_label1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Nbr_Pcs_label1.setForeground(new java.awt.Color(255, 255, 255));
         Nbr_Pcs_label1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Nbr_Pcs_label1.setText("القطع داخل الوحدة");
 
@@ -184,10 +189,12 @@ public class AddProductView extends javax.swing.JDialog {
         NbrPcsInQty_produit.setBorder(roundedLineBorder);
 
         Frn_ID6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID6.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID6.setText("التصنيف");
 
         CheckDateExp_produit1.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
+        CheckDateExp_produit1.setForeground(new java.awt.Color(255, 255, 255));
         CheckDateExp_produit1.setText("تحتوي علئ عدة قطع");
         CheckDateExp_produit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckDateExp_produit1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -199,10 +206,12 @@ public class AddProductView extends javax.swing.JDialog {
         Prix_Achat_prd.setBorder(roundedLineBorder);
 
         Frn_ID9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID9.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID9.setText("سعر الشــراء");
 
         Frn_ID11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID11.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID11.setText("سعر البيع");
 
@@ -320,14 +329,16 @@ public class AddProductView extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(3, 4, 27));
         jPanel3.setBorder(roundedLineBorder);
 
         Frn_ID19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID19.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID19.setText("مكان المنتج :");
 
         Frn_ID24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID24.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID24.setText("الموردين :");
 
@@ -342,10 +353,12 @@ public class AddProductView extends javax.swing.JDialog {
         TxtPrdPrix9.setBorder(roundedLineBorder);
 
         Frn_ID23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID23.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID23.setText("فوتير الشراء :");
 
         Frn_ID22.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID22.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID22.setText("كمية اعادة الطلب :");
 
@@ -356,6 +369,7 @@ public class AddProductView extends javax.swing.JDialog {
         MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Frn_ID21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID21.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID21.setText("الكمية المتاحة   :");
 
@@ -364,6 +378,7 @@ public class AddProductView extends javax.swing.JDialog {
         Postion_produit.setBorder(roundedLineBorder);
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Frn_ID10.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID10.setText("المخزن :");
 
@@ -382,6 +397,7 @@ public class AddProductView extends javax.swing.JDialog {
         Unit_produit.setOpaque(false);
 
         CheckDateExp_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        CheckDateExp_produit.setForeground(new java.awt.Color(255, 255, 255));
         CheckDateExp_produit.setText("منتج له تاريخ الصلاحية ");
         CheckDateExp_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckDateExp_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -394,6 +410,7 @@ public class AddProductView extends javax.swing.JDialog {
         DateDormatField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         Nbr_Pcs_label2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Nbr_Pcs_label2.setForeground(new java.awt.Color(255, 255, 255));
         Nbr_Pcs_label2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Nbr_Pcs_label2.setText("القطع داخل الوحدة");
 
@@ -493,10 +510,12 @@ public class AddProductView extends javax.swing.JDialog {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("اضافة منتج جديد :");
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("خصائص متقدمة");
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -504,6 +523,7 @@ public class AddProductView extends javax.swing.JDialog {
 
         remarque_produit.setColumns(20);
         remarque_produit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        remarque_produit.setForeground(new java.awt.Color(255, 255, 255));
         remarque_produit.setRows(4);
         remarque_produit.setText("\n");
         remarque_produit.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "الوصف", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
@@ -516,13 +536,17 @@ public class AddProductView extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(remarque_produit);
 
+        ShowScreen_produit.setBackground(new java.awt.Color(3, 4, 27));
         ShowScreen_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ShowScreen_produit.setForeground(new java.awt.Color(255, 255, 255));
         ShowScreen_produit.setText("اظهار المنتج في شاشة المبيعات");
         ShowScreen_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ShowScreen_produit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ShowScreen_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        ShowScreen_produit1.setBackground(new java.awt.Color(3, 4, 27));
         ShowScreen_produit1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ShowScreen_produit1.setForeground(new java.awt.Color(255, 255, 255));
         ShowScreen_produit1.setSelected(true);
         ShowScreen_produit1.setText("اظهار اشعارات تخص المنتج ");
         ShowScreen_produit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
