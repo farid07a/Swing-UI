@@ -25,16 +25,17 @@ public class Unit {
     private int Id_Unit;
     private String Unit_Name;
     private String Description;
-
+    private byte typ_unit;
     private Statement stm;
     private PreparedStatement prst;
     private ResultSet res;
     private ConnectionDB connection_db = new ConnectionDB();
 
-    public Unit(int Id_Unit, String Unit_Name, String Description) {
+    public Unit(int Id_Unit, String Unit_Name, String Description,byte typ_unit) {
         this.Id_Unit = Id_Unit;
         this.Unit_Name = Unit_Name;
         this.Description = Description;
+        this.typ_unit=typ_unit;
     }
 
     public Unit() {
@@ -68,9 +69,9 @@ public class Unit {
     public void addUnit() {
         //declare QueryAdd Unit
         StringBuilder QueryBuild = new StringBuilder();
-        QueryBuild.append("INSERT INTO Unit (Unit_Name,Description) VALUES ('");
+        QueryBuild.append("INSERT INTO Unit (Unit_Name,Description,Type_Unit) VALUES ('");
         QueryBuild.append(getUnit_Name());
-        QueryBuild.append("','").append(getDescription()).append("');");
+        QueryBuild.append("','").append(getDescription()).append("',").append(getTyp_unit()).append(" );");
 
         PreparedStatement prstm = null;
         try {
@@ -106,7 +107,7 @@ public class Unit {
     public void UpdateUnit() {
         String Query;
 
-        Query = "UPDATE Unit SET Unit_Name='" + Unit_Name + "', Description='" + Description + "' WHERE Id_Unit=" + Id_Unit + "";
+        Query = "UPDATE Unit SET Unit_Name='" + Unit_Name + "', Description='" + Description + "' ,Type_Unit= "+typ_unit + " WHERE Id_Unit=" + Id_Unit + "";
         try {
             this.prst = connection_db.getConnect().prepareStatement(Query);
             int x = prst.executeUpdate();
@@ -238,7 +239,34 @@ public class Unit {
 
         return UnitNm;
     }
+/**
+     * @param Id_Unit*
+     * @return ******************************************************************/
+    
+    public byte GetTypeUnite(int Id_Unit){
+        String QueryNmUnit = "SELECT Type_Unit  FROM Unit WHERE Id_Unit=" + Id_Unit + " ";
+        byte Type_Unit = 0;
+        try {
+            stm = connection_db.getConnect().createStatement();
+            res = stm.executeQuery(QueryNmUnit);
 
+            if (res.next()) {
+                Type_Unit = res.getByte(1);
+                System.out.println("Type Unit code got :"+Type_Unit);
+            }
+            // }else return 1;
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+        }
+
+        return Type_Unit;
+    
+    
+    }
+    
+/*********************************************************************/    
     /**
      * ****************Delete Data Categorie
      *
@@ -274,15 +302,15 @@ public class Unit {
      * @return *****************************************************************
      */
     public ArrayList<Unit> GetlistDataUnits() {
-        ArrayList listDataUnits;
-        listDataUnits = new ArrayList<Unit>();
+        ArrayList<Unit> listDataUnits;
+        listDataUnits = new ArrayList<>();
         String Query = "SELECT * FROM Unit ";
         try {
             stm = connection_db.getConnect().createStatement();
             res = stm.executeQuery(Query);
             Unit unitObj;
             while (res.next()) {
-                unitObj = new Unit(res.getInt(1), res.getString("Unit_Name"), res.getString("Description"));
+                unitObj = new Unit(res.getInt(1), res.getString("Unit_Name"), res.getString("Description"),res.getByte("typ_unit"));
                 listDataUnits.add(unitObj);
 
             }
@@ -299,14 +327,29 @@ public class Unit {
 
     /**
      * *******************
+     * @param args
      */
     public static void main(String[] args) {
 
         //new Unit(1, "وحدة متعددة", "وحدة متعددة").addUnit();
-        int N_Order = new Unit(1, "وحدة متعددة", "وحدة متعددة").GetLast_Order_Categorie();
+        int N_Order = new Unit(1, "وحدة متعددة", "وحدة متعددة",(byte)0).GetLast_Order_Categorie();
         System.out.println("Last Order :" + N_Order);
 
-        new Unit().DeleteCategorie(8);
+        //new Unit().DeleteCategorie(8);
 
+    }
+
+    /**
+     * @return the typ_unit
+     */
+    public byte getTyp_unit() {
+        return typ_unit;
+    }
+
+    /**
+     * @param typ_unit the typ_unit to set
+     */
+    public void setTyp_unit(byte typ_unit) {
+        this.typ_unit = typ_unit;
     }
 }

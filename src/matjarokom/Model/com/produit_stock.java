@@ -126,8 +126,8 @@ public class produit_stock {
 //            prstm.setInt(2, getQtyEnStock());
 //           // prstm.setInt(4, 5);
 //            prstm.setInt(3, getID_Categorie());
-            int xء = prepStm.executeUpdate();
-            if (xء > 0) {
+            int x = prepStm.executeUpdate();
+            if (x > 0) {
                 //            JOptionPane.showMessageDialog(new ConfirmationFrm(null), "Insert Produit Designation "+getDesignation());
                 JOptionPane.showMessageDialog(null, "Success add product");
             } else {

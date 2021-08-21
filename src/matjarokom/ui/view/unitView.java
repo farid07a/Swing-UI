@@ -7,6 +7,7 @@ package matjarokom.ui.view;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -33,6 +34,11 @@ public class unitView extends javax.swing.JDialog {
     public unitView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ButtonGroup btnG=new ButtonGroup();
+        btnG.add(OnePiece);
+        btnG.add(ManyPiece);
+        
+        //ManyPiece.setSelected(true);
         UnitCnfMsg=new dialgMsgUnits(parent, modal);
         
         
@@ -61,7 +67,7 @@ public class unitView extends javax.swing.JDialog {
     int OrderUnit=unit_getData.GetLast_Order_Categorie()+1;
     StringBuilder StBl=new StringBuilder();
     StBl.append(OrderUnit);
-    LstOrd_Ctg.setText(StBl.toString());
+    LstOrd_Unit.setText(StBl.toString());
     }
     
 
@@ -90,14 +96,14 @@ public class unitView extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        LstOrd_Ctg = new javax.swing.JTextField();
+        LstOrd_Unit = new javax.swing.JTextField();
         DelInputUntDt = new matjarokom.ui.view.ButtonView();
         CnlInputUntDt = new matjarokom.ui.view.ButtonView();
         UpdInputUntDt = new matjarokom.ui.view.ButtonView();
         SavInputUntDt = new matjarokom.ui.view.ButtonView();
         buttonView1 = new matjarokom.ui.view.ButtonView();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        ManyPiece = new javax.swing.JRadioButton();
+        OnePiece = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -186,11 +192,11 @@ public class unitView extends javax.swing.JDialog {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 30, 20));
 
-        LstOrd_Ctg.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        LstOrd_Ctg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        LstOrd_Ctg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        LstOrd_Ctg.setEnabled(false);
-        jPanel2.add(LstOrd_Ctg, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 90, 30));
+        LstOrd_Unit.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        LstOrd_Unit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        LstOrd_Unit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        LstOrd_Unit.setEnabled(false);
+        jPanel2.add(LstOrd_Unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 90, 30));
 
         DelInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         DelInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -258,23 +264,24 @@ public class unitView extends javax.swing.JDialog {
         buttonView1.setOpaque(true);
         jPanel2.add(buttonView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 40, 30));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton1.setText("عدة وحدات");
-        jRadioButton1.setContentAreaFilled(false);
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jRadioButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
+        ManyPiece.setBackground(new java.awt.Color(255, 255, 255));
+        ManyPiece.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ManyPiece.setText("عدة وحدات");
+        ManyPiece.setContentAreaFilled(false);
+        ManyPiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ManyPiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ManyPiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(ManyPiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton2.setText("وحدة واحدة");
-        jRadioButton2.setContentAreaFilled(false);
-        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jRadioButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, -1));
+        OnePiece.setBackground(new java.awt.Color(255, 255, 255));
+        OnePiece.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        OnePiece.setSelected(true);
+        OnePiece.setText("وحدة واحدة");
+        OnePiece.setContentAreaFilled(false);
+        OnePiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        OnePiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        OnePiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(OnePiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -295,36 +302,33 @@ public class unitView extends javax.swing.JDialog {
        int row=jTable1.rowAtPoint(evt.getPoint());
         DefaultTableModel defMdl=(DefaultTableModel) jTable1.getModel();
        int IdOrder=(int) jTable1.getValueAt(row, 4);
-       byte conf=0;
+       byte conf;
        switch(col){
        case 0:
-             UnitCnfMsg.SetMsgTextShow("do you want to delete Data");
+             UnitCnfMsg.SetMsgTextShow("هل تريد حذف الوحدة");
              dialgMsgUnits.ShowmessgConf();
 //           int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
 //           JOptionPane.showMessageDialog(null, Conf);
             
             conf=dialgMsgUnits.getYes_No();
            if (conf==1) {
-               
            int valCon=unit_getData.DeleteCategorie(IdOrder);
-           
            if (valCon>0) defMdl.removeRow(row); //add Mesg information data;
            }
-           
            // Function Delete Categorie
            //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
            break;
        case 1:
-           UnitCnfMsg.SetMsgTextShow("do you want to update data");
+           UnitCnfMsg.SetMsgTextShow("هل تريد تعديل الوحدة");
            dialgMsgUnits.ShowmessgConf();
-           
-           
-          
            conf=dialgMsgUnits.getYes_No();
            if (conf==1) {
            Unit_Desc.setText((String) jTable1.getValueAt(row, 2));
            Unit_Nam.setText((String) jTable1.getValueAt(row, 3));
-           LstOrd_Ctg.setText( jTable1.getValueAt(row, 4)+"");
+           int OrderUnit=(int) jTable1.getValueAt(row, 4);
+           LstOrd_Unit.setText( (int)jTable1.getValueAt(row, 4)+"");
+           if (unit_getData.GetTypeUnite(OrderUnit)==1) ManyPiece.setSelected(true);
+           else OnePiece.setSelected(true);
            }
          break;   
        } 
@@ -372,16 +376,19 @@ public class unitView extends javax.swing.JDialog {
         UnitCnfMsg.SetMsgTextShow("do you want to save new record ");
            dialgMsgUnits.ShowmessgConf();
            byte conf=dialgMsgUnits.getYes_No();
+           byte Nbrpiece=1;
+           
            if (conf==1) {
-            unit_SetData=new Unit(Integer.valueOf(LstOrd_Ctg.getText()), Unit_Nam.getText(), Unit_Desc.getText());
+               
+            if (OnePiece.isSelected()) Nbrpiece=0;
+            unit_SetData=new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(),Nbrpiece);
             unit_SetData.addUnit();
             DisplayData_in_GUI_Unit();
             CnlInputUntDtActionPerformed(null);
              
-        }else {
-               CnlInputUntDtActionPerformed(null);
+        }else  CnlInputUntDtActionPerformed(null);
                //DisplayData_in_GUI_Unit();
-           }
+           
         
         
     }//GEN-LAST:event_SavInputUntDtActionPerformed
@@ -392,11 +399,13 @@ public class unitView extends javax.swing.JDialog {
     }//GEN-LAST:event_CnlInputUntDtActionPerformed
 
     private void UpdInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdInputUntDtActionPerformed
-        unit_SetData=new Unit(Integer.valueOf(LstOrd_Ctg.getText()), Unit_Nam.getText(), Unit_Desc.getText());
+        
+        byte Nbrpiece=1;
+        if (OnePiece.isSelected()) Nbrpiece=0;
+        unit_SetData=new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(),Nbrpiece);
         UnitCnfMsg.SetMsgTextShow("do you want to Update data ");
            dialgMsgUnits.ShowmessgConf();
            byte conf=dialgMsgUnits.getYes_No();
-           
            if (conf==1) {
             
             unit_SetData.UpdateUnit();      // update data 
@@ -451,7 +460,9 @@ public class unitView extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private matjarokom.ui.view.ButtonView CnlInputUntDt;
     private matjarokom.ui.view.ButtonView DelInputUntDt;
-    private javax.swing.JTextField LstOrd_Ctg;
+    private javax.swing.JTextField LstOrd_Unit;
+    private javax.swing.JRadioButton ManyPiece;
+    private javax.swing.JRadioButton OnePiece;
     private matjarokom.ui.view.ButtonView SavInputUntDt;
     private javax.swing.JTextField Unit_Desc;
     private javax.swing.JTextField Unit_Nam;
@@ -462,8 +473,6 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

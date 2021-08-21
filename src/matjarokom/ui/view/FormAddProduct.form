@@ -521,9 +521,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="Ref_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -553,9 +550,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="Desg_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -570,9 +564,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="QuantityStok_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -630,9 +621,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="NbrPcsInQty_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -704,9 +692,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="Prix_Achat_prd">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -740,9 +725,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="prixVente_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -928,9 +910,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="Forns_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -942,9 +921,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="TxtPrdPrix9">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -978,9 +954,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="MinStok_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -1020,9 +993,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="Postion_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
@@ -1059,9 +1029,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="Stock_produit">
               <Properties>
-                <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>

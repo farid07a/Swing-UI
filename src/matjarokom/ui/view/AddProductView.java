@@ -8,11 +8,23 @@ package matjarokom.ui.view;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import matjarokom.Control.com.RoundedLineBorder;
 import matjarokom.Model.com.Categorie;
@@ -34,15 +46,21 @@ public class AddProductView extends javax.swing.JDialog {
     Categorie categorieGetData=new Categorie(),categorieSetData=null;
     // private File ProduitPicture;
      RoundedLineBorder roundedLineBorder =new RoundedLineBorder(Color.BLACK, 1, 10, true);
+     JTextField[] ListText;
     public AddProductView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.ListText = 
+            new JTextField[]{Ref_produit, Desg_produit, Prix_Achat_prd, prixVente_produit, 
+            QuantityStok_produit, NbrPcsInQty_produit, MinStok_produit, Postion_produit, Stock_produit, 
+            TxtPrdPrix9, Forns_produit};
         ((JLabel) LocalStock.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
         ((JLabel) Catg_produit_cmb.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
         ((JLabel) UnitForQuantity_produit.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
         ((JLabel) Unit_produit.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
         
-        
+          HintTextField(ListText);
     }
 
     /**
@@ -115,7 +133,7 @@ public class AddProductView extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(3, 4, 27));
+        jPanel1.setBackground(new java.awt.Color(230, 230, 210));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         ImageProduit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -138,35 +156,51 @@ public class AddProductView extends javax.swing.JDialog {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(3, 4, 27));
+        jPanel2.setBackground(new java.awt.Color(230, 230, 210));
         jPanel2.setBorder(roundedLineBorder);
 
         Ref_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Ref_produit.setForeground(new java.awt.Color(204, 204, 204));
         Ref_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Ref_produit.setText("الباركـود");
         Ref_produit.setBorder(roundedLineBorder);
+        Ref_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Ref_produitKeyPressed(evt);
+            }
+        });
 
         Frn_ID15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID15.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID15.setText("الباركـود        :");
 
         Frn_ID5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID5.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID5.setText(" اسم المنتج    :");
 
         Desg_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Desg_produit.setForeground(new java.awt.Color(204, 204, 204));
         Desg_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Desg_produit.setText("اسم المنتج");
         Desg_produit.setBorder(roundedLineBorder);
+        Desg_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Desg_produitKeyPressed(evt);
+            }
+        });
 
         QuantityStok_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        QuantityStok_produit.setForeground(new java.awt.Color(204, 204, 204));
         QuantityStok_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        QuantityStok_produit.setText("20");
+        QuantityStok_produit.setText("00");
         QuantityStok_produit.setBorder(roundedLineBorder);
+        QuantityStok_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                QuantityStok_produitKeyPressed(evt);
+            }
+        });
 
         Frn_ID29.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID29.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID29.setText("الوحدة ");
 
         UnitForQuantity_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -175,51 +209,64 @@ public class AddProductView extends javax.swing.JDialog {
         UnitForQuantity_produit.setOpaque(false);
 
         Frn_ID28.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        Frn_ID28.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID28.setText("الكمية المتاحة");
 
         Nbr_Pcs_label1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Nbr_Pcs_label1.setForeground(new java.awt.Color(255, 255, 255));
         Nbr_Pcs_label1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Nbr_Pcs_label1.setText("القطع داخل الوحدة");
+        Nbr_Pcs_label1.setEnabled(false);
 
         NbrPcsInQty_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         NbrPcsInQty_produit.setForeground(new java.awt.Color(204, 204, 204));
         NbrPcsInQty_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NbrPcsInQty_produit.setText("00");
         NbrPcsInQty_produit.setBorder(roundedLineBorder);
+        NbrPcsInQty_produit.setEnabled(false);
 
         Frn_ID6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID6.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID6.setText("التصنيف");
 
         CheckDateExp_produit1.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
-        CheckDateExp_produit1.setForeground(new java.awt.Color(255, 255, 255));
         CheckDateExp_produit1.setText("تحتوي علئ عدة قطع");
         CheckDateExp_produit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckDateExp_produit1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        CheckDateExp_produit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckDateExp_produit1ActionPerformed(evt);
+            }
+        });
 
         Prix_Achat_prd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Prix_Achat_prd.setForeground(new java.awt.Color(204, 204, 204));
         Prix_Achat_prd.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        Prix_Achat_prd.setText("00");
+        Prix_Achat_prd.setText("00.00");
         Prix_Achat_prd.setBorder(roundedLineBorder);
+        Prix_Achat_prd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Prix_Achat_prdKeyPressed(evt);
+            }
+        });
 
         Frn_ID9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID9.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID9.setText("سعر الشــراء");
 
         Frn_ID11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID11.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID11.setText("سعر البيع");
 
         prixVente_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         prixVente_produit.setForeground(new java.awt.Color(204, 204, 204));
         prixVente_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        prixVente_produit.setText("00");
+        prixVente_produit.setText("00.00");
         prixVente_produit.setBorder(roundedLineBorder);
+
+        Catg_produit_cmb.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Catg_produit_cmbKeyPressed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini.png"))); // NOI18N
@@ -239,8 +286,8 @@ public class AddProductView extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nbr_Pcs_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NbrPcsInQty_produit))
+                            .addComponent(NbrPcsInQty_produit)
+                            .addComponent(Nbr_Pcs_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(QuantityStok_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,13 +296,15 @@ public class AddProductView extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Frn_ID29)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(UnitForQuantity_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(UnitForQuantity_produit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(Frn_ID29, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(16, 16, 16)
                                 .addComponent(CheckDateExp_produit1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -329,36 +378,33 @@ public class AddProductView extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(3, 4, 27));
+        jPanel3.setBackground(new java.awt.Color(230, 230, 210));
         jPanel3.setBorder(roundedLineBorder);
 
         Frn_ID19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID19.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID19.setText("مكان المنتج :");
 
         Frn_ID24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID24.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID24.setText("الموردين :");
 
         Forns_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Forns_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Forns_produit.setText("اسم المورد");
         Forns_produit.setBorder(roundedLineBorder);
 
         TxtPrdPrix9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TxtPrdPrix9.setForeground(new java.awt.Color(204, 204, 204));
         TxtPrdPrix9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtPrdPrix9.setText("00");
+        TxtPrdPrix9.setText("رقم الفاتورة / رقم وصل الشراء");
         TxtPrdPrix9.setBorder(roundedLineBorder);
 
         Frn_ID23.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID23.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID23.setText("فوتير الشراء :");
 
         Frn_ID22.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID22.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID22.setText("كمية اعادة الطلب :");
 
@@ -366,38 +412,58 @@ public class AddProductView extends javax.swing.JDialog {
         MinStok_produit.setForeground(new java.awt.Color(204, 204, 204));
         MinStok_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         MinStok_produit.setText("00");
-        MinStok_produit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        MinStok_produit.setBorder(roundedLineBorder);
+        MinStok_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MinStok_produitKeyPressed(evt);
+            }
+        });
 
         Frn_ID21.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID21.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID21.setText("الكمية المتاحة   :");
 
         Postion_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Postion_produit.setForeground(new java.awt.Color(204, 204, 204));
         Postion_produit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        Postion_produit.setText("تحديد المكان المخصص للمنتج");
         Postion_produit.setBorder(roundedLineBorder);
+        Postion_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Postion_produitKeyPressed(evt);
+            }
+        });
 
         Frn_ID10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Frn_ID10.setForeground(new java.awt.Color(255, 255, 255));
         Frn_ID10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Frn_ID10.setText("المخزن :");
 
         LocalStock.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         LocalStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LocalStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LocalStockKeyPressed(evt);
+            }
+        });
 
         Stock_produit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         Stock_produit.setForeground(new java.awt.Color(204, 204, 204));
         Stock_produit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Stock_produit.setText("00");
         Stock_produit.setBorder(roundedLineBorder);
+        Stock_produit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Stock_produitKeyPressed(evt);
+            }
+        });
 
         Unit_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Unit_produit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "قطعة", "كرتونة", "لتر", "كيلو" }));
         Unit_produit.setBorder(null);
         Unit_produit.setOpaque(false);
 
+        CheckDateExp_produit.setBackground(new java.awt.Color(255, 255, 255));
         CheckDateExp_produit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        CheckDateExp_produit.setForeground(new java.awt.Color(255, 255, 255));
         CheckDateExp_produit.setText("منتج له تاريخ الصلاحية ");
         CheckDateExp_produit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckDateExp_produit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -410,7 +476,6 @@ public class AddProductView extends javax.swing.JDialog {
         DateDormatField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         Nbr_Pcs_label2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        Nbr_Pcs_label2.setForeground(new java.awt.Color(255, 255, 255));
         Nbr_Pcs_label2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Nbr_Pcs_label2.setText("القطع داخل الوحدة");
 
@@ -502,24 +567,27 @@ public class AddProductView extends javax.swing.JDialog {
                 .addGap(4, 4, 4)
                 .addComponent(Nbr_Pcs_label2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CheckDateExp_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DateDormatField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DateDormatField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(CheckDateExp_produit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("اضافة منتج جديد :");
+        jLabel1.setText("اضافة منتج جديد");
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("خصائص متقدمة");
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         remarque_produit.setColumns(20);
         remarque_produit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -572,6 +640,11 @@ public class AddProductView extends javax.swing.JDialog {
         buttonView1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         buttonView1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonView1.setRounded(true);
+        buttonView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonView1ActionPerformed(evt);
+            }
+        });
 
         buttonView2.setBackground(new java.awt.Color(0, 102, 102));
         buttonView2.setForeground(new java.awt.Color(255, 255, 255));
@@ -661,13 +734,10 @@ public class AddProductView extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(121, 121, 121)
@@ -838,6 +908,234 @@ public class AddProductView extends javax.swing.JDialog {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Captions_Close.png")));
     }//GEN-LAST:event_jLabel14MouseExited
 
+    private void buttonView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView1ActionPerformed
+      CreateProduitByCompenent();// function to create New  Product with compenents 
+      produitstockSetDat.AddProduit();
+    }//GEN-LAST:event_buttonView1ActionPerformed
+
+    private void Ref_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ref_produitKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER && 
+                (!Ref_produit.getText().equals("الباركـود") && !Ref_produit.getText().equals(""))) {
+            Desg_produit.requestFocus();
+        } 
+    }//GEN-LAST:event_Ref_produitKeyPressed
+
+    private void Desg_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Desg_produitKeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER && 
+                (!Desg_produit.getText().equals("اسم المنتج") && !Desg_produit.getText().equals(""))) {
+            Catg_produit_cmb.requestFocus();
+            Catg_produit_cmb.showPopup();
+        } 
+    }//GEN-LAST:event_Desg_produitKeyPressed
+
+    private void Catg_produit_cmbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Catg_produit_cmbKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER ) {
+            Prix_Achat_prd.requestFocus();
+        } 
+    }//GEN-LAST:event_Catg_produit_cmbKeyPressed
+
+    private void Prix_Achat_prdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prix_Achat_prdKeyPressed
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER && 
+                (!Prix_Achat_prd.getText().equals("00.00") && !Prix_Achat_prd.getText().equals(""))) {
+            prixVente_produit.requestFocus();
+        } 
+    }//GEN-LAST:event_Prix_Achat_prdKeyPressed
+
+    private void CheckDateExp_produit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckDateExp_produit1ActionPerformed
+        if (CheckDateExp_produit1.isSelected()) {
+            NbrPcsInQty_produit.setEnabled(true);
+            Nbr_Pcs_label1.setEnabled(true);
+        }else {
+            NbrPcsInQty_produit.setEnabled(false);
+            Nbr_Pcs_label1.setEnabled(false);
+        }
+    }//GEN-LAST:event_CheckDateExp_produit1ActionPerformed
+
+    private void QuantityStok_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_QuantityStok_produitKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER && (!QuantityStok_produit.getText().equals("00") && !QuantityStok_produit.getText().equals(""))) {
+            if (CheckDateExp_produit1.isSelected()) 
+                NbrPcsInQty_produit.requestFocus();
+            else MinStok_produit.requestFocus();
+        }
+    }//GEN-LAST:event_QuantityStok_produitKeyPressed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()) {
+            jPanel3.setEnabled(true);
+        }else {
+        jPanel3.setEnabled(false);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void MinStok_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MinStok_produitKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER && !MinStok_produit.getText().equals("00") && !MinStok_produit.getText().equals("")) {
+            LocalStock.requestFocus();
+            LocalStock.showPopup();
+        }
+    }//GEN-LAST:event_MinStok_produitKeyPressed
+
+    private void LocalStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LocalStockKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Postion_produit.requestFocus();
+        }
+    }//GEN-LAST:event_LocalStockKeyPressed
+
+    private void Postion_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Postion_produitKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER &&
+                !Postion_produit.getText().equals("تحديد المكان المخصص للمنتج") && !Postion_produit.getText().equals("") ) {
+           Stock_produit.requestFocus();
+           
+        }
+    }//GEN-LAST:event_Postion_produitKeyPressed
+
+    private void Stock_produitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stock_produitKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER ) { // In This case Can  still Qty ==0
+            Unit_produit.requestFocus();
+        }
+    }//GEN-LAST:event_Stock_produitKeyPressed
+     public void CreateProduitByCompenent(){
+    
+        String DesgProduit=Desg_produit.getText();// Des prod
+        String RefProduit=Ref_produit.getText(); // get Ref produit
+        String NamCatg=(String) Catg_produit_cmb.getSelectedItem();
+        int id_categorie=categorieGetData.GetIdCategorie(NamCatg); // id catgorie
+        int QuantityStock=Integer.valueOf(QuantityStok_produit.getText()); //QuantityInStock
+        
+        Date DateExpirProduit;
+        
+        String StringDate=DateDormatField.getText();
+        try {
+             DateExpirProduit=new SimpleDateFormat("dd/MM/yyyy").parse(StringDate);   //create Date expiration Of product
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "The Date Entree is Not Valid please verify ");
+            return;
+        }
+        
+        double Prix_Vente=Double.valueOf(prixVente_produit.getText()); // Prix vente prod
+        double Prix_Achat;
+        Prix_Achat = Double.parseDouble(Prix_Achat_prd.getText());
+        int Id_Unit;
+        
+        Id_Unit=unit_GetData.GetIdUnit((String)UnitForQuantity_produit.getSelectedItem());
+        String Stocke=(String) LocalStock.getSelectedItem();   // Nom locale de stockage
+        int id_Stock;
+        id_Stock = stockGetData.GetIdStockLocal(Stocke);
+        
+        
+        //Id_Stocke
+      
+        
+        //int NbrPcsInQty_prd=Integer.valueOf(NbrPcsInQty_produit.getText());  /// nbr pcs in unit stockeé dans le stock get From arrivageLine 
+        
+        String Postion_produit_in_stock=Postion_produit.getText();// position in stock position // 1 ere etage
+        
+        int MinStok_produit_in_stock=Integer.valueOf(MinStok_produit.getText());// get Min Stock for produit
+        //double LastDateAchat_prod=Double.valueOf(LastDateAchat_produit.getText()); // last Date Bye for product 
+        
+        boolean check; // check prod in viewForm 
+        
+        
+      check= ShowScreen_produit.isSelected();   //check in panel access product
+        
+      String RemarqueProduit=remarque_produit.getText(); //get Remarque about Product
+      FileInputStream in = null;
+        try {
+            in = new FileInputStream(ProduitPicture);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(produitView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+     produitstockSetDat=new produit_stock(1, DesgProduit, RefProduit, id_categorie, 
+              QuantityStock, DateExpirProduit, Prix_Vente, Prix_Achat,MinStok_produit_in_stock,Id_Unit,
+              id_Stock, Postion_produit_in_stock, check, RemarqueProduit,in);
+                
+    }
+     
+    public void CreateHintFields(){
+        HintTextField(ListText);
+    }
+     
+     
+    public void HintTextField(JTextField[] TabTextField) {
+
+        for (JTextField TextField : TabTextField) {
+            TextField.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+
+//  new JTextField[]{  Ref_produit, Desg_produit, Prix_Achat_prd, prixVente_produit,
+//                     QuantityStok_produit, NbrPcsInQty_produit, MinStok_produit, Postion_produit, Stock_produit, 
+//                     TxtPrdPrix9, Forns_produit};
+                    switch (TextField.getText()) {
+                        case "الباركـود":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+//الدرجة
+                        case "اسم المنتج":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        case "00.00":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        case "00":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        case "تحديد المكان المخصص للمنتج":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        case "رقم الفاتورة / رقم وصل الشراء":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        case "اسم المورد":
+                            TextField.setText("");
+                            TextField.setForeground(Color.black);
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+
+                    if (TextField.equals(Ref_produit) && TextField.getText().equals("")) {
+                        TextField.setText("الباركـود");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    } else if (TextField.equals(Desg_produit) && TextField.getText().equals("")) {
+                        TextField.setText("اسم المنتج");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    } else if ((TextField.equals(prixVente_produit) || TextField.equals(Prix_Achat_prd)) && TextField.getText().equals("")) {
+                        TextField.setText("00.00");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    } else if ((TextField.equals(QuantityStok_produit)|| TextField.equals(NbrPcsInQty_produit) 
+                            ||  TextField.equals(MinStok_produit) || TextField.equals(Stock_produit)) && TextField.getText().equals("")) {
+                        TextField.setText("00");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    } else if (TextField.equals(Postion_produit) && TextField.getText().equals("")) {
+                        TextField.setText("تحديد المكان المخصص للمنتج");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    } else if (TextField.equals(TxtPrdPrix9) && TextField.getText().equals("")) {
+                        TextField.setText("رقم الفاتورة / رقم وصل الشراء");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    }else if (TextField.equals(Forns_produit) && TextField.getText().equals("")) {
+                        TextField.setText("اسم المورد");
+                        TextField.setForeground(new Color(204, 204, 204));
+                    }
+
+                }
+            });
+        }
+
+    }
+     
+    
     /**
      * @param args the command line arguments
      */

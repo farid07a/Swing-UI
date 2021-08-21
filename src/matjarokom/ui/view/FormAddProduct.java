@@ -1125,6 +1125,7 @@ public class FormAddProduct extends javax.swing.JFrame {
             add_prduct.FillDataCategorie();
             add_prduct.FillDataStockLocal();
             add_prduct.FillDataUnits();
+            //add_prduct.CreateHintFields();
             add_prduct.setLocationRelativeTo(null);
             add_prduct.setVisible(true);
     }//GEN-LAST:event_BtnNewPrductActionPerformed
