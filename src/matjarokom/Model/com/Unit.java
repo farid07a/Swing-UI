@@ -301,7 +301,7 @@ public class Unit {
     /**
      * @return *****************************************************************
      */
-    public ArrayList<Unit> GetlistDataUnits() {
+    public ArrayList <Unit> GetlistDataUnits() {
         ArrayList<Unit> listDataUnits;
         listDataUnits = new ArrayList<>();
         String Query = "SELECT * FROM Unit ";
@@ -310,7 +310,8 @@ public class Unit {
             res = stm.executeQuery(Query);
             Unit unitObj;
             while (res.next()) {
-                unitObj = new Unit(res.getInt(1), res.getString("Unit_Name"), res.getString("Description"),res.getByte("typ_unit"));
+                unitObj = new Unit(res.getInt("Id_Unit"), res.getString("Unit_Name"),
+                        res.getString("Description"),res.getByte("Type_Unit"));
                 listDataUnits.add(unitObj);
 
             }
