@@ -325,6 +325,34 @@ public class Unit {
 
         return listDataUnits;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public ArrayList <String> GetlistSousUnitsItems() {
+        ArrayList<String> listDataUnits;
+        listDataUnits = new ArrayList<>();
+        String Query = "SELECT * FROM SousUnit ";
+        try {
+            stm = connection_db.getConnect().createStatement();
+            res = stm.executeQuery(Query);
+            //Unit unitObj;
+            while (res.next()) {
+               
+                listDataUnits.add(res.getString("sousUnit_Name"));
+
+            }
+            
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listDataUnits;
+    }
 
     /**
      * *******************

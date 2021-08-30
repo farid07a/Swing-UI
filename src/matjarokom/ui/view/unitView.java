@@ -7,11 +7,13 @@ package matjarokom.ui.view;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.util.Iterator;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import matjarokom.Model.com.SousUnit;
 import matjarokom.Model.com.Unit;
 
 /**
@@ -27,6 +29,8 @@ public class unitView extends javax.swing.JDialog {
     //how to change Size of jtable or jpanel
     
     Unit unit_getData,unit_SetData;
+    SousUnitView sousunitGetData;
+    SousUnit sousunit=new SousUnit();
     dialgMsgUnits UnitCnfMsg;
     
     
@@ -40,7 +44,7 @@ public class unitView extends javax.swing.JDialog {
         
         //ManyPiece.setSelected(true);
         UnitCnfMsg=new dialgMsgUnits(parent, modal);
-        
+        sousunitGetData=new SousUnitView(parent, modal);
         
         unit_getData=new Unit();                        // Initialise Object Unit Of Get Data 
         
@@ -68,6 +72,8 @@ public class unitView extends javax.swing.JDialog {
     StringBuilder StBl=new StringBuilder();
     StBl.append(OrderUnit);
     LstOrd_Unit.setText(StBl.toString());
+    
+    
     }
     
 
@@ -104,6 +110,11 @@ public class unitView extends javax.swing.JDialog {
         buttonView1 = new matjarokom.ui.view.ButtonView();
         ManyPiece = new javax.swing.JRadioButton();
         OnePiece = new javax.swing.JRadioButton();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        SousUnit = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -176,11 +187,10 @@ public class unitView extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/descIconUnit.png"))); // NOI18N
-        jLabel2.setText("الوصف  :  ");
+        jLabel2.setText("قطعة،قارورة،علبة...");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 20));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -271,7 +281,7 @@ public class unitView extends javax.swing.JDialog {
         ManyPiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ManyPiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManyPiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ManyPiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
+        jPanel2.add(ManyPiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         OnePiece.setBackground(new java.awt.Color(255, 255, 255));
         OnePiece.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -281,13 +291,51 @@ public class unitView extends javax.swing.JDialog {
         OnePiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         OnePiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         OnePiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(OnePiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, -1));
+        jPanel2.add(OnePiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("نوع الوحدة الداخلية");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 0, 30));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/descIconUnit.png"))); // NOI18N
+        jLabel6.setText("الوصف  :  ");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("نوع الوحدة الداخلية  :  ");
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 120, 30));
+
+        jPanel2.add(SousUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 160, 30));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini.png"))); // NOI18N
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,6 +467,31 @@ public class unitView extends javax.swing.JDialog {
            }
     }//GEN-LAST:event_UpdInputUntDtActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        sousunitGetData.setVisible(true);
+        sousunitGetData.SetNameMainUnit(Unit_Nam.getText());
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    public void FillSousUnit(){
+    int lenght=sousunit.GetlistSousUnitsItems().size();
+    
+    SousUnit.removeAllItems();
+        Iterator<SousUnit> itr=sousunit.GetlistSousUnitsItems().iterator();
+        SousUnit next;
+        while (itr.hasNext()) {
+            next = itr.next();
+            SousUnit.addItem(next.getSousUnit_Name());
+        }
+    
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -464,17 +537,22 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JRadioButton ManyPiece;
     private javax.swing.JRadioButton OnePiece;
     private matjarokom.ui.view.ButtonView SavInputUntDt;
+    private javax.swing.JComboBox<String> SousUnit;
     private javax.swing.JTextField Unit_Desc;
     private javax.swing.JTextField Unit_Nam;
     private matjarokom.ui.view.ButtonView UpdInputUntDt;
     private matjarokom.ui.view.ButtonView buttonView1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
