@@ -11,6 +11,7 @@ import java.util.Iterator;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import matjarokom.Model.com.SousUnit;
@@ -25,29 +26,25 @@ public class unitView extends javax.swing.JDialog {
     /**
      * Creates new form unitView
      */
-    
     //how to change Size of jtable or jpanel
-    
-    Unit unit_getData,unit_SetData;
-    SousUnitView sousunitGetData;
-    SousUnit sousunit=new SousUnit();
+    Unit unit_getData, unit_SetData;
+    SousUnitView SousUnitGetDataView;
+    SousUnit Sousunit_GetData = new SousUnit();
     dialgMsgUnits UnitCnfMsg;
-    
-    
-    
-    public unitView(java.awt.Frame parent, boolean modal) {
+
+    public unitView(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ButtonGroup btnG=new ButtonGroup();
+        ButtonGroup btnG = new ButtonGroup();
         btnG.add(OnePiece);
         btnG.add(ManyPiece);
-        
+
         //ManyPiece.setSelected(true);
-        UnitCnfMsg=new dialgMsgUnits(parent, modal);
-        sousunitGetData=new SousUnitView(parent, modal);
-        
-        unit_getData=new Unit();                        // Initialise Object Unit Of Get Data 
-        
+        UnitCnfMsg = new dialgMsgUnits(this, modal);
+        SousUnitGetDataView = new SousUnitView(this, modal);
+
+        unit_getData = new Unit();                        // Initialise Object Unit Of Get Data 
+
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(10);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(10);
@@ -58,24 +55,22 @@ public class unitView extends javax.swing.JDialog {
         jTable1.getColumnModel().getColumn(4).setCellRenderer(cellRenderer);
 //      jTable1.getColumnModel().getColumn(5).setCellRenderer(cellRenderer);
         super.setLocationRelativeTo(null);
-        jPanel2.setPreferredSize(new Dimension(500,20));
+        jPanel2.setPreferredSize(new Dimension(500, 20));
         //jPanel2.repaint();
         jPanel2.revalidate();
         //jPanel2.setSize(50, 50);
-        
-       // DisplayData_in_GUI_Unit();
+
+        // DisplayData_in_GUI_Unit();
     }
-    
-    public void DisplayData_in_GUI_Unit(){ //display data In Component
-    unit_getData.FillingAllUnit_InTable(jTable1); //// Fill Table In UnitView
-    int OrderUnit=unit_getData.GetLast_Order_Categorie()+1;
-    StringBuilder StBl=new StringBuilder();
-    StBl.append(OrderUnit);
-    LstOrd_Unit.setText(StBl.toString());
-    
-    
+
+    public void DisplayData_in_GUI_Unit() { //display data In Component
+        unit_getData.FillingAllUnit_InTable(jTable1); //// Fill Table In UnitView
+        int OrderUnit = unit_getData.GetLast_Order_Categorie() + 1;
+        StringBuilder StBl = new StringBuilder();
+        StBl.append(OrderUnit);
+        LstOrd_Unit.setText(StBl.toString());
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,9 +107,11 @@ public class unitView extends javax.swing.JDialog {
         OnePiece = new javax.swing.JRadioButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        SousUnit = new javax.swing.JComboBox<>();
+        PanPropManyPcs = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        SousUnitCmbx = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -183,14 +180,16 @@ public class unitView extends javax.swing.JDialog {
         Unit_Desc.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Unit_Desc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Unit_Desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(Unit_Desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 200, 30));
+        jPanel2.add(Unit_Desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 200, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("قطعة،قارورة،علبة...");
+        jLabel2.setText("لم يتم ادخال الوحدة الاساسية");
+        jLabel2.setVisible(false);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 20));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 120, 30));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -231,7 +230,7 @@ public class unitView extends javax.swing.JDialog {
                 CnlInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(CnlInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 80, 30));
+        jPanel2.add(CnlInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, 30));
 
         UpdInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         UpdInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,7 +245,7 @@ public class unitView extends javax.swing.JDialog {
                 UpdInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(UpdInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 80, 30));
+        jPanel2.add(UpdInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 80, 30));
 
         SavInputUntDt.setBackground(new java.awt.Color(255, 51, 51));
         SavInputUntDt.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,7 +265,7 @@ public class unitView extends javax.swing.JDialog {
                 SavInputUntDtActionPerformed(evt);
             }
         });
-        jPanel2.add(SavInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 80, 30));
+        jPanel2.add(SavInputUntDt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 80, 30));
 
         buttonView1.setBackground(new java.awt.Color(255, 255, 255));
         buttonView1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/SearchIconUnits.png"))); // NOI18N
@@ -281,7 +280,12 @@ public class unitView extends javax.swing.JDialog {
         ManyPiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ManyPiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManyPiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(ManyPiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        ManyPiece.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManyPieceActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ManyPiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, -1, -1));
 
         OnePiece.setBackground(new java.awt.Color(255, 255, 255));
         OnePiece.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -291,7 +295,12 @@ public class unitView extends javax.swing.JDialog {
         OnePiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         OnePiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         OnePiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel2.add(OnePiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        OnePiece.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OnePieceActionPerformed(evt);
+            }
+        });
+        jPanel2.add(OnePiece, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
@@ -310,16 +319,9 @@ public class unitView extends javax.swing.JDialog {
         jLabel6.setText("الوصف  :  ");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 100, 30));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("نوع الوحدة الداخلية  :  ");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 120, 30));
-
-        jPanel2.add(SousUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 160, 30));
+        PanPropManyPcs.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini.png"))); // NOI18N
@@ -329,7 +331,49 @@ public class unitView extends javax.swing.JDialog {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 30, 30));
+
+        SousUnitCmbx.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("نوع الوحدة الداخلية  :  ");
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("قطعة،قارورة،علبة...");
+        jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout PanPropManyPcsLayout = new javax.swing.GroupLayout(PanPropManyPcs);
+        PanPropManyPcs.setLayout(PanPropManyPcsLayout);
+        PanPropManyPcsLayout.setHorizontalGroup(
+            PanPropManyPcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanPropManyPcsLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SousUnitCmbx, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        PanPropManyPcsLayout.setVerticalGroup(
+            PanPropManyPcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanPropManyPcsLayout.createSequentialGroup()
+                .addGroup(PanPropManyPcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SousUnitCmbx, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(PanPropManyPcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 470, 30));
+        //jPanel2.setVisible(false);
+        PanPropManyPcs.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,76 +383,79 @@ public class unitView extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       int col=jTable1.columnAtPoint(evt.getPoint());
-       int row=jTable1.rowAtPoint(evt.getPoint());
-        DefaultTableModel defMdl=(DefaultTableModel) jTable1.getModel();
-       int IdOrder=(int) jTable1.getValueAt(row, 4);
-       byte conf;
-       switch(col){
-       case 0:
-             UnitCnfMsg.SetMsgTextShow("هل تريد حذف الوحدة");
-             dialgMsgUnits.ShowmessgConf();
+        int col = jTable1.columnAtPoint(evt.getPoint());
+        int row = jTable1.rowAtPoint(evt.getPoint());
+        DefaultTableModel defMdl = (DefaultTableModel) jTable1.getModel();
+        int IdOrder = (int) jTable1.getValueAt(row, 4);
+        byte conf;
+        switch (col) {
+            case 0:
+                UnitCnfMsg.SetMsgTextShow("هل تريد حذف الوحدة");
+                dialgMsgUnits.ShowmessgConf();
 //           int Conf=JOptionPane.showConfirmDialog(this, "Confirm Delete data","Confirm ", JOptionPane.YES_NO_OPTION);
 //           JOptionPane.showMessageDialog(null, Conf);
-            
-            conf=dialgMsgUnits.getYes_No();
-           if (conf==1) {
-           int valCon=unit_getData.DeleteCategorie(IdOrder);
-           if (valCon>0) defMdl.removeRow(row); //add Mesg information data;
-           }
-           // Function Delete Categorie
-           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           break;
-       case 1:
-           UnitCnfMsg.SetMsgTextShow("هل تريد تعديل الوحدة");
-           dialgMsgUnits.ShowmessgConf();
-           conf=dialgMsgUnits.getYes_No();
-           if (conf==1) {
-           Unit_Desc.setText((String) jTable1.getValueAt(row, 2));
-           Unit_Nam.setText((String) jTable1.getValueAt(row, 3));
-           int OrderUnit=(int) jTable1.getValueAt(row, 4);
-           LstOrd_Unit.setText( (int)jTable1.getValueAt(row, 4)+"");
-           if (unit_getData.GetTypeUnite(OrderUnit)==1) ManyPiece.setSelected(true);
-           else OnePiece.setSelected(true);
-           }
-         break;   
-       } 
-        
+
+                conf = dialgMsgUnits.getYes_No();
+                if (conf == 1) {
+                    int valCon = unit_getData.DeleteUnit(IdOrder);
+                    if (valCon > 0) {
+                        defMdl.removeRow(row); //add Mesg information data;
+                    }
+                }
+                // Function Delete Categorie
+                //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
+                break;
+            case 1:
+                UnitCnfMsg.SetMsgTextShow("هل تريد تعديل الوحدة");
+                dialgMsgUnits.ShowmessgConf();
+                conf = dialgMsgUnits.getYes_No();
+                if (conf == 1) {
+                    Unit_Desc.setText((String) jTable1.getValueAt(row, 2));
+                    Unit_Nam.setText((String) jTable1.getValueAt(row, 3));
+                    int OrderUnit = (int) jTable1.getValueAt(row, 4);
+                    LstOrd_Unit.setText((int) jTable1.getValueAt(row, 4) + "");
+                    if (unit_getData.GetTypeUnite(OrderUnit) == 1) {
+                        ManyPiece.setSelected(true);
+                    } else {
+                        OnePiece.setSelected(true);
+                    }
+                }
+                break;
+        }
+
     }//GEN-LAST:event_jTable1MouseClicked
-    
-    
-    
-    
-    
+
+
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseEntered
 
     private void jTable1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseMoved
-        
-         int col=jTable1.columnAtPoint(evt.getPoint());
+
+        int col = jTable1.columnAtPoint(evt.getPoint());
         //int row=jTable1.rowAtPoint(evt.getPoint());
-        
-        Cursor handCursor=Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
-        Cursor DefaultCursor=Cursor.getDefaultCursor();
-        
-       switch(col){
-       case 0: case 1:
-           //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
-           jTable1.setCursor(handCursor);
-           break;
-           
-       default:
-            jTable1.setCursor(DefaultCursor);
-           break;       
-       }
+
+        Cursor handCursor = Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
+        Cursor DefaultCursor = Cursor.getDefaultCursor();
+
+        switch (col) {
+            case 0:
+            case 1:
+                //JOptionPane.showMessageDialog(null, "Col :"+jTable1.getSelectedColumn() +" === Row : "+jTable1.getSelectedRow());
+                jTable1.setCursor(handCursor);
+                break;
+
+            default:
+                jTable1.setCursor(DefaultCursor);
+                break;
+        }
     }//GEN-LAST:event_jTable1MouseMoved
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
@@ -416,82 +463,116 @@ public class unitView extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1FocusGained
 
     private void SavInputUntDtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavInputUntDtMouseClicked
-       
-           
+
+
     }//GEN-LAST:event_SavInputUntDtMouseClicked
 
     private void SavInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavInputUntDtActionPerformed
         UnitCnfMsg.SetMsgTextShow("do you want to save new record ");
-           dialgMsgUnits.ShowmessgConf();
-           byte conf=dialgMsgUnits.getYes_No();
-           byte Nbrpiece=1;
-           
-           if (conf==1) {
-               
-            if (OnePiece.isSelected()) Nbrpiece=0;
-            unit_SetData=new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(),Nbrpiece);
+        dialgMsgUnits.ShowmessgConf();
+        byte conf = dialgMsgUnits.getYes_No();
+        byte Nbrpiece = 1;
+        int id_SousUnit = 1;
+        if (conf == 1) {
+
+            if (OnePiece.isSelected()) {
+                Nbrpiece = 0;   //  for no many sousunit in main unit 
+            } else {
+                id_SousUnit = Sousunit_GetData.GetID_SousUnit((String) SousUnitCmbx.getSelectedItem()); // get idSouUnit(ForgeinKey) of sousUnit For insert in table unit
+            }
+            unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece, id_SousUnit);
             unit_SetData.addUnit();
             DisplayData_in_GUI_Unit();
             CnlInputUntDtActionPerformed(null);
-             
-        }else  CnlInputUntDtActionPerformed(null);
-               //DisplayData_in_GUI_Unit();
-           
-        
-        
+
+        } else {
+            CnlInputUntDtActionPerformed(null);
+        }
+        //DisplayData_in_GUI_Unit();
+
+
     }//GEN-LAST:event_SavInputUntDtActionPerformed
 
     private void CnlInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CnlInputUntDtActionPerformed
-       Unit_Nam.setText("");
-       Unit_Desc.setText("");
+        Unit_Nam.setText("");
+        Unit_Desc.setText("");
     }//GEN-LAST:event_CnlInputUntDtActionPerformed
 
     private void UpdInputUntDtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdInputUntDtActionPerformed
-        
-        byte Nbrpiece=1;
-        if (OnePiece.isSelected()) Nbrpiece=0;
-        unit_SetData=new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(),Nbrpiece);
+
+        byte Nbrpiece = 1;
+        int id_SousUnit = 1;
+        if (OnePiece.isSelected()) {
+            Nbrpiece = 0;
+        } else {
+            id_SousUnit = Sousunit_GetData.GetID_SousUnit((String) SousUnitCmbx.getSelectedItem()); // get idSouUnit(ForgeinKey) of sousUnit For insert in table unit
+        }
+        unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece, id_SousUnit);
         UnitCnfMsg.SetMsgTextShow("do you want to Update data ");
-           dialgMsgUnits.ShowmessgConf();
-           byte conf=dialgMsgUnits.getYes_No();
-           if (conf==1) {
-            
+        dialgMsgUnits.ShowmessgConf();
+        byte conf = dialgMsgUnits.getYes_No();
+        if (conf == 1) {
             unit_SetData.UpdateUnit();      // update data 
             DisplayData_in_GUI_Unit();    // Reload data in frame 
-               CnlInputUntDtActionPerformed(null);//n for clear textField 
-               unit_SetData=null;   // free the object
-        }else {
-               CnlInputUntDtActionPerformed(null);
-               unit_SetData=null;  // free the object of Unit
+            CnlInputUntDtActionPerformed(null);//n for clear textField 
+            unit_SetData = null;   // free the object
+        } else {
+            CnlInputUntDtActionPerformed(null);
+            unit_SetData = null;  // free the object of Unit
             //DisplayData_in_GUI_Unit();
-           }
+        }
     }//GEN-LAST:event_UpdInputUntDtActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        sousunitGetData.setVisible(true);
-        sousunitGetData.SetNameMainUnit(Unit_Nam.getText());
-        
+        if (Unit_Nam.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ادخل اسم الوحدة");
+            jLabel2.setVisible(true);
+        } else {
+            SousUnitGetDataView.SetNameMainUnit(Unit_Nam.getText());// to display Main Unit for sous units
+            SousUnitGetDataView.setLocationRelativeTo(this);
+            SousUnitGetDataView.setVisible(true);
+
+        }
+
+
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    public void FillSousUnit(){
-    int lenght=sousunit.GetlistSousUnitsItems().size();
-    
-    SousUnit.removeAllItems();
-        Iterator<SousUnit> itr=sousunit.GetlistSousUnitsItems().iterator();
+    private void ManyPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManyPieceActionPerformed
+        if (ManyPiece.isSelected()) {
+            PanPropManyPcs.setVisible(true);
+        } else {
+            PanPropManyPcs.setVisible(false);
+        }
+    }//GEN-LAST:event_ManyPieceActionPerformed
+
+    private void OnePieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnePieceActionPerformed
+        if (OnePiece.isSelected()) {
+            PanPropManyPcs.setVisible(false);
+        } else {
+            PanPropManyPcs.setVisible(true);
+        }
+    }//GEN-LAST:event_OnePieceActionPerformed
+
+    public void FillSousUnit() {  // to fill Combo for sous units
+        int lenght = Sousunit_GetData.GetlistSousUnitsItems().size();
+        SousUnitCmbx.removeAllItems();
+        Iterator<SousUnit> itr = Sousunit_GetData.GetlistSousUnitsItems().iterator();
         SousUnit next;
         while (itr.hasNext()) {
             next = itr.next();
-            SousUnit.addItem(next.getSousUnit_Name());
+            SousUnitCmbx.addItem(next.getSousUnit_Name());
         }
-    
+
     }
-    
-    
-    
+
+    public void SelectedSousUnit(String ItemSousUnit) {
+        SousUnitCmbx.setSelectedItem(ItemSousUnit);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -512,14 +593,14 @@ public class unitView extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(unitView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            unitView dialog = new unitView(new javax.swing.JFrame(), true);
+            unitView dialog = new unitView(null, true);
             dialog.DisplayData_in_GUI_Unit();
-            
+
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -536,8 +617,9 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JTextField LstOrd_Unit;
     private javax.swing.JRadioButton ManyPiece;
     private javax.swing.JRadioButton OnePiece;
+    private javax.swing.JPanel PanPropManyPcs;
     private matjarokom.ui.view.ButtonView SavInputUntDt;
-    private javax.swing.JComboBox<String> SousUnit;
+    private javax.swing.JComboBox<String> SousUnitCmbx;
     private javax.swing.JTextField Unit_Desc;
     private javax.swing.JTextField Unit_Nam;
     private matjarokom.ui.view.ButtonView UpdInputUntDt;
@@ -549,6 +631,7 @@ public class unitView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

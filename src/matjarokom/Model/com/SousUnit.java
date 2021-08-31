@@ -55,6 +55,23 @@ public class SousUnit {
         }
     }
     
+    public int GetID_SousUnit(String SousUnit){
+    String Query="SELECT Id_sousUnit FROM SousUnit WHERE sousUnit_Name='"+SousUnit+"' ";
+    int  IdSousUnit=1;
+        try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(Query);
+            if (res.next()) {
+                IdSousUnit=res.getInt(1);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return IdSousUnit;
+    }
+    
+    
     
     
     public ArrayList <SousUnit> GetlistSousUnitsItems() {

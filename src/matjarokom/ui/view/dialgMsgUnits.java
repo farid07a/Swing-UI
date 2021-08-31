@@ -23,7 +23,7 @@ public class dialgMsgUnits extends javax.swing.JDialog {
     private static dialgMsgUnits obj_Static;
     //public static byte ;
     
-    public dialgMsgUnits(java.awt.Frame parent, boolean modal) {
+    public dialgMsgUnits(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         super.setLocationRelativeTo(null);
@@ -194,7 +194,7 @@ public class dialgMsgUnits extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            dialgMsgUnits dialog = new dialgMsgUnits(new javax.swing.JFrame(), true);
+            dialgMsgUnits dialog = new dialgMsgUnits(new javax.swing.JDialog(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
