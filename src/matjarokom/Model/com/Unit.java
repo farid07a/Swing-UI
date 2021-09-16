@@ -180,7 +180,7 @@ public class Unit {
      *
      * @return e*************
      */
-    public int GetLast_Order_Categorie() {
+    public int GetLast_Order_Unit() {
 
         int Last_Order = 0;
         String Query = "SELECT MAX(Id_Unit) FROM Unit";
@@ -226,7 +226,9 @@ public class Unit {
 
         return Id_Unit;
     }
-
+    
+    
+    
     //
     public String GetUnitName(int Id_Unit) {
         String QueryNmUnit = "SELECT Unit_Name  FROM Unit WHERE Id_Unit=" + Id_Unit + " ";
@@ -270,9 +272,32 @@ public class Unit {
         }
 
         return Type_Unit;
+    }
+    /**************************/
+    public byte GetTypeUniteByName(String Unit_NamePr){
+        String QueryNmUnit = "SELECT Type_Unit  FROM Unit WHERE Unit_Name='" + Unit_NamePr + "' ";
+        byte Type_Unit = 0;
+        try {
+            stm = connection_db.getConnect().createStatement();
+            res = stm.executeQuery(QueryNmUnit);
+
+            if (res.next()) {
+                Type_Unit = res.getByte(1);
+                System.out.println("Type Unit code got :"+Type_Unit);
+            }
+            // }else return 1;
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+        }
+
+        return Type_Unit;
     
     
     }
+    
+    
     
 /*********************************************************************/    
     /**
@@ -361,7 +386,30 @@ public class Unit {
 
         return listDataUnits;
     }
-
+/***********************************************************/
+    
+     public String GetSousUnit(String UnitName){
+    String Query="SELECT sousUnit_Name FROM SousUnit,Unit WHERE SousUnit.Id_sousUnit= Unit.Id_sousUnit AND Unit.Unit_Name='"+UnitName+"' ";
+    String SousUnit_Name;
+        SousUnit_Name = null;
+    try {
+            stm=connection_db.getConnect().createStatement();
+            res=stm.executeQuery(Query);
+            if (res.next()) {
+                SousUnit_Name=res.getString("sousUnit_Name");
+            }
+            
+            stm.close();
+            res.close();
+            connection_db.Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    return SousUnit_Name;
+    
+    }
+     
+     /*******************************************************/
     /**
      * *******************
      * @param args

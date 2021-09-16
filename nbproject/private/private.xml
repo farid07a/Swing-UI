@@ -5,12 +5,11 @@
         <group>
             <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/Home.java</file>
             <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/Unit.java</file>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/dialgMsgUnits.java</file>
             <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/SousUnit.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/Unit_SousUnit.java</file>
             <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/unitView.java</file>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/SousUnitView.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/produit_stock.java</file>
             <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/AddProductView.java</file>
-            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/FormAddProduct.java</file>
         </group>
     </open-files>
 </project-private>

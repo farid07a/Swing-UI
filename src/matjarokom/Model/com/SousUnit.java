@@ -71,8 +71,10 @@ public class SousUnit {
         return IdSousUnit;
     }
     
+    /*******************************************************/
     
-    
+   
+    /*******************************************************/
     
     public ArrayList <SousUnit> GetlistSousUnitsItems() {
         ArrayList<SousUnit> listDataUnits;

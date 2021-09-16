@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import matjarokom.Model.com.SousUnit;
 import matjarokom.Model.com.Unit;
+import matjarokom.Model.com.Unit_SousUnit;
 
 /**
  *
@@ -30,6 +31,7 @@ public class unitView extends javax.swing.JDialog {
     Unit unit_getData, unit_SetData;
     SousUnitView SousUnitGetDataView;
     SousUnit Sousunit_GetData = new SousUnit();
+    Unit_SousUnit unit_SousUnitGetData=new Unit_SousUnit();
     dialgMsgUnits UnitCnfMsg;
 
     public unitView(javax.swing.JDialog parent, boolean modal) {
@@ -65,7 +67,7 @@ public class unitView extends javax.swing.JDialog {
 
     public void DisplayData_in_GUI_Unit() { //display data In Component
         unit_getData.FillingAllUnit_InTable(jTable1); //// Fill Table In UnitView
-        int OrderUnit = unit_getData.GetLast_Order_Categorie() + 1;
+        int OrderUnit = unit_getData.GetLast_Order_Unit() + 1;
         StringBuilder StBl = new StringBuilder();
         StBl.append(OrderUnit);
         LstOrd_Unit.setText(StBl.toString());
@@ -280,6 +282,11 @@ public class unitView extends javax.swing.JDialog {
         ManyPiece.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ManyPiece.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManyPiece.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        ManyPiece.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ManyPieceStateChanged(evt);
+            }
+        });
         ManyPiece.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManyPieceActionPerformed(evt);
@@ -423,6 +430,7 @@ public class unitView extends javax.swing.JDialog {
                     LstOrd_Unit.setText((int) jTable1.getValueAt(row, 4) + "");
                     if (unit_getData.GetTypeUnite(OrderUnit) == 1) {
                         ManyPiece.setSelected(true);
+                        
                     } else {
                         OnePiece.setSelected(true);
                     }
@@ -477,11 +485,17 @@ public class unitView extends javax.swing.JDialog {
 
             if (OnePiece.isSelected()) {
                 Nbrpiece = 0;   //  for no many sousunit in main unit 
-            } else {
+            } else {  // for Many Pcs 
+                
                 id_SousUnit = Sousunit_GetData.GetID_SousUnit((String) SousUnitCmbx.getSelectedItem()); // get idSouUnit(ForgeinKey) of sousUnit For insert in table unit
+            
             }
             unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece, id_SousUnit);
             unit_SetData.addUnit();
+            int MaxIdUnit=unit_SetData.GetLast_Order_Unit(); // Get Last Order in table Unit To save in RelationShip Unit & SousUnit
+            unit_SousUnitGetData=new Unit_SousUnit(MaxIdUnit, id_SousUnit);
+            unit_SousUnitGetData.AddRelationShipUnit_SousUnit();
+            
             DisplayData_in_GUI_Unit();
             CnlInputUntDtActionPerformed(null);
 
@@ -556,6 +570,14 @@ public class unitView extends javax.swing.JDialog {
             PanPropManyPcs.setVisible(true);
         }
     }//GEN-LAST:event_OnePieceActionPerformed
+
+    private void ManyPieceStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ManyPieceStateChanged
+         if (ManyPiece.isSelected()) {
+            PanPropManyPcs.setVisible(true);
+        } else {
+            PanPropManyPcs.setVisible(false);
+        }
+    }//GEN-LAST:event_ManyPieceStateChanged
 
     public void FillSousUnit() {  // to fill Combo for sous units
         int lenght = Sousunit_GetData.GetlistSousUnitsItems().size();
