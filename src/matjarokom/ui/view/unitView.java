@@ -479,7 +479,7 @@ public class unitView extends javax.swing.JDialog {
         UnitCnfMsg.SetMsgTextShow("do you want to save new record ");
         dialgMsgUnits.ShowmessgConf();
         byte conf = dialgMsgUnits.getYes_No();
-        byte Nbrpiece = 1;
+        byte Nbrpiece = 1;// for many sousUnit
         int id_SousUnit = 1;
         if (conf == 1) {
 
@@ -490,7 +490,7 @@ public class unitView extends javax.swing.JDialog {
                 id_SousUnit = Sousunit_GetData.GetID_SousUnit((String) SousUnitCmbx.getSelectedItem()); // get idSouUnit(ForgeinKey) of sousUnit For insert in table unit
             
             }
-            unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece, id_SousUnit);
+            unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece);
             unit_SetData.addUnit();
             int MaxIdUnit=unit_SetData.GetLast_Order_Unit(); // Get Last Order in table Unit To save in RelationShip Unit & SousUnit
             unit_SousUnitGetData=new Unit_SousUnit(MaxIdUnit, id_SousUnit);
@@ -521,7 +521,7 @@ public class unitView extends javax.swing.JDialog {
         } else {
             id_SousUnit = Sousunit_GetData.GetID_SousUnit((String) SousUnitCmbx.getSelectedItem()); // get idSouUnit(ForgeinKey) of sousUnit For insert in table unit
         }
-        unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece, id_SousUnit);
+        unit_SetData = new Unit(Integer.valueOf(LstOrd_Unit.getText()), Unit_Nam.getText(), Unit_Desc.getText(), Nbrpiece);
         UnitCnfMsg.SetMsgTextShow("do you want to Update data ");
         dialgMsgUnits.ShowmessgConf();
         byte conf = dialgMsgUnits.getYes_No();

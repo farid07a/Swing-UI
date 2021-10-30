@@ -33,12 +33,12 @@ public class Unit {
     private ResultSet res;
     private ConnectionDB connection_db = new ConnectionDB();
 
-    public Unit(int Id_Unit, String Unit_Name, String Description,byte typ_unit,int Id_sousUnit) {
+    public Unit(int Id_Unit, String Unit_Name, String Description,byte typ_unit/*,int Id_sousUnit*/) {
         this.Id_Unit = Id_Unit;
         this.Unit_Name = Unit_Name;
         this.Description = Description;
         this.typ_unit=typ_unit;
-        this.Id_sousUnit=Id_sousUnit;
+        //this.Id_sousUnit=Id_sousUnit;
     }
 
     public Unit() {
@@ -73,19 +73,18 @@ public class Unit {
         //declare QueryAdd Unit
         StringBuilder QueryBuild = new StringBuilder();
         
-        String QueryInsert="INSERT INTO Unit (Unit_Name,Description,Type_Unit,Id_sousUnit) VALUES ('"+getUnit_Name()+"','"+getDescription()+"' ,"+getTyp_unit()+","+getId_sousUnit()+")";
-        QueryBuild.append("INSERT INTO Unit (Unit_Name,Description,Type_Unit,Id_sousUnit) VALUES ('");
+        String QueryInsert="INSERT INTO Unit (Unit_Name,Description,Type_Unit) VALUES ('"+getUnit_Name()+"','"+getDescription()+"' ,"+getTyp_unit()+")";
+        QueryBuild.append("INSERT INTO Unit (Unit_Name,Description,Type_Unit) VALUES ('");
         QueryBuild.append(getUnit_Name())
                   .append("','").append(getDescription())
-                  .append("',").append(getTyp_unit()).append(",")
-                  .append(getId_sousUnit()).append(" ) ");
+                  .append("',").append(getTyp_unit()).append(" ) ");
 
         PreparedStatement prstm = null;
         try {
             System.out.println(QueryBuild.toString());
 
             //prstm = connection_db.getConnect().prepareStatement(QueryBuild.toString());
-            prstm = connection_db.getConnect().prepareStatement(QueryInsert);
+            prstm = connection_db.getConnect().prepareStatement(QueryBuild.toString());
             System.out.println("passed prepareStatement ");
             int x = prstm.executeUpdate();
             System.out.println("Execute Query ");
@@ -114,7 +113,7 @@ public class Unit {
     public void UpdateUnit() {
         String Query;
 
-        Query = "UPDATE Unit SET Unit_Name='" + Unit_Name + "', Description='" + Description + "' ,Type_Unit= "+typ_unit + " Id_sousUnit="+Id_sousUnit+" WHERE Id_Unit=" + Id_Unit + "";
+        Query = "UPDATE Unit SET Unit_Name='" + Unit_Name + "', Description='" + Description + "' ,Type_Unit= "+typ_unit +" WHERE Id_Unit=" + Id_Unit + "";
         try {
             this.prst = connection_db.getConnect().prepareStatement(Query);
             int x = prst.executeUpdate();
@@ -273,7 +272,10 @@ public class Unit {
 
         return Type_Unit;
     }
-    /**************************/
+    /**
+     * @param Unit_NamePr 
+     * return Type unit 0 for no souSunit inside 1 for inside many box 
+     **/
     public byte GetTypeUniteByName(String Unit_NamePr){
         String QueryNmUnit = "SELECT Type_Unit  FROM Unit WHERE Unit_Name='" + Unit_NamePr + "' ";
         byte Type_Unit = 0;
@@ -344,7 +346,7 @@ public class Unit {
             Unit unitObj;
             while (res.next()) {
                 unitObj = new Unit(res.getInt("Id_Unit"), res.getString("Unit_Name"),
-                        res.getString("Description"),res.getByte("Type_Unit"),res.getInt("Id_sousUnit"));
+                        res.getString("Description"),res.getByte("Type_Unit"));
                 listDataUnits.add(unitObj);
 
             }
@@ -386,17 +388,24 @@ public class Unit {
 
         return listDataUnits;
     }
-/***********************************************************/
+/**
+     * @param UnitName
+     * @return *********************************************************/
     
-     public String GetSousUnit(String UnitName){
-    String Query="SELECT sousUnit_Name FROM SousUnit,Unit WHERE SousUnit.Id_sousUnit= Unit.Id_sousUnit AND Unit.Unit_Name='"+UnitName+"' ";
+     public ArrayList<String> GetSousUnitFromUnit(String UnitName){
+    String Query="SELECT sousUnit_Name FROM SousUnit,Unit,Unit_SousUnit "
+            + " WHERE Unit.Id_Unit=Unit_SousUnit.Id_Unit AND Unit_SousUnit.Id_sousUnit= SousUnit.Id_sousUnit AND Unit.Unit_Name='"+UnitName+"' ";
     String SousUnit_Name;
         SousUnit_Name = null;
+        ArrayList<String> listSousUnit;// list of sousUnits from Unit 
+        listSousUnit = new ArrayList();
     try {
             stm=connection_db.getConnect().createStatement();
             res=stm.executeQuery(Query);
-            if (res.next()) {
+            while (res.next()) {
                 SousUnit_Name=res.getString("sousUnit_Name");
+                
+                listSousUnit.add(SousUnit_Name);
             }
             
             stm.close();
@@ -405,7 +414,7 @@ public class Unit {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    return SousUnit_Name;
+    return listSousUnit;
     
     }
      

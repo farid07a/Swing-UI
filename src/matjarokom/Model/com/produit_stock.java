@@ -57,8 +57,26 @@ public class produit_stock {
 //    private ConnectionDB cnx=new ConnectionDB();
     private ArrayList<String> listProduit = new ArrayList<>();
 
-    private ArrayList<produit_stock> ListProduitStock = new ArrayList<produit_stock>();
+    private ArrayList<produit_stock> ListProduitStock = new ArrayList<>();
 
+    /**
+     *
+     * @param ID_Prod
+     * @param Designation
+     * @param Reference_Pro
+     * @param ID_Categorie
+     * @param Qty_En_Stock
+     * @param Date_Expiration
+     * @param Prix_Vente
+     * @param Prix_Achat
+     * @param Min_Stock
+     * @param Id_Unit
+     * @param Id_Stocke
+     * @param Position_Produit
+     * @param Check_Produit
+     * @param Remarque_Produit
+     * @param ProductPict
+     */
     public produit_stock(int ID_Prod, String Designation, String Reference_Pro, int ID_Categorie, int Qty_En_Stock,
             Date Date_Expiration, double Prix_Vente, double Prix_Achat, int Min_Stock, int Id_Unit, int Id_Stocke,
             String Position_Produit, boolean Check_Produit, String Remarque_Produit, InputStream ProductPict) {
