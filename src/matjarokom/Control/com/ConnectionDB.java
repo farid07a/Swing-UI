@@ -42,10 +42,7 @@ public class ConnectionDB {
 //    return cnx;
 //    }
     
-    
-    
-    
-    
+ 
     public void Deconnect(){
         try {
             cnx.close();
