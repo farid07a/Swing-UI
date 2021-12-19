@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/Home.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/produitView.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/Categorie.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Control/com/ConnectionDB.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/SwingUI.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Model/com/Fournisseur.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/Control/com/FournissourController.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/AddProductView.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/FournissourView.java</file>
+            <file>file:/C:/Users/farid/Documents/NetBeansProjects/Swing-UI/src/matjarokom/ui/view/FormAddProduct.java</file>
+        </group>
     </open-files>
 </project-private>
