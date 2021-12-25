@@ -14,11 +14,12 @@ Using the model layer, rules are applied to the data that represents the concept
  */
 package matjarokom.Model.com;
 
-import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import matjarokom.Control.com.ConnectionDB;
 
@@ -221,18 +222,15 @@ public class Fournisseur {
         String Query = "INSERT INTO Fournisseur (Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre)"
                 + "  VALUES('" + Nom_Fournisseur + "','" + Prenom_Fournisseur + "','" + Adress + "','" + Tel_email + "','" + Nif + "',"
                 + Debit + "," + Credit + ",'" + N_Enterprise + "','" + N_Compte + "','" + N_Registre + "')";
-
         try {
             setPrstm(getCnx().getConnect().prepareStatement(Query));
             int x = getPrstm().executeUpdate();
-
             if (x > 0) {
                 JOptionPane.showMessageDialog(null, "Succes Add in Fournisseur");
             } else //obj= new javax.swing.JOptionPane();
             {
                 JOptionPane.showMessageDialog(null, "Error Add in Fournisseur");
             }
-
             getPrstm().close();
             getCnx().Deconnect();
 
@@ -243,6 +241,47 @@ public class Fournisseur {
 
     }
 
+    public ArrayList GetListFournisseur(){ // Get List Of Fournisseur
+//            Statement stm;
+//            ResultSet res;
+            String Query="SELECT * FROM Fournisseur";
+            ArrayList<Fournisseur> listFournisseur;
+            listFournisseur=new ArrayList<>();
+            Fournisseur FournisseurObj;
+            
+            try {
+            
+                stm=cnx.getConnect().createStatement();
+                res=stm.executeQuery(Query);
+                while (res.next()) {
+                    //Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre
+                    FournisseurObj=new Fournisseur(res.getInt("ID_Fournisseur"), res.getString("Nom_Fournisseur"), res.getString("Prenom_Fournisseur"),
+                    res.getString("Adress"), res.getString("Tel_email"), res.getString("Nif"), res.getFloat("Debit"), res.getFloat("Credit"),
+                    res.getString("N_Enterprise"), res.getString("N_Compte"), res.getString("N_Registre"));
+                    listFournisseur.add(FournisseurObj);
+                }
+            stm.close();
+            res.close();
+            cnx.Deconnect();
+        } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error getList Fournisseur");
+        }
+            
+    return listFournisseur;
+    }
+    
+    /**
+     * This Function Get specific Data to display in table in fournisseurView
+     * 
+     * @return array of membre 
+     */
+    
+    public Object[] GetArrayDataFournissourToView(){
+        Object [] data = {this.getN_Enterprise(),this.getPrenom_Fournisseur(),this.getNom_Fournisseur(),this.getID_Fournisseur()};
+        return data;
+    }
+    
+    
     public static void main(String[] args) {
 //        new Fournisseur(0, "Farid", "Khebbache", "Rue 50", "067120574", "555480022", "4785692", 0.0f, 0.0f, "DevOps", "1785426").Add_Fournissour();
     }
