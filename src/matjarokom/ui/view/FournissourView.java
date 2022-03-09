@@ -11,8 +11,15 @@ The view layer consists of output of application or user interface.
 It sends the requested data to the client, that is fetched from model layer by controller.
 */
 package matjarokom.ui.view;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import matjarokom.Model.com.Fournisseur;
 /**
@@ -23,12 +30,13 @@ public class FournissourView extends javax.swing.JDialog {
 
     private Fournisseur fournissour;
     
-    
+    JTextField tabTxtView[];
     /**
      * Creates new form SupplierView
      */
     public FournissourView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        
         initComponents();
         
     }
@@ -71,11 +79,15 @@ public class FournissourView extends javax.swing.JDialog {
         Tel_Email_fr = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        PicFornView = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        buttonView1 = new matjarokom.ui.view.ButtonView();
+        buttonView2 = new matjarokom.ui.view.ButtonView();
+        buttonView3 = new matjarokom.ui.view.ButtonView();
+        buttonView4 = new matjarokom.ui.view.ButtonView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("شاشة الموردين");
@@ -101,24 +113,36 @@ public class FournissourView extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        jTable1.setRowHeight(25);
         jScrollPane2.setViewportView(jTable1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         Entreprise_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Entreprise_fr.setForeground(new java.awt.Color(153, 153, 153));
         Entreprise_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Entreprise_fr.setText("اسم الشركة");
+        Entreprise_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("اسم الشركة:");
 
         NIF_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        NIF_fr.setForeground(new java.awt.Color(153, 153, 153));
         NIF_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        NIF_fr.setText("NIF");
+        NIF_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("رقم الحساب :");
 
         N_compte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        N_compte.setForeground(new java.awt.Color(153, 153, 153));
         N_compte.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        N_compte.setText("رقم الحساب");
+        N_compte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,23 +153,31 @@ public class FournissourView extends javax.swing.JDialog {
         jLabel13.setText("رقم السجل:");
 
         N_Registre.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        N_Registre.setForeground(new java.awt.Color(153, 153, 153));
         N_Registre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        N_Registre.setText("رقم السجل");
+        N_Registre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("دائن:");
 
+        Credit_fr.setForeground(new java.awt.Color(153, 153, 153));
         Credit_fr.setText("00.00");
+        Credit_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("مدين:");
 
+        Debit_fr.setForeground(new java.awt.Color(153, 153, 153));
         Debit_fr.setText("00.00");
+        Debit_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Remarque_fr.setColumns(20);
+        Remarque_fr.setForeground(new java.awt.Color(153, 153, 153));
         Remarque_fr.setRows(5);
-        Remarque_fr.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "الملاحظات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        Remarque_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(Remarque_fr);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -167,11 +199,10 @@ public class FournissourView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Debit_fr)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Debit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 63, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Credit_fr)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -221,32 +252,46 @@ public class FournissourView extends javax.swing.JDialog {
                         .addGap(21, 21, 21))))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("اسم المورد:");
 
         Nom_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Nom_fr.setForeground(new java.awt.Color(153, 153, 153));
         Nom_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nom_fr.setText("الاسم");
+        Nom_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("لقب المورد:");
 
         Prenm_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Prenm_fr.setForeground(new java.awt.Color(153, 153, 153));
         Prenm_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Prenm_fr.setText("اللقب");
+        Prenm_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("عنوان المورد:");
 
         Adress_Fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Adress_Fr.setForeground(new java.awt.Color(153, 153, 153));
         Adress_Fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Adress_Fr.setText("عنوان المورد");
+        Adress_Fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("البريد الالكتروني/رقم الهاتف:");
 
         Tel_Email_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Tel_Email_fr.setForeground(new java.awt.Color(153, 153, 153));
         Tel_Email_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Tel_Email_fr.setText("البريد الالكتروني او رقم الهاتف");
+        Tel_Email_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -303,14 +348,28 @@ public class FournissourView extends javax.swing.JDialog {
         });
 
         jButton2.setText("jButton1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("الصورة");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PicFornView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        PicFornView.setText("الصورة");
+        PicFornView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("الرقم:");
+        jLabel9.setText("تحميل");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -324,6 +383,44 @@ public class FournissourView extends javax.swing.JDialog {
         });
 
         jButton4.setText("jButton1");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        buttonView1.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView1.setText("رجوع");
+        buttonView1.setBackgroundPainted(true);
+        buttonView1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonView1.setRounded(true);
+
+        buttonView2.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView2.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView2.setText("تعديل");
+        buttonView2.setBackgroundPainted(true);
+        buttonView2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonView2.setRounded(true);
+
+        buttonView3.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView3.setText("حذف");
+        buttonView3.setBackgroundPainted(true);
+        buttonView3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonView3.setRounded(true);
+
+        buttonView4.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView4.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView4.setText("اضاقة");
+        buttonView4.setBackgroundPainted(true);
+        buttonView4.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonView4.setRounded(true);
+        buttonView4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonView4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -338,22 +435,35 @@ public class FournissourView extends javax.swing.JDialog {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(83, 83, 83)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(83, 83, 83)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonView2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
@@ -361,15 +471,14 @@ public class FournissourView extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -378,13 +487,20 @@ public class FournissourView extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton3)
-                                .addComponent(jButton4))))
+                            .addComponent(jButton3)
+                            .addComponent(jButton4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -428,8 +544,144 @@ public class FournissourView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void buttonView4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView4ActionPerformed
+        String Nom_Fournisseur=Nom_fr.getText();
+       String PrenFrn= Prenm_fr.getText();
+       String Adrs_Fr=Adress_Fr.getText();
+       String Tel_Email=Tel_Email_fr.getText();
+       String Nif_frn= NIF_fr.getText();
+       //String NumAssur=N_Assurance.getText();
+       float debit=Float.valueOf(Debit_fr.getText());
+       float credit=Float.valueOf(Credit_fr.getText());
+       String N_entreprise=Entreprise_fr.getText();
+       String N_registre=N_Registre.getText();
+       String nCompte=N_compte.getText();
+        
+        this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
+        this.fournissour.Add_Fournissour();
+        DefaultTableModel df=(DefaultTableModel)this.jTable1.getModel();
+        df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
+        
+        //FillDataTableFournissour(this.fournissour.GetListFournisseur()); // filling after add 
+    }//GEN-LAST:event_buttonView4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        JFileChooser chooserWind=new JFileChooser();
+        int choice=chooserWind.showOpenDialog(this);
+        if (choice==JFileChooser.APPROVE_OPTION) {
+        java.io.File   ImageF;
+            ImageF = chooserWind.getSelectedFile();
+        
+        javax.swing.ImageIcon imgIcon=new ImageIcon(new ImageIcon(ImageF.getAbsolutePath()).getImage().getScaledInstance(PicFornView.getWidth(), PicFornView.getHeight(), Image.SCALE_DEFAULT));
+        PicFornView.setIcon(imgIcon);
+            
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+        jLabel9.setBackground(Color.gray);
+        jLabel9.setOpaque(true);
+    }//GEN-LAST:event_jLabel9MouseEntered
+
    
+    public void HintText(){
+        this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr};
+        for (JTextField textField : tabTxtView) {
+            textField.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                    if (textField.getText().equals("الاسم")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("اللقب")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("عنوان المورد")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("البريد الالكتروني او رقم الهاتف")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("اسم الشركة")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("رقم السجل")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("رقم الحساب")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("NIF")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("00.00")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    if (textField.equals(Nom_fr) && textField.getText().equals("")) {
+                        textField.setText("الاسم");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(Prenm_fr) && textField.getText().equals("")) {
+                        textField.setText("اللقب");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(Adress_Fr) && textField.getText().equals("")) {
+                        textField.setText("عنوان المورد");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(Tel_Email_fr) && textField.getText().equals("")) {
+                        textField.setText("البريد الالكتروني او رقم الهاتف");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(Entreprise_fr) && textField.getText().equals("")) {
+                        textField.setText("اسم الشركة");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(N_Registre) && textField.getText().equals("")) {
+                        textField.setText("رقم السجل");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(N_compte) && textField.getText().equals("")) {
+                        textField.setText("رقم الحساب");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(NIF_fr) && textField.getText().equals("")) {
+                        textField.setText("NIF");
+                        textField.setForeground(Color.gray);
+                    }
+                    if ((textField.equals(Credit_fr) || textField.equals(Debit_fr))  && textField.getText().equals("")) {
+                        textField.setText("00.00");
+                        textField.setForeground(Color.gray);
+                    }
+                    
+                }
+            });
+        }
     
+    
+    }
     
     public void FillDataTableFournissour(ArrayList<Fournisseur> listFrn){
         DefaultTableModel tableModel=(DefaultTableModel)jTable1.getModel();
@@ -480,6 +732,7 @@ public class FournissourView extends javax.swing.JDialog {
                 });
                 Fournisseur f=new Fournisseur();
                 dialog.FillDataTableFournissour(f.GetListFournisseur());
+                dialog.HintText();
                 dialog.setVisible(true);
             }
         });
@@ -494,9 +747,14 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JTextField N_Registre;
     private javax.swing.JTextField N_compte;
     private javax.swing.JTextField Nom_fr;
+    private javax.swing.JLabel PicFornView;
     private javax.swing.JTextField Prenm_fr;
     private javax.swing.JTextArea Remarque_fr;
     private javax.swing.JTextField Tel_Email_fr;
+    private matjarokom.ui.view.ButtonView buttonView1;
+    private matjarokom.ui.view.ButtonView buttonView2;
+    private matjarokom.ui.view.ButtonView buttonView3;
+    private matjarokom.ui.view.ButtonView buttonView4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -510,7 +768,6 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
