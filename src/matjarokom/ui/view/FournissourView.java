@@ -39,6 +39,8 @@ public class FournissourView extends javax.swing.JDialog {
         
         initComponents();
         
+        fournissour=new Fournisseur();
+        
     }
 
     /**
@@ -82,11 +84,11 @@ public class FournissourView extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         PicFornView = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        N_Order_Frn = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         buttonView1 = new matjarokom.ui.view.ButtonView();
-        buttonView2 = new matjarokom.ui.view.ButtonView();
+        UpdateFrnButton = new matjarokom.ui.view.ButtonView();
         buttonView3 = new matjarokom.ui.view.ButtonView();
         buttonView4 = new matjarokom.ui.view.ButtonView();
 
@@ -115,6 +117,11 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
         jTable1.setRowHeight(25);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -242,7 +249,6 @@ public class FournissourView extends javax.swing.JDialog {
                     .addComponent(N_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NIF_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -378,9 +384,9 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("01");
+        N_Order_Frn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        N_Order_Frn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N_Order_Frn.setText("01");
 
         jButton3.setText("jButton1");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -403,12 +409,17 @@ public class FournissourView extends javax.swing.JDialog {
         buttonView1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         buttonView1.setRounded(true);
 
-        buttonView2.setBackground(new java.awt.Color(0, 102, 102));
-        buttonView2.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView2.setText("تعديل");
-        buttonView2.setBackgroundPainted(true);
-        buttonView2.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        buttonView2.setRounded(true);
+        UpdateFrnButton.setBackground(new java.awt.Color(0, 102, 102));
+        UpdateFrnButton.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateFrnButton.setText("تعديل");
+        UpdateFrnButton.setBackgroundPainted(true);
+        UpdateFrnButton.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        UpdateFrnButton.setRounded(true);
+        UpdateFrnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateFrnButtonActionPerformed(evt);
+            }
+        });
 
         buttonView3.setBackground(new java.awt.Color(0, 102, 102));
         buttonView3.setForeground(new java.awt.Color(255, 255, 255));
@@ -443,7 +454,7 @@ public class FournissourView extends javax.swing.JDialog {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
@@ -470,7 +481,7 @@ public class FournissourView extends javax.swing.JDialog {
                         .addGap(66, 66, 66)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonView2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UpdateFrnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55))
@@ -482,7 +493,7 @@ public class FournissourView extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -509,7 +520,7 @@ public class FournissourView extends javax.swing.JDialog {
                         .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonView2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
@@ -601,6 +612,50 @@ public class FournissourView extends javax.swing.JDialog {
         jLabel9.setOpaque(true);
     }//GEN-LAST:event_jLabel9MouseEntered
 
+    private void UpdateFrnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateFrnButtonActionPerformed
+       int N_Ordre=Integer.parseInt(N_Order_Frn.getText());
+       String Nom_Fournisseur=Nom_fr.getText();
+       String PrenFrn= Prenm_fr.getText();
+       String Adrs_Fr=Adress_Fr.getText();
+       String Tel_Email=Tel_Email_fr.getText();
+       String Nif_frn= NIF_fr.getText();
+       //String NumAssur=N_Assurance.getText();
+       float debit=Float.valueOf(Debit_fr.getText());
+       float credit=Float.valueOf(Credit_fr.getText());
+       String N_entreprise=Entreprise_fr.getText();
+       String N_registre=N_Registre.getText();
+       String nCompte=N_compte.getText();
+        
+        this.fournissour=new Fournisseur( N_Ordre , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
+        this.fournissour.UpdateFournisseur(N_Ordre);// Function to Update Frn New Fournisseur fournissour.getID_Fournisseur()
+        FillDataTableFournissour(fournissour.GetListFournisseur());
+    }//GEN-LAST:event_UpdateFrnButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DisplayChoiceRowDataInGUI();
+    }//GEN-LAST:event_jTable1MouseClicked
+    
+    public void DisplayChoiceRowDataInGUI(){
+        int RowSel=jTable1.getSelectedRow();
+        int id_frn=(int) jTable1.getValueAt(RowSel, 3);
+        
+        fournissour.GetInformationFromDBByID(id_frn);// fill fileds of fournisseur with data Of dataBase
+        N_Order_Frn.setText(""+fournissour.getID_Fournisseur());
+        Nom_fr.setText(fournissour.getPrenom_Fournisseur());
+        Prenm_fr.setText(fournissour.getNom_Fournisseur());
+        Adress_Fr.setText(fournissour.getAdress());
+        Tel_Email_fr.setText(fournissour.getTel_email());
+        Entreprise_fr.setText(fournissour.getN_Enterprise());
+        N_Registre.setText(fournissour.getN_Registre());
+        N_compte.setText(fournissour.getN_Compte());
+        NIF_fr.setText(fournissour.getNif());
+        Credit_fr.setText(fournissour.getCredit()+"");
+        Debit_fr.setText(fournissour.getDebit()+"");
+        
+        
+    }
+    
+    
    
     public void HintText(){
         this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr};
@@ -754,6 +809,7 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JTextField Debit_fr;
     private javax.swing.JTextField Entreprise_fr;
     private javax.swing.JTextField NIF_fr;
+    private javax.swing.JLabel N_Order_Frn;
     private javax.swing.JTextField N_Registre;
     private javax.swing.JTextField N_compte;
     private javax.swing.JTextField Nom_fr;
@@ -761,8 +817,8 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JTextField Prenm_fr;
     private javax.swing.JTextArea Remarque_fr;
     private javax.swing.JTextField Tel_Email_fr;
+    private matjarokom.ui.view.ButtonView UpdateFrnButton;
     private matjarokom.ui.view.ButtonView buttonView1;
-    private matjarokom.ui.view.ButtonView buttonView2;
     private matjarokom.ui.view.ButtonView buttonView3;
     private matjarokom.ui.view.ButtonView buttonView4;
     private javax.swing.JButton jButton1;
@@ -774,7 +830,6 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

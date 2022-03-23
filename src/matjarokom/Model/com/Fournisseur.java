@@ -76,6 +76,7 @@ public class Fournisseur {
         this.N_Enterprise = N_Enterprise;
         this.N_Compte = N_Compte;
         this.N_Registre = N_Registre;
+
     }
 
     /**
@@ -240,7 +241,27 @@ public class Fournisseur {
         }
 
     }
-
+    public void UpdateFournisseur(int id){
+        //Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre
+        String Query="UPDATE Fournisseur SET Nom_Fournisseur='"+this.Nom_Fournisseur+"', Prenom_Fournisseur='"+this.Prenom_Fournisseur+"',"
+                + " Adress='"+this.Adress+"', Tel_email='"+this.Tel_email+"', Nif='"+this.Nif+"', Debit="+this.Debit+" ,Credit="+this.Credit+","
+                + " N_Enterprise='"+this.N_Enterprise+"', N_Compte='"+this.N_Compte+"', N_Registre='"+this.N_Registre+"'"
+                + " WHERE ID_Fournisseur="+id+" ";
+        try {
+            setPrstm(getCnx().getConnect().prepareStatement(Query));
+            
+            if (getPrstm().executeUpdate()>0) {
+                JOptionPane.showMessageDialog(null, "Success Update");
+            }else
+                JOptionPane.showMessageDialog(null, "Error update");
+            
+            getPrstm().close();
+            getCnx().Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public ArrayList GetListFournisseur(){ // Get List Of Fournisseur
 //            Statement stm;
 //            ResultSet res;
@@ -280,6 +301,41 @@ public class Fournisseur {
         Object [] data = {this.getN_Enterprise(),this.getPrenom_Fournisseur(),this.getNom_Fournisseur(),this.getID_Fournisseur()};
         return data;
     }
+    
+    public void GetInformationFromDBByID(int id_frn){
+        String Query="SELECT * FROM Fournisseur WHERE ID_Fournisseur="+id_frn;
+        Fournisseur frns = null;
+        try {
+            setStm(getCnx().getConnect().createStatement());
+            setRes(getStm().executeQuery(Query));
+            if(getRes().next()){
+              /* new Fournisseur(res.getInt("ID_Fournisseur"), res.getString("Nom_Fournisseur"), res.getString("Prenom_Fournisseur"),
+                    res.getString("Adress"), res.getString("Tel_email"), res.getString("Nif"), res.getFloat("Debit"), res.getFloat("Credit"),
+                    res.getString("N_Enterprise"), res.getString("N_Compte"), res.getString("N_Registre"));
+                */
+            
+            this.ID_Fournisseur=res.getInt("ID_Fournisseur");
+            this.Nom_Fournisseur=res.getString("Nom_Fournisseur");
+            this.Prenom_Fournisseur=res.getString("Prenom_Fournisseur");
+            this.Adress=res.getString("Adress");
+            this.Tel_email=res.getString("Tel_email");
+            this.Nif=res.getString("Nif");
+            this.Debit=res.getFloat("Debit");this.Credit= res.getFloat("Credit");
+            this.N_Enterprise=res.getString("N_Enterprise");
+            this.N_Compte=res.getString("N_Compte");
+            this.N_Registre=res.getString("N_Registre");
+            
+            }
+            getStm().close();
+            getRes().close();
+            getCnx().Deconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
     
     
     public static void main(String[] args) {

@@ -58,7 +58,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel14" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="N_Order_Frn" min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="PicFornView" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="buttonView2" max="32767" attributes="0"/>
+                          <Component id="UpdateFrnButton" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonView4" min="-2" pref="84" max="-2" attributes="0"/>
                       </Group>
@@ -110,7 +110,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel14" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="N_Order_Frn" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="PicFornView" min="-2" pref="90" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -145,7 +145,7 @@
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonView4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="buttonView2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="UpdateFrnButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="57" max="32767" attributes="0"/>
@@ -200,6 +200,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -280,7 +283,6 @@
                           <Component id="jLabel6" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="NIF_fr" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -704,7 +706,7 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel9MouseEntered"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="N_Order_Frn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
@@ -745,7 +747,7 @@
             <Property name="rounded" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="matjarokom.ui.view.ButtonView" name="buttonView2">
+        <Component class="matjarokom.ui.view.ButtonView" name="UpdateFrnButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -760,6 +762,9 @@
             </Property>
             <Property name="rounded" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateFrnButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="matjarokom.ui.view.ButtonView" name="buttonView3">
           <Properties>
