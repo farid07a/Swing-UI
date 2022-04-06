@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
@@ -31,12 +32,14 @@ public class FournissourView extends javax.swing.JDialog {
     private Fournisseur fournissour;
     
     JTextField tabTxtView[];
+    
+    dialgMsgUnits UnitCnfMsg;
     /**
      * Creates new form SupplierView
      */
     public FournissourView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
+        UnitCnfMsg = new dialgMsgUnits(this, modal);
         initComponents();
         
         fournissour=new Fournisseur();
@@ -80,6 +83,9 @@ public class FournissourView extends javax.swing.JDialog {
         Adress_Fr = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         Tel_Email_fr = new javax.swing.JTextField();
+        labChechInput = new javax.swing.JLabel();
+        WebSite_fr = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         PicFornView = new javax.swing.JLabel();
@@ -87,9 +93,10 @@ public class FournissourView extends javax.swing.JDialog {
         N_Order_Frn = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         buttonView1 = new matjarokom.ui.view.ButtonView();
-        UpdateFrnButton = new matjarokom.ui.view.ButtonView();
         buttonView3 = new matjarokom.ui.view.ButtonView();
+        UpdateFrnButton = new matjarokom.ui.view.ButtonView();
         buttonView4 = new matjarokom.ui.view.ButtonView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -131,6 +138,11 @@ public class FournissourView extends javax.swing.JDialog {
         Entreprise_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Entreprise_fr.setText("اسم الشركة");
         Entreprise_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Entreprise_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Entreprise_frKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -141,6 +153,11 @@ public class FournissourView extends javax.swing.JDialog {
         NIF_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NIF_fr.setText("NIF");
         NIF_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        NIF_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NIF_frKeyPressed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -151,6 +168,11 @@ public class FournissourView extends javax.swing.JDialog {
         N_compte.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N_compte.setText("رقم الحساب");
         N_compte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        N_compte.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                N_compteKeyPressed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,6 +187,11 @@ public class FournissourView extends javax.swing.JDialog {
         N_Registre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N_Registre.setText("رقم السجل");
         N_Registre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        N_Registre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                N_RegistreKeyPressed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -174,6 +201,11 @@ public class FournissourView extends javax.swing.JDialog {
         Credit_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Credit_fr.setText("00.00");
         Credit_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Credit_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Credit_frKeyPressed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -183,11 +215,21 @@ public class FournissourView extends javax.swing.JDialog {
         Debit_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Debit_fr.setText("00.00");
         Debit_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Debit_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Debit_frKeyPressed(evt);
+            }
+        });
 
         Remarque_fr.setColumns(20);
         Remarque_fr.setForeground(new java.awt.Color(153, 153, 153));
         Remarque_fr.setRows(5);
         Remarque_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Remarque_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Remarque_frKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(Remarque_fr);
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -227,17 +269,17 @@ public class FournissourView extends javax.swing.JDialog {
                             .addComponent(Entreprise_fr)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(N_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 5, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Entreprise_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,8 +303,7 @@ public class FournissourView extends javax.swing.JDialog {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Debit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
-                .addContainerGap())
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -276,6 +317,11 @@ public class FournissourView extends javax.swing.JDialog {
         Nom_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Nom_fr.setText("الاسم");
         Nom_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Nom_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Nom_frKeyPressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -286,6 +332,11 @@ public class FournissourView extends javax.swing.JDialog {
         Prenm_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Prenm_fr.setText("اللقب");
         Prenm_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Prenm_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Prenm_frKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -296,6 +347,11 @@ public class FournissourView extends javax.swing.JDialog {
         Adress_Fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Adress_Fr.setText("عنوان المورد");
         Adress_Fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Adress_Fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Adress_FrKeyPressed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel10.setText("البريد الالكتروني/رقم الهاتف:");
@@ -305,6 +361,27 @@ public class FournissourView extends javax.swing.JDialog {
         Tel_Email_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Tel_Email_fr.setText("البريد الالكتروني او رقم الهاتف");
         Tel_Email_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tel_Email_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tel_Email_frKeyPressed(evt);
+            }
+        });
+
+        labChechInput.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        WebSite_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        WebSite_fr.setForeground(new java.awt.Color(153, 153, 153));
+        WebSite_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        WebSite_fr.setText("www.MyWebSite.com");
+        WebSite_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        WebSite_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WebSite_frKeyPressed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setText("الموقع الالكتروني:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -313,44 +390,63 @@ public class FournissourView extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Prenm_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Nom_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labChechInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Adress_Fr, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(Prenm_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Nom_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Adress_Fr, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel14))
+                            .addComponent(WebSite_fr))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(Tel_Email_fr)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel10)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(Tel_Email_fr)
+                                .addGap(60, 60, 60)))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Prenm_fr)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Nom_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Nom_fr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                    .addComponent(Prenm_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labChechInput, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Adress_Fr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Tel_Email_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Tel_Email_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(WebSite_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jButton1.setText("save");
@@ -408,6 +504,23 @@ public class FournissourView extends javax.swing.JDialog {
         buttonView1.setBackgroundPainted(true);
         buttonView1.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
         buttonView1.setRounded(true);
+        buttonView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonView1ActionPerformed(evt);
+            }
+        });
+
+        buttonView3.setBackground(new java.awt.Color(0, 102, 102));
+        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
+        buttonView3.setText("مسح");
+        buttonView3.setBackgroundPainted(true);
+        buttonView3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        buttonView3.setRounded(true);
+        buttonView3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonView3ActionPerformed(evt);
+            }
+        });
 
         UpdateFrnButton.setBackground(new java.awt.Color(0, 102, 102));
         UpdateFrnButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,13 +534,6 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
-        buttonView3.setBackground(new java.awt.Color(0, 102, 102));
-        buttonView3.setForeground(new java.awt.Color(255, 255, 255));
-        buttonView3.setText("حذف");
-        buttonView3.setBackgroundPainted(true);
-        buttonView3.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        buttonView3.setRounded(true);
-
         buttonView4.setBackground(new java.awt.Color(0, 102, 102));
         buttonView4.setForeground(new java.awt.Color(255, 255, 255));
         buttonView4.setText("اضاقة");
@@ -440,88 +546,102 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(83, 83, 83)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(UpdateFrnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(55, 55, 55))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel9)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(PicFornView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton4)
+                .addGap(37, 37, 37)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton1)
+                                .addComponent(jButton2)
+                                .addComponent(jButton4))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -532,9 +652,7 @@ public class FournissourView extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, Short.MAX_VALUE)
         );
 
         pack();
@@ -553,7 +671,7 @@ public class FournissourView extends javax.swing.JDialog {
        String N_registre=N_Registre.getText();
        String nCompte=N_compte.getText();
         
-        this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
+//        this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
         this.fournissour.Add_Fournissour();
         DefaultTableModel df=(DefaultTableModel)this.jTable1.getModel();
         df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
@@ -566,23 +684,48 @@ public class FournissourView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void buttonView4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView4ActionPerformed
+        
+       
+        
+       //UnitCnfMsg.SetMsgTextShow("هل تريد تأكيد العملية");
+       
+        if (!isChecked()) {
+            labChechInput.setText("تأكد من تعبئة الحقول الاساسية");
+            labChechInput.setForeground(Color.red);
+            return;
+        }
+       // stop when Empty all fields after save object (last task)
+       
        String Nom_Fournisseur=Nom_fr.getText();
        String PrenFrn= Prenm_fr.getText();
-       String Adrs_Fr=Adress_Fr.getText();
-       String Tel_Email=Tel_Email_fr.getText();
-       String Nif_frn= NIF_fr.getText();
+       
+       String Adrs_Fr=(Adress_Fr.getText().equals("عنوان المورد"))?"":Adress_Fr.getText(); 
+       String Tel_Email=(Tel_Email_fr.getText().equals("البريد الالكتروني او رقم الهاتف"))?"":Tel_Email_fr.getText();
        //String NumAssur=N_Assurance.getText();
+       String Nif_frn=(NIF_fr.getText().equals("NIF"))?"":NIF_fr.getText();
+       
        float debit=Float.valueOf(Debit_fr.getText());
        float credit=Float.valueOf(Credit_fr.getText());
-       String N_entreprise=Entreprise_fr.getText();
-       String N_registre=N_Registre.getText();
-       String nCompte=N_compte.getText();
-        
-        this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
-        this.fournissour.Add_Fournissour();
-        DefaultTableModel df=(DefaultTableModel)this.jTable1.getModel();
-        df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
-        
+       
+       String N_entreprise=(Entreprise_fr.getText().equals("اسم الشركة"))?"":Entreprise_fr.getText();
+       //String N_entreprise=Entreprise_fr.getText();
+       
+       String N_registre=(N_Registre.getText().equals("رقم السجل"))?"":N_Registre.getText();
+       
+       String nCompte=(N_compte.getText().equals("رقم الحساب"))?"":N_compte.getText();
+       
+       String WebSite=(WebSite_fr.getText().equals("www.MyWebSite.com"))?"":WebSite_fr.getText();
+       String remarque=Remarque_fr.getText();
+       //String N_registre=N_Registre.getText();
+       //String nCompte=N_compte.getText();
+       
+       this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre,WebSite,remarque);
+       this.fournissour.Add_Fournissour();
+       
+       
+       DefaultTableModel df=(DefaultTableModel)this.jTable1.getModel();
+       df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
+       //HintText();
         //FillDataTableFournissour(this.fournissour.GetListFournisseur()); // filling after add 
     }//GEN-LAST:event_buttonView4ActionPerformed
 
@@ -613,6 +756,12 @@ public class FournissourView extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void UpdateFrnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateFrnButtonActionPerformed
+        
+       UnitCnfMsg.SetMsgTextShow("تأكيد عملية التعديل");
+       dialgMsgUnits.ShowmessgConf();
+        byte conf = dialgMsgUnits.getYes_No();
+        if (conf==1) {
+            
        int N_Ordre=Integer.parseInt(N_Order_Frn.getText());
        String Nom_Fournisseur=Nom_fr.getText();
        String PrenFrn= Prenm_fr.getText();
@@ -625,15 +774,166 @@ public class FournissourView extends javax.swing.JDialog {
        String N_entreprise=Entreprise_fr.getText();
        String N_registre=N_Registre.getText();
        String nCompte=N_compte.getText();
-        
-        this.fournissour=new Fournisseur( N_Ordre , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
+       String WebSite=WebSite_fr.getText();
+       String Remarque=Remarque_fr.getText();
+        this.fournissour=new Fournisseur( N_Ordre , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,
+                Nif_frn, debit, credit, N_entreprise, nCompte, N_registre,WebSite,Remarque);
         this.fournissour.UpdateFournisseur(N_Ordre);// Function to Update Frn New Fournisseur fournissour.getID_Fournisseur()
         FillDataTableFournissour(fournissour.GetListFournisseur());
+        }
+        
+       
     }//GEN-LAST:event_UpdateFrnButtonActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DisplayChoiceRowDataInGUI();
+        DisplayChoiceRowDataInGUI();// display data of fournisseur object when select fornisseur from jtable
+        changeText_ViewsColor();
+        
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void Nom_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nom_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Prenm_fr.requestFocus();
+        }
+    }//GEN-LAST:event_Nom_frKeyPressed
+
+    private void Prenm_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prenm_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Adress_Fr.requestFocus();
+        }
+    }//GEN-LAST:event_Prenm_frKeyPressed
+
+    private void Adress_FrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Adress_FrKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Adress_FrKeyPressed
+
+    private void Entreprise_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Entreprise_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            N_Registre.requestFocus();
+            
+        }
+    }//GEN-LAST:event_Entreprise_frKeyPressed
+
+    private void N_RegistreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_N_RegistreKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            N_compte.requestFocus();    
+        }
+    }//GEN-LAST:event_N_RegistreKeyPressed
+
+    private void N_compteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_N_compteKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            NIF_fr.requestFocus();    
+        }
+    }//GEN-LAST:event_N_compteKeyPressed
+
+    private void NIF_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIF_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Credit_fr.requestFocus();    
+        }
+    }//GEN-LAST:event_NIF_frKeyPressed
+
+    private void Credit_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Credit_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Debit_fr.requestFocus();    
+        }
+    }//GEN-LAST:event_Credit_frKeyPressed
+
+    private void Debit_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Debit_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Remarque_fr.requestFocus();    
+        }
+    }//GEN-LAST:event_Debit_frKeyPressed
+
+    private void Remarque_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Remarque_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            buttonView4.requestFocus();    
+        }
+    }//GEN-LAST:event_Remarque_frKeyPressed
+
+    private void Tel_Email_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tel_Email_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            WebSite_fr.requestFocus();
+        }
+    }//GEN-LAST:event_Tel_Email_frKeyPressed
+
+    private void WebSite_frKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WebSite_frKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            Entreprise_fr.requestFocus();
+        }
+    }//GEN-LAST:event_WebSite_frKeyPressed
+
+    private void buttonView3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView3ActionPerformed
+        ResetTextFields();
+    }//GEN-LAST:event_buttonView3ActionPerformed
+
+    private void buttonView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView1ActionPerformed
+        
+    }//GEN-LAST:event_buttonView1ActionPerformed
+    
+    // Stop here at 15:04 finish task keyPressed Enter to next compenent
+    
+    
+    
+    private boolean isChecked(){
+    
+        boolean x=(Nom_fr.getText().equals("") || Nom_fr.getText().equals("الاسم") ||Prenm_fr.getText().equals("اللقب") || Prenm_fr.getText().equals("")); //(Nom= emmpt: Vr  )
+        
+        /**
+        *Nom=vide     :True         prenom=vide     : true         ==> x =True   NotChecked  return False
+        *Nom=vide     :True         prenom=Non vide : false        ==> x =True   NotChecked  return False 
+        *Nom=Non vide :False        prenom=vide     : true         ==> x =True   NotChecked  return False
+        *Nom=Non vide :false        prenom=Non vide : true         ==> x =false  IsChecked   return True 
+        **/    
+        System.out.println(!x);
+    return !x; // True for checked false for else
+    }
+    
+    
+    
+    public void ResetTextFields(){
+        N_Order_Frn.setText(fournissour.maxIdFournisseur()+1+"");
+        
+        Nom_fr.setText("الاسم");
+        Nom_fr.setForeground(Color.gray);
+        
+        Prenm_fr.setText("اللقب");
+        Prenm_fr.setForeground(Color.gray);
+        
+        Adress_Fr.setText("عنوان المورد");
+        Adress_Fr.setForeground(Color.gray);
+        
+        Tel_Email_fr.setText("البريد الالكتروني او رقم الهاتف");
+        Tel_Email_fr.setForeground(Color.gray);
+        
+        WebSite_fr.setText("www.MyWebSite.com");
+        WebSite_fr.setForeground(Color.gray);
+        
+        Entreprise_fr.setText("اسم الشركة");
+        Entreprise_fr.setForeground(Color.gray);
+        
+        N_compte.setText("رقم الحساب");
+        N_compte.setForeground(Color.gray);
+        
+        N_Registre.setText("رقم السجل");
+        N_Registre.setForeground(Color.gray);
+        
+        NIF_fr.setText("NIF");
+        NIF_fr.setForeground(Color.gray);
+        
+        Credit_fr.setText("00.00");
+        Credit_fr.setForeground(Color.gray);
+        
+        Debit_fr.setText("00.00");
+        Debit_fr.setForeground(Color.gray);
+        
+        Remarque_fr.setText("");
+        
+        //Remarque_fr
+        
+    }
+    
+    
+    
     
     public void DisplayChoiceRowDataInGUI(){
         int RowSel=jTable1.getSelectedRow();
@@ -641,6 +941,7 @@ public class FournissourView extends javax.swing.JDialog {
         
         fournissour.GetInformationFromDBByID(id_frn);// fill fileds of fournisseur with data Of dataBase
         N_Order_Frn.setText(""+fournissour.getID_Fournisseur());
+        
         Nom_fr.setText(fournissour.getPrenom_Fournisseur());
         Prenm_fr.setText(fournissour.getNom_Fournisseur());
         Adress_Fr.setText(fournissour.getAdress());
@@ -651,14 +952,55 @@ public class FournissourView extends javax.swing.JDialog {
         NIF_fr.setText(fournissour.getNif());
         Credit_fr.setText(fournissour.getCredit()+"");
         Debit_fr.setText(fournissour.getDebit()+"");
+        WebSite_fr.setText(fournissour.getWebSite());
+        Remarque_fr.setText(fournissour.getRemarque());
+    }
+    /**
+     Change color of JtextField of Fournisseur Form Wwhen call function in update data 
+     **/
+    private void changeText_ViewsColor(){
+        N_Order_Frn.setText(""+fournissour.getID_Fournisseur());
         
+        Nom_fr.setForeground(Color.black);
+        Prenm_fr.setForeground(Color.black);
+        Adress_Fr.setForeground(Color.black);
+        Tel_Email_fr.setForeground(Color.black);
+        Entreprise_fr.setForeground(Color.black);
+        N_Registre.setForeground(Color.black);
+        N_compte.setForeground(Color.black);
+        NIF_fr.setForeground(Color.black);
+        Credit_fr.setForeground(Color.black);
+        Debit_fr.setForeground(Color.black);
+        WebSite_fr.setForeground(Color.black);
+        Remarque_fr.setForeground(Color.black);
+        
+    }
+
+    /**
+     * This Function uses in some function to disable and enable  
+     * input data in form fornisseur or updata data only with permission
+     **/    
+
+    private void Disable_EnableJtextFildsFormFournisseur(boolean En_or_Dis){
+        //N_Order_Frn.setText(""+fournissour.getID_Fournisseur());
+        
+        Nom_fr.setEnabled(En_or_Dis);
+        Prenm_fr.setEnabled(En_or_Dis);
+        Adress_Fr.setEnabled(En_or_Dis);
+        Tel_Email_fr.setEnabled(En_or_Dis);
+        Entreprise_fr.setEnabled(En_or_Dis);
+        N_Registre.setEnabled(En_or_Dis);
+        N_compte.setEnabled(En_or_Dis);
+        NIF_fr.setEnabled(En_or_Dis);
+        Credit_fr.setEnabled(En_or_Dis);
+        Debit_fr.setEnabled(En_or_Dis);
+        WebSite_fr.setEnabled(En_or_Dis);
+        Remarque_fr.setEnabled(En_or_Dis);
         
     }
     
-    
-   
     public void HintText(){
-        this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr};
+        this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr,WebSite_fr};
         for (JTextField textField : tabTxtView) {
             textField.addFocusListener(new FocusListener() {
                 @Override
@@ -666,10 +1008,17 @@ public class FournissourView extends javax.swing.JDialog {
                     if (textField.getText().equals("الاسم")) {
                         textField.setText("");
                         textField.setForeground(Color.black);
+                        if (!labChechInput.getText().equals("")) {// when user focused in Nom or labChechInputchange
+                            labChechInput.setText("");
+                        }
+                        
                     }
                     if (textField.getText().equals("اللقب")) {
                         textField.setText("");
                         textField.setForeground(Color.black);
+                        if (!labChechInput.getText().equals("")) {// when user focused in Nom or labChechInputchange
+                            labChechInput.setText("");
+                        }
                     }
                     if (textField.getText().equals("عنوان المورد")) {
                         textField.setText("");
@@ -679,6 +1028,13 @@ public class FournissourView extends javax.swing.JDialog {
                         textField.setText("");
                         textField.setForeground(Color.black);
                     }
+                    
+                    if (textField.getText().equals("www.MyWebSite.com")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    
+                    
                     if (textField.getText().equals("اسم الشركة")) {
                         textField.setText("");
                         textField.setForeground(Color.black);
@@ -720,6 +1076,11 @@ public class FournissourView extends javax.swing.JDialog {
                         textField.setText("البريد الالكتروني او رقم الهاتف");
                         textField.setForeground(Color.gray);
                     }
+                    if (textField.equals(WebSite_fr) && textField.getText().equals("")) {
+                        textField.setText("www.MyWebSite.com");
+                        textField.setForeground(Color.gray);
+                    }
+                    
                     if (textField.equals(Entreprise_fr) && textField.getText().equals("")) {
                         textField.setText("اسم الشركة");
                         textField.setForeground(Color.gray);
@@ -818,6 +1179,7 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JTextArea Remarque_fr;
     private javax.swing.JTextField Tel_Email_fr;
     private matjarokom.ui.view.ButtonView UpdateFrnButton;
+    private javax.swing.JTextField WebSite_fr;
     private matjarokom.ui.view.ButtonView buttonView1;
     private matjarokom.ui.view.ButtonView buttonView3;
     private matjarokom.ui.view.ButtonView buttonView4;
@@ -830,6 +1192,7 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -840,9 +1203,11 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labChechInput;
     // End of variables declaration//GEN-END:variables
 
     /**
