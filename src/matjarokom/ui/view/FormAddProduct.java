@@ -133,6 +133,9 @@ public class FormAddProduct extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         check_update_add = new javax.swing.JCheckBox();
+        BtnInerSavUpd1 = new matjarokom.ui.view.ButtonView();
+        BtnInerSavUpd2 = new matjarokom.ui.view.ButtonView();
+        BtnInerSavUpd3 = new matjarokom.ui.view.ButtonView();
         SidePanel = new javax.swing.JPanel();
         BtnNewPrduct = new matjarokom.ui.view.ButtonView();
         buttonView1 = new matjarokom.ui.view.ButtonView();
@@ -333,7 +336,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Ref_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Frn_ID5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -343,7 +346,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Catg_produit_cmb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Frn_ID9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -370,7 +373,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                     .addComponent(QuantityStok_produit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -480,7 +483,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Forns_produit))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,7 +635,7 @@ public class FormAddProduct extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -656,7 +659,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Search_Field_Prd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -667,10 +670,15 @@ public class FormAddProduct extends javax.swing.JFrame {
 
         BtnInerSavUpd.setBackground(new java.awt.Color(102, 0, 0));
         BtnInerSavUpd.setForeground(new java.awt.Color(255, 255, 255));
-        BtnInerSavUpd.setText("حفظ");
+        BtnInerSavUpd.setText("تعديل");
         BtnInerSavUpd.setBackgroundPainted(true);
         BtnInerSavUpd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnInerSavUpd.setRounded(true);
+        BtnInerSavUpd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInerSavUpdActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("العدد الكلي:");
 
@@ -688,6 +696,42 @@ public class FormAddProduct extends javax.swing.JFrame {
             }
         });
 
+        BtnInerSavUpd1.setBackground(new java.awt.Color(102, 0, 0));
+        BtnInerSavUpd1.setForeground(new java.awt.Color(255, 255, 255));
+        BtnInerSavUpd1.setText("جديد");
+        BtnInerSavUpd1.setBackgroundPainted(true);
+        BtnInerSavUpd1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnInerSavUpd1.setRounded(true);
+        BtnInerSavUpd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInerSavUpd1ActionPerformed(evt);
+            }
+        });
+
+        BtnInerSavUpd2.setBackground(new java.awt.Color(102, 0, 0));
+        BtnInerSavUpd2.setForeground(new java.awt.Color(255, 255, 255));
+        BtnInerSavUpd2.setText("حذف");
+        BtnInerSavUpd2.setBackgroundPainted(true);
+        BtnInerSavUpd2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnInerSavUpd2.setRounded(true);
+        BtnInerSavUpd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInerSavUpd2ActionPerformed(evt);
+            }
+        });
+
+        BtnInerSavUpd3.setBackground(new java.awt.Color(102, 0, 0));
+        BtnInerSavUpd3.setForeground(new java.awt.Color(255, 255, 255));
+        BtnInerSavUpd3.setText("الغاء");
+        BtnInerSavUpd3.setBackgroundPainted(true);
+        BtnInerSavUpd3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnInerSavUpd3.setRounded(true);
+        BtnInerSavUpd3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnInerSavUpd3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CenterPanelLayout = new javax.swing.GroupLayout(CenterPanel);
         CenterPanel.setLayout(CenterPanelLayout);
         CenterPanelLayout.setHorizontalGroup(
@@ -699,7 +743,15 @@ public class FormAddProduct extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CenterPanelLayout.createSequentialGroup()
+                        .addComponent(BtnInerSavUpd3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnInerSavUpd2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnInerSavUpd1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
                 .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CenterPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -717,20 +769,24 @@ public class FormAddProduct extends javax.swing.JFrame {
             CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CenterPanelLayout.createSequentialGroup()
                 .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(CenterPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(check_update_add)))
-                .addGap(80, 80, 80))
+                        .addComponent(check_update_add))
+                    .addGroup(CenterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BtnInerSavUpd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnInerSavUpd2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnInerSavUpd3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnInerSavUpd1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
         );
 
         getContentPane().add(CenterPanel, java.awt.BorderLayout.CENTER);
@@ -798,7 +854,7 @@ public class FormAddProduct extends javax.swing.JFrame {
                 .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
 
         getContentPane().add(SidePanel, java.awt.BorderLayout.LINE_END);
@@ -1171,6 +1227,22 @@ public class FormAddProduct extends javax.swing.JFrame {
         
         }*/
     }//GEN-LAST:event_Search_Field_PrdFocusGained
+
+    private void BtnInerSavUpdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInerSavUpdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnInerSavUpdActionPerformed
+
+    private void BtnInerSavUpd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInerSavUpd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnInerSavUpd1ActionPerformed
+
+    private void BtnInerSavUpd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInerSavUpd2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnInerSavUpd2ActionPerformed
+
+    private void BtnInerSavUpd3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInerSavUpd3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnInerSavUpd3ActionPerformed
     public void FillDataStockLocal(){
         LocalStock.removeAllItems();
         Iterator<Stocke> itr=stockGetData.GetlistDataLocaleStock().iterator();
@@ -1282,6 +1354,9 @@ public class FormAddProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private matjarokom.ui.view.ButtonView BtnInerSavUpd;
+    private matjarokom.ui.view.ButtonView BtnInerSavUpd1;
+    private matjarokom.ui.view.ButtonView BtnInerSavUpd2;
+    private matjarokom.ui.view.ButtonView BtnInerSavUpd3;
     private matjarokom.ui.view.ButtonView BtnNewPrduct;
     private javax.swing.JComboBox<String> Catg_produit_cmb;
     private javax.swing.JPanel CenterPanel;
