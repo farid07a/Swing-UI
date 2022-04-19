@@ -43,6 +43,8 @@ public class Fournisseur {
     private String N_Registre;
     private String Remarque;
     private String WebSite;
+    private String Facebook;
+    private String Youtube;
     
     
     private ConnectionDB cnx = new ConnectionDB();
@@ -67,7 +69,7 @@ public class Fournisseur {
     public Fournisseur() {
     }
 
-    public Fournisseur(int ID_Fournisseur, String Nom_Fournisseur, String Prenom_Fournisseur, String Adress, String Tel_email, String Nif, float Debit, float Credit, String N_Enterprise, String N_Compte, String N_Registre,String Website,String Remarque) {
+    public Fournisseur(int ID_Fournisseur, String Nom_Fournisseur, String Prenom_Fournisseur, String Adress, String Tel_email, String Nif, float Debit, float Credit, String N_Enterprise, String N_Compte, String N_Registre,String Website,String Remarque,String Facebook,String Youtube) {
         this.ID_Fournisseur = ID_Fournisseur;
         this.Nom_Fournisseur = Nom_Fournisseur;
         this.Prenom_Fournisseur = Prenom_Fournisseur;
@@ -81,7 +83,8 @@ public class Fournisseur {
         this.N_Registre = N_Registre;
         this.WebSite=Website;
         this.Remarque=Remarque;
-        
+        this.Facebook=Facebook;
+        this.Youtube=Youtube;
     }
 
     /**
@@ -124,6 +127,22 @@ public class Fournisseur {
      */
     public void setAdress(String Adress) {
         this.Adress = Adress;
+    }
+
+    public void setFacebook(String Facebook) {
+        this.Facebook = Facebook;
+    }
+
+    public void setYoutube(String Youtube) {
+        this.Youtube = Youtube;
+    }
+
+    public String getFacebook() {
+        return Facebook;
+    }
+
+    public String getYoutube() {
+        return Youtube;
     }
 
     /**
@@ -225,9 +244,9 @@ public class Fournisseur {
     }
 
     public void Add_Fournissour() {
-        String Query = "INSERT INTO Fournisseur (Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre,Website,Remarque)"
+        String Query = "INSERT INTO Fournisseur (Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre,Website,Remarque,Facebook,Youtube)"
                 + "  VALUES('" + Nom_Fournisseur + "','" + Prenom_Fournisseur + "','" + Adress + "','" + Tel_email + "','" + Nif + "',"
-                + Debit + "," + Credit + ",'" + N_Enterprise + "','" + N_Compte + "','" + N_Registre + "', '"+WebSite+"','"+Remarque+"' )";
+                + Debit + "," + Credit + ",'" + N_Enterprise + "','" + N_Compte + "','" + N_Registre + "', '"+WebSite+"','"+Remarque+"','"+Facebook+"','"+Youtube+"')";
         try {
             setPrstm(getCnx().getConnect().prepareStatement(Query));
             int x = getPrstm().executeUpdate();
@@ -250,7 +269,8 @@ public class Fournisseur {
         //Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre
         String Query="UPDATE Fournisseur SET Nom_Fournisseur='"+this.Nom_Fournisseur+"', Prenom_Fournisseur='"+this.Prenom_Fournisseur+"', "
                 + " Adress='"+this.Adress+"', Tel_email='"+this.Tel_email+"', Nif='"+this.Nif+"', Debit="+this.Debit+" ,Credit="+this.Credit+", "
-                + " N_Enterprise='"+this.N_Enterprise+"', N_Compte='"+this.N_Compte+"', N_Registre='"+this.N_Registre+"' ,Website='"+this.WebSite+"', Remarque='"+this.Remarque+"' "
+                + " N_Enterprise='"+this.N_Enterprise+"', N_Compte='"+this.N_Compte+"', N_Registre='"+this.N_Registre+"' ,Website='"+this.WebSite+"' ,"
+                + " Remarque='"+this.Remarque+"', Facebook='"+this.Facebook+"', Youtube='"+this.Youtube+"' "
                 + " WHERE ID_Fournisseur="+id+" ";
         try {
             setPrstm(getCnx().getConnect().prepareStatement(Query));
@@ -283,7 +303,8 @@ public class Fournisseur {
                     //Nom_Fournisseur,Prenom_Fournisseur,Adress,Tel_email,Nif,Debit,Credit,N_Enterprise,N_Compte,N_Registre
                     FournisseurObj=new Fournisseur(res.getInt("ID_Fournisseur"), res.getString("Nom_Fournisseur"), res.getString("Prenom_Fournisseur"),
                     res.getString("Adress"), res.getString("Tel_email"), res.getString("Nif"), res.getFloat("Debit"), res.getFloat("Credit"),
-                    res.getString("N_Enterprise"), res.getString("N_Compte"), res.getString("N_Registre"),res.getString("Website"),res.getString("Remarque"));
+                    res.getString("N_Enterprise"), res.getString("N_Compte"), res.getString("N_Registre"),res.getString("Website"),res.getString("Remarque"),
+                    res.getString("Facebook"),res.getString("Youtube"));
                     listFournisseur.add(FournisseurObj);
                 }
             stm.close();
@@ -331,6 +352,9 @@ public class Fournisseur {
             this.N_Registre=res.getString("N_Registre");
             this.WebSite=res.getString("Website");
             this.Remarque=res.getString("Remarque");
+            this.Facebook=res.getString("Facebook");
+            this.Youtube=res.getString("Youtube");
+            
             }
             getStm().close();
             getRes().close();
