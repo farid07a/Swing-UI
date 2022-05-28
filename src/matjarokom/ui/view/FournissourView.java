@@ -11,16 +11,28 @@ It sends the requested data to the client, that is fetched from model layer by c
 package matjarokom.ui.view;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import matjarokom.Control.com.RoundedLineBorder;
 import matjarokom.Model.com.Fournisseur;
 
 /**
@@ -30,7 +42,7 @@ import matjarokom.Model.com.Fournisseur;
 public class FournissourView extends javax.swing.JDialog {
 
     private Fournisseur fournissour;
-
+    RoundedLineBorder roundedLineBorder =new RoundedLineBorder(Color.BLACK, 1, 10, true);
     JTextField tabTxtView[];
     String FacebookTxt, YoutubeTxt;
     char Op_Add_Updt='A'; // use chaoice to add Supplier Or Update
@@ -39,12 +51,14 @@ public class FournissourView extends javax.swing.JDialog {
 
     /**
      * Creates new form SupplierView
+     * @param parent
+     * @param modal
      */
     public FournissourView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         UnitCnfMsg = new dialgMsgUnits(this, modal);
         initComponents();
-
+        this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr, WebSite_fr,URL_SocialMedia_fb1,URL_SocialMedia_yb};
         fournissour = new Fournisseur();
 
     }
@@ -77,10 +91,6 @@ public class FournissourView extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         Remarque_fr = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Nom_fr = new javax.swing.JTextField();
@@ -96,18 +106,19 @@ public class FournissourView extends javax.swing.JDialog {
         UpdateFrnButton = new matjarokom.ui.view.ButtonView();
         buttonView3 = new matjarokom.ui.view.ButtonView();
         buttonView1 = new matjarokom.ui.view.ButtonView();
-        URL_SocialMedia = new javax.swing.JTextField();
-        BtnSaveSocialMd = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        BtnSaveSocialMd1 = new javax.swing.JLabel();
-        URL_SocialMedia1 = new javax.swing.JTextField();
-        WebSite_fr = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        Tel_Email_fr = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        Tel_Email_fr = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        WebSite_fr = new javax.swing.JTextField();
+        URL_SocialMedia_fb1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        URL_SocialMedia_yb = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("شاشة الموردين");
@@ -246,34 +257,6 @@ public class FournissourView extends javax.swing.JDialog {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("ملاحظات:");
 
-        jButton3.setText("jButton1");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("jButton1");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("jButton1");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -290,40 +273,29 @@ public class FournissourView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Debit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Credit_fr)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Entreprise_fr)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(N_compte, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Debit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Credit_fr)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addContainerGap())))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(N_compte, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(Entreprise_fr))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap())
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,13 +319,7 @@ public class FournissourView extends javax.swing.JDialog {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Credit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)))
+                        .addComponent(Credit_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,24 +381,22 @@ public class FournissourView extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Prenm_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Prenm_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Nom_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labChechInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Adress_Fr, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,29 +484,6 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
-        URL_SocialMedia.setVisible(false);
-        URL_SocialMedia.setForeground(new java.awt.Color(153, 153, 153));
-        URL_SocialMedia.setText("https://www.youtube.com/c/youtubeChannel");
-        URL_SocialMedia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        URL_SocialMedia.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                URL_SocialMediaFocusGained(evt);
-            }
-        });
-        URL_SocialMedia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                URL_SocialMediaActionPerformed(evt);
-            }
-        });
-
-        BtnSaveSocialMd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Add_Mini_h.png"))); // NOI18N
-        BtnSaveSocialMd.setVisible(false);
-        BtnSaveSocialMd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnSaveSocialMdMouseClicked(evt);
-            }
-        });
-
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/facebook-icon.png"))); // NOI18N
         jButton5.setContentAreaFilled(false);
@@ -561,42 +502,8 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
-        BtnSaveSocialMd1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/C_Del_Mini_01_h.png"))); // NOI18N
-        BtnSaveSocialMd.setVisible(false);
-        BtnSaveSocialMd1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnSaveSocialMd1MouseClicked(evt);
-            }
-        });
-
-        URL_SocialMedia.setVisible(false);
-        URL_SocialMedia1.setForeground(new java.awt.Color(153, 153, 153));
-        URL_SocialMedia1.setText("https://www.youtube.com/c/youtubeChannel");
-        URL_SocialMedia1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        URL_SocialMedia1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                URL_SocialMedia1FocusGained(evt);
-            }
-        });
-        URL_SocialMedia1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                URL_SocialMedia1ActionPerformed(evt);
-            }
-        });
-
-        WebSite_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        WebSite_fr.setForeground(new java.awt.Color(153, 153, 153));
-        WebSite_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        WebSite_fr.setText("www.MyWebSite.com");
-        WebSite_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        WebSite_fr.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                WebSite_frKeyPressed(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel14.setText("قناة اليوتيب:");
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel10.setText("البريد الالكتروني\nرقم الهاتف:");
 
         Tel_Email_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         Tel_Email_fr.setForeground(new java.awt.Color(153, 153, 153));
@@ -609,68 +516,147 @@ public class FournissourView extends javax.swing.JDialog {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setText("البريد الالكتروني\nرقم الهاتف:");
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel17.setText("الموقع الالكتروني:");
+
+        WebSite_fr.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        WebSite_fr.setForeground(new java.awt.Color(153, 153, 153));
+        WebSite_fr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        WebSite_fr.setText("www.MyWebSite.com");
+        WebSite_fr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        WebSite_fr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                WebSite_frKeyPressed(evt);
+            }
+        });
+
+        URL_SocialMedia_fb1.setForeground(new java.awt.Color(153, 153, 153));
+        URL_SocialMedia_fb1.setText("https://www.facebook.com/username");
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel16.setText("صفحة الفيسبوك:");
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel17.setText("الموقع الالكتروني:");
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setText("قناة اليوتيب:");
+
+        URL_SocialMedia_yb.setForeground(new java.awt.Color(153, 153, 153));
+        URL_SocialMedia_yb.setText("https://www.youtube.com/c/youtubeChannel");
+        URL_SocialMedia_yb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        URL_SocialMedia_yb.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                URL_SocialMedia_ybFocusGained(evt);
+            }
+        });
+        URL_SocialMedia_yb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                URL_SocialMedia_ybActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/paste.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/paste.png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(WebSite_fr, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Tel_Email_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(URL_SocialMedia_fb1)
+                            .addComponent(URL_SocialMedia_yb, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Tel_Email_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WebSite_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(URL_SocialMedia_fb1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(URL_SocialMedia_yb))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnSaveSocialMd1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnSaveSocialMd, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(263, 263, 263))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel9))
-                            .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(WebSite_fr)
-                                    .addComponent(URL_SocialMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jLabel9))
+                                    .addComponent(PicFornView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel17))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(URL_SocialMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(Tel_Email_fr, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel16))
-                                .addGap(25, 25, 25))))))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -678,59 +664,45 @@ public class FournissourView extends javax.swing.JDialog {
                 .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(214, 214, 214))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(WebSite_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tel_Email_fr, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(URL_SocialMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(URL_SocialMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(N_Order_Frn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PicFornView, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonView4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UpdateFrnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonView3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnSaveSocialMd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BtnSaveSocialMd1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buttonView1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1025, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -740,37 +712,13 @@ public class FournissourView extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Nom_Fournisseur = Nom_fr.getText();
-        String PrenFrn = Prenm_fr.getText();
-        String Adrs_Fr = Adress_Fr.getText();
-        String Tel_Email = Tel_Email_fr.getText();
-        String Nif_frn = NIF_fr.getText();
-        //String NumAssur=N_Assurance.getText();
-        float debit = Float.valueOf(Debit_fr.getText());
-        float credit = Float.valueOf(Credit_fr.getText());
-        String N_entreprise = Entreprise_fr.getText();
-        String N_registre = N_Registre.getText();
-        String nCompte = N_compte.getText();
-
-//        this.fournissour=new Fournisseur( 0 , Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,Nif_frn, debit, credit, N_entreprise, nCompte, N_registre);
-        this.fournissour.Add_Fournissour();
-        DefaultTableModel df = (DefaultTableModel) this.jTable1.getModel();
-        df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
-
-        //FillDataTableFournissour(this.fournissour.GetListFournisseur()); // filling after add 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void buttonView4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonView4ActionPerformed
 
         //UnitCnfMsg.SetMsgTextShow("هل تريد تأكيد العملية");
         if (!isChecked()) {
             labChechInput.setText("تأكد من تعبئة الحقول الاساسية");
             labChechInput.setForeground(Color.red);
+            
             return;
         }
         // stop when Empty all fields after save object (last task)
@@ -794,6 +742,9 @@ public class FournissourView extends javax.swing.JDialog {
         String nCompte = (N_compte.getText().equals("رقم الحساب")) ? "" : N_compte.getText();
 
         String WebSite = (WebSite_fr.getText().equals("www.MyWebSite.com")) ? "" : WebSite_fr.getText();
+        FacebookTxt=URL_SocialMedia_fb1.getText();
+        YoutubeTxt=URL_SocialMedia_yb.getText();
+        
         String remarque = Remarque_fr.getText();
 
         //String N_registre=N_Registre.getText();
@@ -806,15 +757,8 @@ public class FournissourView extends javax.swing.JDialog {
         df.addRow(fournissour.GetArrayDataFournissourToView()); // add New Row without call method to view Data In table
         //HintText();
         //FillDataTableFournissour(this.fournissour.GetListFournisseur()); // filling after add 
+        
     }//GEN-LAST:event_buttonView4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         JFileChooser chooserWind = new JFileChooser();
@@ -854,6 +798,8 @@ public class FournissourView extends javax.swing.JDialog {
             String N_registre = N_Registre.getText();
             String nCompte = N_compte.getText();
             String WebSite = WebSite_fr.getText();
+            FacebookTxt=URL_SocialMedia_fb1.getText();
+            YoutubeTxt=URL_SocialMedia_yb.getText();
             String Remarque = Remarque_fr.getText();
             
             this.fournissour = new Fournisseur(N_Ordre, Nom_Fournisseur, PrenFrn, Adrs_Fr, Tel_Email,
@@ -950,75 +896,86 @@ public class FournissourView extends javax.swing.JDialog {
 
     }//GEN-LAST:event_buttonView1ActionPerformed
 
-    private void BtnSaveSocialMdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSaveSocialMdMouseClicked
-        URL_SocialMedia.setForeground(Color.gray);
-        if (fb_yb == 'f') {
-            FacebookTxt = URL_SocialMedia.getText();
-            URL_SocialMedia.setVisible(false);
-            BtnSaveSocialMd.setVisible(false);
-            URL_SocialMedia.setText("//https://www.facebook.com/Farid.Soft"); // for initialiase to next saving
-            
-            return;
-        }
-
-        YoutubeTxt = URL_SocialMedia.getText();
-        URL_SocialMedia.setVisible(false);
-        BtnSaveSocialMd.setVisible(false);
-        URL_SocialMedia.setText("//https://www.facebook.com/Farid.Soft");// all initialise with facebook
-    }//GEN-LAST:event_BtnSaveSocialMdMouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Test si Visible but never showing in interactive Button
-        if (Op_Add_Updt=='A') {             //this is operation for Add New Fournsseur 
-        URL_SocialMedia.setVisible(true);
-        BtnSaveSocialMd.setVisible(true);
-        URL_SocialMedia.setText("//https://www.facebook.com/Farid.Soft");
-        fb_yb = 'f';
+//        if (Op_Add_Updt=='A') {             //this is operation for Add New Fournsseur 
+//        URL_SocialMedia_fb.setVisible(true);
+//        BtnSaveSocialMd.setVisible(true);
+//        URL_SocialMedia_fb.setText("https://www.facebook.com/Farid.Soft");
+//        fb_yb = 'f';
+//
+//        }else {
+        
+            
+     
+     String url =URL_SocialMedia_fb1.getText();
+     //url= "https://www.facebook.com/MustafaHosny";
+     Desktop dt = Desktop.getDesktop();
+     URI uri = null;
+            try {
+                uri = new URI(url);
+                dt.browse(uri);
+            } catch (URISyntaxException | IOException ex) {
+                Logger.getLogger(FournissourView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     
 
-        }else {
+
         
-        
-        }
+            
+        //}
         
        
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void URL_SocialMediaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_URL_SocialMediaFocusGained
-        //https://www.facebook.com/Farid.Soft
-        //https://www.youtube.com/c/youtubeChannel
-        if (URL_SocialMedia.getText().equals("https://www.facebook.com/Farid.Soft")
-                || URL_SocialMedia.getText().equals("//https://www.youtube.com/c/youtubeChannel")) {
-            URL_SocialMedia.setText("");
-            URL_SocialMedia.setForeground(Color.black);
-        }
-
-    }//GEN-LAST:event_URL_SocialMediaFocusGained
-
-    private void URL_SocialMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_URL_SocialMediaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_URL_SocialMediaActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        URL_SocialMedia.setVisible(true);
-        BtnSaveSocialMd.setVisible(true);
-        URL_SocialMedia.setText("//https://www.youtube.com/c/youtubeChannel");
-        fb_yb = 'y';
+//        URL_SocialMedia_fb.setVisible(true);
+//        BtnSaveSocialMd.setVisible(true);
+//        URL_SocialMedia_fb.setText("https://www.youtube.com/c/youtubeChannel");
+//        fb_yb = 'y';
+//       String url = "www.stackoverflow.com";
+//Desktop desktop = java.awt.Desktop.getDesktop();
+//desktop.browse(url);
+     String url =URL_SocialMedia_fb1.getText();
+     url= "https://www.youtube.com";
+     Desktop dt = Desktop.getDesktop();
+     URI uri = null;
+            try {
+                uri = new URI(url);
+                dt.browse(uri);
+            } catch (URISyntaxException | IOException ex) {
+                Logger.getLogger(FournissourView.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void BtnSaveSocialMd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnSaveSocialMd1MouseClicked
-        URL_SocialMedia.setVisible(false);
-        BtnSaveSocialMd.setVisible(false);
-        URL_SocialMedia.setText("//https://www.facebook.com/Farid.Soft");
-        URL_SocialMedia.setForeground(Color.gray);
-    }//GEN-LAST:event_BtnSaveSocialMd1MouseClicked
-
-    private void URL_SocialMedia1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_URL_SocialMedia1FocusGained
+    private void URL_SocialMedia_ybFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_URL_SocialMedia_ybFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_URL_SocialMedia1FocusGained
+    }//GEN-LAST:event_URL_SocialMedia_ybFocusGained
 
-    private void URL_SocialMedia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_URL_SocialMedia1ActionPerformed
+    private void URL_SocialMedia_ybActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_URL_SocialMedia_ybActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_URL_SocialMedia1ActionPerformed
+    }//GEN-LAST:event_URL_SocialMedia_ybActionPerformed
+
+    private void onPaste(){
+    Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+    Transferable t = c.getContents(this);
+    if (t == null)
+        
+        return;
+    try {
+        URL_SocialMedia_fb1.setText((String) t.getTransferData(DataFlavor.stringFlavor));
+    } catch (UnsupportedFlavorException | IOException e){
+        e.printStackTrace();
+    }//try
+}//onPaste
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.onPaste();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Stop here at 15:04 finish task keyPressed Enter to next compenent
     private boolean isChecked() {
@@ -1037,9 +994,10 @@ public class FournissourView extends javax.swing.JDialog {
         return !x; // True for checked false for else
     }
 
+    
     public void ResetTextFields() {
         N_Order_Frn.setText(fournissour.maxIdFournisseur() + 1 + "");
-
+        
         Nom_fr.setText("الاسم");
         Nom_fr.setForeground(Color.gray);
 
@@ -1072,7 +1030,14 @@ public class FournissourView extends javax.swing.JDialog {
 
         Debit_fr.setText("00.00");
         Debit_fr.setForeground(Color.gray);
-
+        
+        URL_SocialMedia_fb1.setText("https://www.facebook.com/username");
+        URL_SocialMedia_fb1.setForeground(Color.gray);
+        FacebookTxt="";
+        URL_SocialMedia_yb.setText("https://www.youtube.com/c/youtubeChannel");
+        URL_SocialMedia_yb.setForeground(Color.gray);
+        YoutubeTxt="";
+        
         Remarque_fr.setText("");
 
         //Remarque_fr
@@ -1085,8 +1050,8 @@ public class FournissourView extends javax.swing.JDialog {
         fournissour.GetInformationFromDBByID(id_frn);// fill fileds of fournisseur with data Of dataBase
         N_Order_Frn.setText("" + fournissour.getID_Fournisseur());
 
-        Nom_fr.setText(fournissour.getPrenom_Fournisseur());
-        Prenm_fr.setText(fournissour.getNom_Fournisseur());
+        Nom_fr.setText(fournissour.getNom_Fournisseur());
+        Prenm_fr.setText(fournissour.getPrenom_Fournisseur());
         Adress_Fr.setText(fournissour.getAdress());
         Tel_Email_fr.setText(fournissour.getTel_email());
         Entreprise_fr.setText(fournissour.getN_Enterprise());
@@ -1096,9 +1061,16 @@ public class FournissourView extends javax.swing.JDialog {
         Credit_fr.setText(fournissour.getCredit() + "");
         Debit_fr.setText(fournissour.getDebit() + "");
         WebSite_fr.setText(fournissour.getWebSite());
-        Remarque_fr.setText(fournissour.getRemarque());
         FacebookTxt=fournissour.getFacebook();
         YoutubeTxt=fournissour.getYoutube();
+        System.out.println("FacebookTxt/"+FacebookTxt);
+        System.out.println("YoutubeTXT:"+YoutubeTxt);    
+        
+        URL_SocialMedia_fb1.setText(FacebookTxt);
+        URL_SocialMedia_yb.setText(YoutubeTxt);
+        
+        Remarque_fr.setText(fournissour.getRemarque());
+        
     }
 
     /**
@@ -1120,6 +1092,8 @@ public class FournissourView extends javax.swing.JDialog {
         Credit_fr.setForeground(Color.black);
         Debit_fr.setForeground(Color.black);
         WebSite_fr.setForeground(Color.black);
+        URL_SocialMedia_fb1.setForeground(Color.black);
+        URL_SocialMedia_yb.setForeground(Color.black);
         Remarque_fr.setForeground(Color.black);
 
     }
@@ -1146,10 +1120,17 @@ public class FournissourView extends javax.swing.JDialog {
         Remarque_fr.setEnabled(En_or_Dis);
 
     }
+    
+    public void SetBorderOfAllComponent(){
+    
+    for (JTextField textField : tabTxtView) {
+    
+    textField.setBorder(roundedLineBorder);
+    }
+    }
 
     public void HintText() {
-        this.tabTxtView = new JTextField[]{Nom_fr, Prenm_fr, Adress_Fr, Tel_Email_fr, Entreprise_fr, N_Registre, N_compte, NIF_fr, Credit_fr, Debit_fr, WebSite_fr};
-        for (JTextField textField : tabTxtView) {
+            for (JTextField textField : tabTxtView) {
             textField.addFocusListener(new FocusListener() {
                 @Override
                 public void focusGained(FocusEvent e) {
@@ -1202,6 +1183,15 @@ public class FournissourView extends javax.swing.JDialog {
                         textField.setText("");
                         textField.setForeground(Color.black);
                     }
+                    if (textField.getText().equals("https://www.facebook.com/username")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    if (textField.getText().equals("https://www.youtube.com/c/youtubeChannel")) {
+                        textField.setText("");
+                        textField.setForeground(Color.black);
+                    }
+                    
 
                 }
 
@@ -1248,7 +1238,15 @@ public class FournissourView extends javax.swing.JDialog {
                         textField.setText("00.00");
                         textField.setForeground(Color.gray);
                     }
-
+                    
+                    if (textField.equals(URL_SocialMedia_fb1) && textField.getText().equals("")) {
+                        textField.setText("https://www.facebook.com/username");
+                        textField.setForeground(Color.gray);
+                    }
+                    if (textField.equals(URL_SocialMedia_yb) && textField.getText().equals("")) {
+                        textField.setText("https://www.youtube.com/c/youtubeChannel");
+                        textField.setForeground(Color.gray);
+                    }
                 }
             });
         }
@@ -1304,6 +1302,7 @@ public class FournissourView extends javax.swing.JDialog {
                 });
                 Fournisseur f = new Fournisseur();
                 dialog.FillDataTableFournissour(f.GetListFournisseur());
+                dialog.SetBorderOfAllComponent();
                 dialog.HintText();
                 dialog.setVisible(true);
             }
@@ -1312,8 +1311,6 @@ public class FournissourView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Adress_Fr;
-    private javax.swing.JLabel BtnSaveSocialMd;
-    private javax.swing.JLabel BtnSaveSocialMd1;
     private javax.swing.JTextField Credit_fr;
     private javax.swing.JTextField Debit_fr;
     private javax.swing.JTextField Entreprise_fr;
@@ -1326,8 +1323,8 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JTextField Prenm_fr;
     private javax.swing.JTextArea Remarque_fr;
     private javax.swing.JTextField Tel_Email_fr;
-    private javax.swing.JTextField URL_SocialMedia;
-    private javax.swing.JTextField URL_SocialMedia1;
+    private javax.swing.JTextField URL_SocialMedia_fb1;
+    private javax.swing.JTextField URL_SocialMedia_yb;
     private matjarokom.ui.view.ButtonView UpdateFrnButton;
     private javax.swing.JTextField WebSite_fr;
     private matjarokom.ui.view.ButtonView buttonView1;
@@ -1335,8 +1332,6 @@ public class FournissourView extends javax.swing.JDialog {
     private matjarokom.ui.view.ButtonView buttonView4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -1357,6 +1352,7 @@ public class FournissourView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
